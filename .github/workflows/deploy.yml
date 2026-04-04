@@ -40,7 +40,13 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
             "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
-            "chown -R apache:apache /var/www/vitas && \
+            "mkdir -p /var/www/vitas/storage/app/public \
+              /var/www/vitas/storage/framework/cache/data \
+              /var/www/vitas/storage/framework/sessions \
+              /var/www/vitas/storage/framework/views \
+              /var/www/vitas/storage/logs \
+              /var/www/vitas/bootstrap/cache && \
+             chown -R apache:apache /var/www/vitas && \
              chmod -R 755 /var/www/vitas && \
              chmod -R 775 /var/www/vitas/storage && \
              chmod -R 775 /var/www/vitas/bootstrap/cache && \
