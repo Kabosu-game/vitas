@@ -1,0 +1,77 @@
+name: Deploy vitas
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VITAS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519_vitas
+          chmod 600 ~/.ssh/id_ed25519_vitas
+          ssh-keyscan -H ${{ secrets.VITAS_SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Test SSH Connection
+        run: |
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+            "echo 'SSH Connection OK - vitas'"
+
+      - name: Deploy project to VPS
+        run: |
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='.env' \
+            --exclude='storage' \
+            -e "ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no" \
+            ./ "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}":/var/www/vitas
+
+      - name: Fix permissions on VPS
+        run: |
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+            "chown -R apache:apache /var/www/vitas && \
+             chmod -R 755 /var/www/vitas && \
+             chmod -R 775 /var/www/vitas/storage && \
+             chmod -R 775 /var/www/vitas/bootstrap/cache && \
+             ([ -f /var/www/vitas/.env ] && chmod 644 /var/www/vitas/.env || true)"
+
+      - name: Run commands on VPS
+        run: |
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" << 'EOF'
+            set -e
+            cd /var/www/vitas
+
+            echo "📦 Installation des dépendances PHP"
+            composer install --no-dev --optimize-autoloader --no-interaction
+
+            echo "📦 Installation des dépendances Node"
+            npm install
+            npm run build
+
+            if [ -f .env ]; then
+              echo "⚙️ Optimisation Laravel"
+              php artisan key:generate --force || true
+              php artisan migrate --force || true
+              php artisan optimize
+              php artisan storage:link || true
+            else
+              echo "⚠️ .env absent sur /var/www/vitas — artisan ignoré"
+            fi
+
+            sudo systemctl reload php-fpm || true
+            sudo systemctl reload nginx || true
+
+            echo "✅ Déploiement vitas terminé"
+          EOF
