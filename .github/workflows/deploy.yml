@@ -72,30 +72,10 @@ jobs:
 
             if [ -f .env ]; then
               echo "⚙️ Optimisation Laravel"
-
-              # Générer la clé seulement si elle est absente
-              grep -q "APP_KEY=$" .env && php artisan key:generate --force || true
-
-              php artisan optimize:clear || true
+              php artisan key:generate --force || true
               php artisan migrate --force || true
-
-              # Seed les settings manquants depuis le config
-              php artisan tinker --no-interaction << 'TINKER'
-$cfg = config('setting');
-$seeded = 0;
-foreach ($cfg as $section => $data) {
-    foreach ($data['elements'] ?? [] as $field) {
-        if (!empty($field['name']) && !App\Models\Setting::where('name', $field['name'])->exists()) {
-            App\Models\Setting::create(['name' => $field['name'], 'val' => $field['value'] ?? '', 'type' => $field['data'] ?? 'string']);
-            $seeded++;
-        }
-    }
-}
-echo "Settings insérés : $seeded\n";
-TINKER
-
+              php artisan optimize
               php artisan storage:link || true
-              php artisan optimize || true
             else
               echo "⚠️ .env absent sur /var/www/vitas — artisan ignoré"
             fi
