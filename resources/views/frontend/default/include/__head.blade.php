@@ -23,7 +23,7 @@
     @stack('style')
     @yield('style')
     <style>
-        {{ \App\Models\CustomCss::first()->css }}
+        {{ \App\Models\CustomCss::first()?->css }}
     </style>
     <title>{{ setting('site_title', 'global') }} - @yield('title')</title>
 </head>
