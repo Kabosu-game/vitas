@@ -26,6 +26,7 @@ use App\Http\Controllers\Frontend\TransactionController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WalletController;
 use App\Http\Controllers\Frontend\WithdrawController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -281,3 +282,22 @@ Route::get('site-cron', [CronJobController::class, 'runCronJobs'])->name('cron.j
 
 // stripe webhook
 Route::stripeWebhooks('stripe-webhook');
+
+// Cache clear (admin only, token protégé)
+Route::get('clear-cache/{token}', function (string $token) {
+    if ($token !== config('app.key')) {
+        abort(403);
+    }
+
+    $results = [];
+
+    try { Artisan::call('cache:clear');        $results[] = '✓ Cache applicatif vidé'; }       catch (\Throwable $e) { $results[] = '✗ cache:clear — '.$e->getMessage(); }
+    try { Artisan::call('config:clear');       $results[] = '✓ Cache config vidé'; }           catch (\Throwable $e) { $results[] = '✗ config:clear — '.$e->getMessage(); }
+    try { Artisan::call('route:clear');        $results[] = '✓ Cache routes vidé'; }           catch (\Throwable $e) { $results[] = '✗ route:clear — '.$e->getMessage(); }
+    try { Artisan::call('view:clear');         $results[] = '✓ Cache vues vidé'; }             catch (\Throwable $e) { $results[] = '✗ view:clear — '.$e->getMessage(); }
+    try { Artisan::call('event:clear');        $results[] = '✓ Cache events vidé'; }           catch (\Throwable $e) { $results[] = '✗ event:clear — '.$e->getMessage(); }
+    try { Artisan::call('optimize:clear');     $results[] = '✓ Optimize:clear OK'; }           catch (\Throwable $e) { $results[] = '✗ optimize:clear — '.$e->getMessage(); }
+    try { Artisan::call('migrate', ['--force' => true]); $results[] = '✓ Migrations exécutées'; } catch (\Throwable $e) { $results[] = '✗ migrate — '.$e->getMessage(); }
+
+    return response('<pre style="font-family:monospace;padding:20px;background:#0f172a;color:#22c55e;font-size:13px">'.implode("\n", $results)."\n\n✅ Terminé.</pre>");
+});
