@@ -11,28 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        public function up(): void
-{
-    Schema::create('gateways', function (Blueprint $table) {
-        $table->bigIncrements('id');
-        $table->string('logo');
-        $table->string('name');
-        $table->string('gateway_code')->unique();
-        $table->text('supported_currencies')->nullable();
-        $table->text('credentials');
-        $table->string('is_withdraw')->nullable()->default('0');
-        $table->boolean('status');
-        $table->decimal('charge', 28, 8)->default(0);
-        $table->string('charge_type')->default('fixed');
-        $table->string('currency')->nullable();
-        $table->string('currency_symbol')->nullable();
-        $table->decimal('rate', 28, 8)->default(1);
-        $table->decimal('minimum_deposit', 28, 8)->default(0);
-        $table->decimal('maximum_deposit', 28, 8)->default(0);
-        $table->string('type')->nullable();
-        $table->timestamps();
-    });
-}
+        Schema::create('gateways', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('logo');
+            $table->string('name');
+            $table->string('gateway_code')->unique();
+            $table->text('supported_currencies')->nullable();
+            $table->text('credentials');
+            $table->string('is_withdraw')->nullable()->default('0');
+            $table->boolean('status');
+            $table->decimal('charge', 28, 8)->default(0);
+            $table->string('charge_type')->default('fixed');
+            $table->string('currency')->nullable();
+            $table->string('currency_symbol')->nullable();
+            $table->decimal('rate', 28, 8)->default(1);
+            $table->decimal('minimum_deposit', 28, 8)->default(0);
+            $table->decimal('maximum_deposit', 28, 8)->default(0);
+            $table->string('type')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
