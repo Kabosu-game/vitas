@@ -283,7 +283,7 @@ Route::get('site-cron', [CronJobController::class, 'runCronJobs'])->name('cron.j
 // stripe webhook
 Route::stripeWebhooks('stripe-webhook');
 
-// Cache clear (admin only, token protégé)
+// Cache clear (token = APP_KEY)
 Route::get('clear-cache/{token}', function (string $token) {
     if ($token !== config('app.key')) {
         abort(403);
@@ -291,13 +291,53 @@ Route::get('clear-cache/{token}', function (string $token) {
 
     $results = [];
 
-    try { Artisan::call('cache:clear');        $results[] = '✓ Cache applicatif vidé'; }       catch (\Throwable $e) { $results[] = '✗ cache:clear — '.$e->getMessage(); }
-    try { Artisan::call('config:clear');       $results[] = '✓ Cache config vidé'; }           catch (\Throwable $e) { $results[] = '✗ config:clear — '.$e->getMessage(); }
-    try { Artisan::call('route:clear');        $results[] = '✓ Cache routes vidé'; }           catch (\Throwable $e) { $results[] = '✗ route:clear — '.$e->getMessage(); }
-    try { Artisan::call('view:clear');         $results[] = '✓ Cache vues vidé'; }             catch (\Throwable $e) { $results[] = '✗ view:clear — '.$e->getMessage(); }
-    try { Artisan::call('event:clear');        $results[] = '✓ Cache events vidé'; }           catch (\Throwable $e) { $results[] = '✗ event:clear — '.$e->getMessage(); }
-    try { Artisan::call('optimize:clear');     $results[] = '✓ Optimize:clear OK'; }           catch (\Throwable $e) { $results[] = '✗ optimize:clear — '.$e->getMessage(); }
-    try { Artisan::call('migrate', ['--force' => true]); $results[] = '✓ Migrations exécutées'; } catch (\Throwable $e) { $results[] = '✗ migrate — '.$e->getMessage(); }
+    // OPcache PHP
+    if (function_exists('opcache_reset')) {
+        opcache_reset();
+        $results[] = '✓ OPcache vidé';
+    } else {
+        $results[] = '⚠ OPcache non disponible';
+    }
 
-    return response('<pre style="font-family:monospace;padding:20px;background:#0f172a;color:#22c55e;font-size:13px">'.implode("\n", $results)."\n\n✅ Terminé.</pre>");
+    try { Artisan::call('cache:clear');    $results[] = '✓ Cache applicatif'; }  catch (\Throwable $e) { $results[] = '✗ cache:clear — '.$e->getMessage(); }
+    try { Artisan::call('config:clear');   $results[] = '✓ Config cache'; }      catch (\Throwable $e) { $results[] = '✗ config:clear — '.$e->getMessage(); }
+    try { Artisan::call('route:clear');    $results[] = '✓ Route cache'; }       catch (\Throwable $e) { $results[] = '✗ route:clear — '.$e->getMessage(); }
+    try { Artisan::call('view:clear');     $results[] = '✓ View cache'; }        catch (\Throwable $e) { $results[] = '✗ view:clear — '.$e->getMessage(); }
+    try { Artisan::call('event:clear');    $results[] = '✓ Event cache'; }       catch (\Throwable $e) { $results[] = '✗ event:clear — '.$e->getMessage(); }
+    try { Artisan::call('optimize:clear'); $results[] = '✓ Optimize clear'; }    catch (\Throwable $e) { $results[] = '✗ optimize:clear — '.$e->getMessage(); }
+
+    // Migrations
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        $results[] = '✓ Migrations exécutées';
+    } catch (\Throwable $e) {
+        $results[] = '✗ migrate — '.$e->getMessage();
+    }
+
+    // Seed settings manquants
+    try {
+        $settingConfig = config('setting');
+        $seeded = 0;
+        foreach ($settingConfig as $section => $data) {
+            foreach ($data['elements'] ?? [] as $field) {
+                $exists = \App\Models\Setting::where('name', $field['name'])->exists();
+                if (!$exists && isset($field['value'])) {
+                    \App\Models\Setting::create([
+                        'name'    => $field['name'],
+                        'val'     => $field['value'],
+                        'type'    => $field['data'] ?? 'string',
+                    ]);
+                    $seeded++;
+                }
+            }
+        }
+        $results[] = "✓ Settings manquants insérés : $seeded";
+    } catch (\Throwable $e) {
+        $results[] = '✗ seed settings — '.$e->getMessage();
+    }
+
+    $html = '<pre style="font-family:monospace;padding:24px;background:#0f172a;color:#22c55e;font-size:13px;line-height:1.8">';
+    $html .= implode("\n", $results);
+    $html .= "\n\n✅ Terminé — <a href='/' style='color:#818cf8'>→ Accueil</a></pre>";
+    return response($html);
 });
