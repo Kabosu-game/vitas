@@ -33,7 +33,7 @@
                                             ['label'=>__('Prêt d\'Urgence'),   'slug'=>'pret-urgence'],
                                         ];
                                         @endphp
-                                        @foreach($navigations as $navigation)
+                                        @foreach(($navigations ?? collect()) as $navigation)
                                             @if($navigation->page_id == null)
                                             <li @class(['active' => $navigation->url == Request::url()])>
                                                 <a href="{{ $navigation->url }}">{{ $navigation->tname }}</a>
