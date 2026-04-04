@@ -14,7 +14,6 @@ jobs:
 
       - name: Setup SSH Key
         run: |
-          set -e
           mkdir -p ~/.ssh
           echo "${{ secrets.VITAS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519_vitas
           chmod 600 ~/.ssh/id_ed25519_vitas
@@ -40,21 +39,12 @@ jobs:
       - name: Fix permissions on VPS
         run: |
           ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
-            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" bash << 'EOF'
-            # Créer les dossiers storage s'ils n'existent pas
-            mkdir -p /var/www/vitas/storage/app/public
-            mkdir -p /var/www/vitas/storage/framework/cache/data
-            mkdir -p /var/www/vitas/storage/framework/sessions
-            mkdir -p /var/www/vitas/storage/framework/views
-            mkdir -p /var/www/vitas/storage/logs
-            mkdir -p /var/www/vitas/bootstrap/cache
-
-            chown -R apache:apache /var/www/vitas
-            chmod -R 755 /var/www/vitas
-            chmod -R 775 /var/www/vitas/storage
-            chmod -R 775 /var/www/vitas/bootstrap/cache
-            [ -f /var/www/vitas/.env ] && chmod 644 /var/www/vitas/.env || true
-          EOF
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+            "chown -R apache:apache /var/www/vitas && \
+             chmod -R 755 /var/www/vitas && \
+             chmod -R 775 /var/www/vitas/storage && \
+             chmod -R 775 /var/www/vitas/bootstrap/cache && \
+             ([ -f /var/www/vitas/.env ] && chmod 644 /var/www/vitas/.env || true)"
 
       - name: Run commands on VPS
         run: |
