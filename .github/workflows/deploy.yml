@@ -63,8 +63,12 @@ jobs:
             composer install --no-dev --optimize-autoloader --no-interaction
 
             echo "📦 Installation des dépendances Node"
-            npm install
-            npm run build
+            if [ -f package.json ]; then
+              npm install
+              npm run build
+            else
+              echo "⚠️ Pas de package.json — npm ignoré"
+            fi
 
             if [ -f .env ]; then
               echo "⚙️ Optimisation Laravel"
