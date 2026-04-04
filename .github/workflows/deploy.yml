@@ -72,9 +72,9 @@ jobs:
 
             if [ -f .env ]; then
               echo "⚙️ Optimisation Laravel"
-              php artisan key:generate --force || true
+              grep -q "^APP_KEY=$" .env && php artisan key:generate --force || true
+              php artisan optimize:clear || true
               php artisan migrate --force || true
-              php artisan optimize
               php artisan storage:link || true
             else
               echo "⚠️ .env absent sur /var/www/vitas — artisan ignoré"
