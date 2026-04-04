@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Privacy Policy @endsection
-@section('meta_keywords') Politique de confidentialité, Eurovitas @endsection
-@section('meta_description') Politique de confidentialité d'Eurovitas @endsection
+@section('meta_keywords') Politique de confidentialité, Eurovitas Finanzen @endsection
+@section('meta_description') Politique de confidentialité d'Eurovitas Finanzen @endsection
 @section('page-content')
     <!-- Privacy policy area start -->
     <section class="faq-area position-relative section-space">
@@ -9,9 +9,9 @@
             <div class="privacy-policy-content">
                 <div class="privacy-item">
                     <h2>Politique de Confidentialité</h2>
-                    <p style="color:rgba(3,3,6,0.6);">Chez Eurovitas, nous nous engageons à protéger la confidentialité et la sécurité de vos données personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez nos services de prêt en ligne.</p>
+                    <p style="color:rgba(3,3,6,0.6);">Chez Eurovitas Finanzen, nous nous engageons à protéger la confidentialité et la sécurité de vos données personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez nos services de prêt en ligne.</p>
                     <h3>Informations sur l'Entreprise</h3>
-                    <p style="color:rgba(3,3,6,0.6);">Eurovitas est une plateforme de prêt en ligne dédiée à offrir des solutions financières accessibles et sécurisées. Nous opérons en conformité avec les réglementations européennes en matière de protection des données.</p>
+                    <p style="color:rgba(3,3,6,0.6);">Eurovitas Finanzen est une plateforme de prêt en ligne dédiée à offrir des solutions financières accessibles et sécurisées. Nous opérons en conformité avec les réglementations européennes en matière de protection des données.</p>
                     <h3>1. Notre Site Web</h3>
                     <p style="color:rgba(3,3,6,0.6);">Nous collectons certaines données directement auprès de vous, telles que les informations que vous saisissez vous-même, les données relatives à votre participation à nos services et les données provenant de plateformes tierces que vous connectez.</p>
                     <h3>2. Données que Vous Nous Fournissez</h3>

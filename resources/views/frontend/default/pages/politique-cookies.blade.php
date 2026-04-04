@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Politique de Cookies @endsection
-@section('meta_keywords') cookies, politique cookies, traceurs, Eurovitas @endsection
-@section('meta_description') Politique de cookies d'Eurovitas : quels cookies nous utilisons, pourquoi et comment les gérer. @endsection
+@section('meta_keywords') cookies, politique cookies, traceurs, Eurovitas Finanzen @endsection
+@section('meta_description') Politique de cookies d'Eurovitas Finanzen : quels cookies nous utilisons, pourquoi et comment les gérer. @endsection
 @section('page-content')
 <section class="section-space">
     <div class="container">

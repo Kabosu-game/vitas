@@ -1,17 +1,17 @@
 @extends('frontend::pages.index')
 @section('title') Protection des Données (RGPD) @endsection
-@section('meta_keywords') RGPD, protection données, DPO, Eurovitas, vie privée @endsection
-@section('meta_description') Politique de protection des données personnelles d'Eurovitas conforme au RGPD. Vos droits, nos engagements, comment nous protégeons vos données. @endsection
+@section('meta_keywords') RGPD, protection données, DPO, Eurovitas Finanzen, vie privée @endsection
+@section('meta_description') Politique de protection des données personnelles d'Eurovitas Finanzen conforme au RGPD. Vos droits, nos engagements, comment nous protégeons vos données. @endsection
 @section('page-content')
 <section class="section-space">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-9">
                 <div class="frontend-editor-data">
-                    <p><em>Conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679) et à la loi Informatique et Libertés n°78-17 du 6 janvier 1978 modifiée, Eurovitas SAS s'engage à protéger vos données personnelles.</em></p>
+                    <p><em>Conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679) et à la loi Informatique et Libertés n°78-17 du 6 janvier 1978 modifiée, Eurovitas Finanzen SAS s'engage à protéger vos données personnelles.</em></p>
 
                     <h3>1. Responsable du traitement</h3>
-                    <p><strong>Eurovitas SAS</strong> — 14 Rue de la Paix, 75002 Paris<br>
+                    <p><strong>Eurovitas Finanzen SAS</strong> — 14 Rue de la Paix, 75002 Paris<br>
                     Délégué à la Protection des Données (DPO) : <a href="mailto:admin@eurovitas.de">admin@eurovitas.de</a></p>
 
                     <h3>2. Données collectées</h3>

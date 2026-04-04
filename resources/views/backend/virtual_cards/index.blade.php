@@ -1,117 +1,115 @@
 @extends('backend.layouts.app')
-@section('title')
-    {{ __('Virtual Cards') }}
-@endsection
+@section('title', 'Cartes Virtuelles')
 @section('content')
-    <div class="main-content">
-        <div class="page-title">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <div class="title-content">
-                            <h2 class="title">{{ __('Virtual Cards') }}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="main-content">
+    <div class="page-title">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="site-table table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    @include('backend.filter.th',['label' => 'Date','field' => 'created_at'])
-                                    @include('backend.filter.th',['label' => 'User','field' => 'user'])
-                                    @include('backend.filter.th',['label' => 'Card No.','field' => 'card_number'])
-                                    @include('backend.filter.th',['label' => 'Expiry','field' => 'expiration_year'])
-                                    @include('backend.filter.th',['label' => 'Balance','field' => 'balance'])
-                                    <th>{{ __('Action') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @forelse($cards as $card)
-                                <tr>
-                                    <td>
-                                        {{ $card->created_at }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.user.edit',$card->user_id) }}" class="link">{{ Str::limit($card->user?->username,15) }}</a>
-                                    </td>
-                                    <td>
-                                        {{ $card->card_number }}
-                                    </td>
-                                    <td>
-                                        {{ $card->expiration_month.'/'.$card->expiration_year }}
-                                    </td>
-                                    <td>
-                                        {{ $currencySymbol.$card->amount }}
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            @can('virtual-card-topup')
-                                            <a href="#" class="round-icon-btn primary-btn" data-bs-toggle="modal" data-bs-target="#topUpCard_{{ $card->id }}" data-bs-toggle="tooltip" data-bs-original-title="{{ __('Top Up Card') }}">
-                                                <i data-lucide="plus-circle"></i>
-                                            </a>
-                                            @endcan
-
-                                            @can('virtual-card-status-change')
-                                            <a href="{{ route('admin.user.card.status.update', $card->card_id) }}" class="round-icon-btn {{ $card?->status == 'active' ? 'red':'green' }}-btn" data-bs-toggle="tooltip" data-bs-original-title="{!! $card->status == 'active' ? __('Deactivate') : __('Activate') !!}">
-                                                {!! $card->status == 'active' ? '<i data-lucide="shield-off"></i>'.__('Deactivate') : '<i data-lucide="shield-check"></i>'.__('Activate') !!}
-                                            </a>
-                                            @endcan
-                                        </div>
-                                        @can('virtual-card-topup')
-                                        <div class="modal fade" id="topUpCard_{{ $card->id }}" tabindex="-1" aria-labelledby="addSubBalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-md modal-dialog-centered">
-                                                <div class="modal-content site-table-modal">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="addSubBalLabel">
-                                                            {{ __('Card Balance Add or Subtract') }}
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="{{ route('admin.user.card.balance.update', $card->id) }}" method="post">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <div class="row">
-                                                                <div class="col-xl-12">
-                                                                    <div class="site-input-groups">
-                                                                        <div class="input-group joint-input">
-                                                                            <span class="input-group-text">{{ setting('site_currency','global') }}</span>
-                                                                            <input type="text" name="amount" oninput="this.value = validateDouble(this.value)"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-12">
-                                                                    <button type="submit" class="site-btn primary-btn w-100">
-                                                                        {{ __('Apply Now') }}
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-            
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endcan
-                                    </td>
-                                </tr>
-                            @empty
-                            <td colspan="7" class="text-center">{{ __('No Cards Found!') }}</td>
-                            @endforelse
-                            </tbody>
-                        </table>
-
-                        {{ $cards->links('backend.include.__pagination') }}
+                <div class="col">
+                    <div class="title-content">
+                        <h2 class="title">Cartes Virtuelles</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+
+                {{-- Tabs --}}
+                <div class="site-tab-bars mb-3">
+                    <ul>
+                        @foreach(['all'=>'Toutes','pending'=>'En attente','active'=>'Actives','inactive'=>'Inactives'] as $key => $lbl)
+                        <li class="{{ (request('status',$key==='all'?null:$key) === ($key==='all'?null:$key)) && (request('status') === ($key==='all'?null:$key)) ? 'active':'' }}
+                            {{ request('status',$key) === $key || ($key==='all' && !request('status')) ? 'active':'' }}">
+                            <a href="{{ route('admin.virtual.cards', $key==='all' ? [] : ['status'=>$key]) }}">{{ $lbl }}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <div class="site-table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Utilisateur</th>
+                                <th>Nom titulaire</th>
+                                <th>Numéro de carte</th>
+                                <th>Expiration</th>
+                                <th>CVV</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($cards as $card)
+                            <tr>
+                                <td>{{ $card->created_at->format('d/m/Y H:i') }}</td>
+                                <td>
+                                    <a href="{{ route('admin.user.edit', $card->user_id) }}" class="link">
+                                        {{ $card->user?->full_name ?? $card->user?->username ?? '—' }}
+                                    </a>
+                                    <div style="font-size:11px;color:#9ca3af">{{ $card->user?->email }}</div>
+                                </td>
+                                <td>{{ strtoupper($card->cardholder_name ?? '—') }}</td>
+                                <td>
+                                    @if($card->status->value === 'pending')
+                                        <span class="text-muted">En attente</span>
+                                    @else
+                                        <code>{{ implode(' ', str_split($card->card_number, 4)) }}</code>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($card->status->value === 'pending') —
+                                    @else {{ str_pad($card->expiration_month,2,'0',STR_PAD_LEFT) }}/{{ $card->expiration_year }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($card->status->value === 'pending') —
+                                    @else {{ $card->cvc }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($card->status->value === 'pending')
+                                        <span class="badge bg-warning text-dark">En attente</span>
+                                    @elseif($card->status->value === 'active')
+                                        <span class="badge bg-success">Active</span>
+                                    @else
+                                        <span class="badge bg-secondary">Inactive</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        @if($card->status->value === 'pending')
+                                        <form action="{{ route('admin.user.card.approve', $card) }}" method="POST" onsubmit="return confirm('Approuver et activer cette carte ?')">
+                                            @csrf
+                                            <button class="site-btn success-btn btn-sm" style="font-size:12px;padding:5px 12px">
+                                                <i data-lucide="check-circle" style="width:13px;height:13px"></i> Approuver
+                                            </button>
+                                        </form>
+                                        @else
+                                        <a href="{{ route('admin.user.card.status.update', $card->card_id) }}"
+                                           class="site-btn btn-sm {{ $card->status->value === 'active' ? 'red-btn' : 'primary-btn' }}"
+                                           style="font-size:12px;padding:5px 12px">
+                                            {{ $card->status->value === 'active' ? 'Désactiver' : 'Activer' }}
+                                        </a>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr><td colspan="8" class="text-center py-4">Aucune carte trouvée.</td></tr>
+                        @endforelse
+                        </tbody>
+                    </table>
+                </div>
+
+                {{ $cards->links('backend.include.__pagination') }}
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

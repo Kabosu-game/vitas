@@ -28,10 +28,13 @@ class Card extends Model
         return $this->belongsTo(CardHolder::class);
     }
 
-    protected function casts()
+    protected $casts = [
+        'status' => CardStatus::class,
+    ];
+
+    public function getStatusValueAttribute(): string
     {
-        return [
-            'status' => CardStatus::class,
-        ];
+        $s = $this->status;
+        return $s instanceof CardStatus ? $s->value : (string) $s;
     }
 }

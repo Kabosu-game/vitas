@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Prêt Immobilier @endsection
-@section('meta_keywords') prêt immobilier, crédit immobilier, achat appartement, financement maison, Eurovitas @endsection
-@section('meta_description') Réalisez votre projet immobilier avec Eurovitas. Prêt immobilier compétitif, accompagnement personnalisé, réponse rapide pour votre achat ou rénovation. @endsection
+@section('meta_keywords') prêt immobilier, crédit immobilier, achat appartement, financement maison, Eurovitas Finanzen @endsection
+@section('meta_description') Réalisez votre projet immobilier avec Eurovitas Finanzen. Prêt immobilier compétitif, accompagnement personnalisé, réponse rapide pour votre achat ou rénovation. @endsection
 
 @section('page-content')
 
@@ -11,7 +11,7 @@
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
                 <span class="section-subtitle">Votre patrimoine, notre priorité</span>
                 <h2 class="section-title mb-20">Prêt Immobilier</h2>
-                <p class="description mb-20">Acquérir un bien immobilier est souvent le projet d'une vie. Le <strong>prêt immobilier Eurovitas</strong> vous accompagne à chaque étape : de la recherche du financement optimal jusqu'à la signature chez le notaire, avec des conditions transparentes et un accompagnement personnalisé.</p>
+                <p class="description mb-20">Acquérir un bien immobilier est souvent le projet d'une vie. Le <strong>prêt immobilier Eurovitas Finanzen</strong> vous accompagne à chaque étape : de la recherche du financement optimal jusqu'à la signature chez le notaire, avec des conditions transparentes et un accompagnement personnalisé.</p>
                 <p class="description mb-20">Que vous souhaitiez acheter votre résidence principale, une résidence secondaire, un bien locatif ou financer des travaux de rénovation, nous étudions votre dossier de manière globale pour vous proposer la solution la plus adaptée à votre situation patrimoniale.</p>
                 <p class="description">Taux fixes ou révisables, modulation des mensualités, assurance emprunteur compétitive — notre équipe de spécialistes vous guide vers le montage financier le plus avantageux.</p>
             </div>

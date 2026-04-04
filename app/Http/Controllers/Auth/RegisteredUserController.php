@@ -109,6 +109,8 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
+            'civility' => ['required', 'in:M.,Mme,Dr.,Me.'],
+            'id_number' => ['required', 'string', 'max:50'],
             'g-recaptcha-response' => Rule::requiredIf(plugin_active('Google reCaptcha')),
             new Recaptcha,
             'gender' => [Rule::requiredIf($isGender), 'in:Male,Female,Others'],
@@ -130,6 +132,8 @@ class RegisteredUserController extends Controller
             'portfolios' => json_encode([]),
             'first_name' => $formData['first_name'],
             'last_name' => $formData['last_name'],
+            'civility' => $request->get('civility'),
+            'id_number' => $request->get('id_number'),
             'branch_id' => $request->get('branch_id'),
             'gender' => $request->get('gender', ''),
             'username' => $isUsername ? $formData['username'] : $formData['first_name'].$formData['last_name'].rand(1000, 9999),

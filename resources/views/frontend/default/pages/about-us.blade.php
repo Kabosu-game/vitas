@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
-@section('title') À Propos d'Eurovitas @endsection
-@section('meta_keywords') À propos, Eurovitas, prêt en ligne, financement, confiance @endsection
-@section('meta_description') Découvrez Eurovitas, plateforme européenne de financement en ligne fondée sur la transparence, la rapidité et la confiance. @endsection
+@section('title') À Propos d'Eurovitas Finanzen @endsection
+@section('meta_keywords') À propos, Eurovitas Finanzen, prêt en ligne, financement, confiance @endsection
+@section('meta_description') Découvrez Eurovitas Finanzen, plateforme européenne de financement en ligne fondée sur la transparence, la rapidité et la confiance. @endsection
 
 @section('page-content')
 
@@ -13,9 +13,9 @@
                 <div class="section-title-wrapper mb-30">
                     <span class="section-subtitle">Qui Nous Sommes</span>
                     <h2 class="section-title mb-20">Une plateforme de financement construite pour vous</h2>
-                    <p class="description mb-20">Fondée en 2019, <strong>Eurovitas</strong> est une plateforme européenne de prêt en ligne qui réinvente l'accès au crédit. Nous croyons que chaque individu mérite un accès rapide, transparent et équitable aux ressources financières — sans paperasse inutile, sans longue attente, sans mauvaises surprises.</p>
+                    <p class="description mb-20">Fondée en 2019, <strong>Eurovitas Finanzen</strong> est une plateforme européenne de prêt en ligne qui réinvente l'accès au crédit. Nous croyons que chaque individu mérite un accès rapide, transparent et équitable aux ressources financières — sans paperasse inutile, sans longue attente, sans mauvaises surprises.</p>
                     <p class="description mb-20">Notre mission est simple : mettre la technologie au service de l'humain pour offrir des solutions de financement adaptées à chaque situation de vie, qu'il s'agisse d'un besoin personnel, d'un projet professionnel ou d'une urgence imprévue.</p>
-                    <p class="description">Avec plus de <strong>50 000 clients</strong> accompagnés dans toute l'Europe et un taux de satisfaction supérieur à <strong>97 %</strong>, Eurovitas s'est imposée comme un acteur de référence du financement digital responsable.</p>
+                    <p class="description">Avec plus de <strong>50 000 clients</strong> accompagnés dans toute l'Europe et un taux de satisfaction supérieur à <strong>97 %</strong>, Eurovitas Finanzen s'est imposée comme un acteur de référence du financement digital responsable.</p>
                 </div>
                 <div class="d-flex gap-20 flex-wrap mt-30">
                     <div class="about-stat-box">
@@ -35,7 +35,7 @@
             <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200">
                 <div class="about-thum-wrap">
                     <div class="thumb">
-                        <img src="{{ asset('global/images/G77LAQ2oFdN5Cj3TwFQT.png') }}" alt="Eurovitas" style="width:100%;border-radius:16px;">
+                        <img src="{{ asset('global/images/G77LAQ2oFdN5Cj3TwFQT.png') }}" alt="Eurovitas Finanzen" style="width:100%;border-radius:16px;">
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 <div class="value-card">
                     <div class="value-icon"><i data-lucide="users"></i></div>
                     <h4>Accessibilité pour tous</h4>
-                    <p>Salariés, indépendants, étudiants ou retraités — Eurovitas s'adapte à votre profil. Nous examinons chaque dossier individuellement, sans discrimination et avec bienveillance.</p>
+                    <p>Salariés, indépendants, étudiants ou retraités — Eurovitas Finanzen s'adapte à votre profil. Nous examinons chaque dossier individuellement, sans discrimination et avec bienveillance.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1200">
@@ -114,15 +114,15 @@
                     <div class="timeline-item" data-aos="fade-up" data-aos-duration="800">
                         <div class="timeline-year">2019</div>
                         <div class="timeline-content">
-                            <h4>Fondation d'Eurovitas</h4>
-                            <p>Trois entrepreneurs passionnés de fintech lancent Eurovitas à Paris avec une vision claire : démocratiser l'accès au crédit en Europe grâce au numérique. La plateforme traite ses 500 premiers dossiers en quelques mois.</p>
+                            <h4>Fondation d'Eurovitas Finanzen</h4>
+                            <p>Trois entrepreneurs passionnés de fintech lancent Eurovitas Finanzen à Paris avec une vision claire : démocratiser l'accès au crédit en Europe grâce au numérique. La plateforme traite ses 500 premiers dossiers en quelques mois.</p>
                         </div>
                     </div>
                     <div class="timeline-item" data-aos="fade-up" data-aos-duration="900">
                         <div class="timeline-year">2020</div>
                         <div class="timeline-content">
                             <h4>Expansion & Agrément</h4>
-                            <p>Eurovitas obtient son agrément d'établissement de crédit auprès de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). Lancement de l'offre de prêt professionnel pour les indépendants et TPE.</p>
+                            <p>Eurovitas Finanzen obtient son agrément d'établissement de crédit auprès de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). Lancement de l'offre de prêt professionnel pour les indépendants et TPE.</p>
                         </div>
                     </div>
                     <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000">
@@ -143,7 +143,7 @@
                         <div class="timeline-year">2024</div>
                         <div class="timeline-content">
                             <h4>Leader du financement digital</h4>
-                            <p>Plus de 50 000 clients accompagnés, un taux de satisfaction de 97 % et une note moyenne de 4,8/5 sur les plateformes d'avis indépendantes. Eurovitas continue d'innover pour vous.</p>
+                            <p>Plus de 50 000 clients accompagnés, un taux de satisfaction de 97 % et une note moyenne de 4,8/5 sur les plateformes d'avis indépendantes. Eurovitas Finanzen continue d'innover pour vous.</p>
                         </div>
                     </div>
                 </div>
@@ -157,15 +157,15 @@
     <div class="container">
         <div class="row gy-40 align-items-center">
             <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1200">
-                <span class="section-subtitle">Pourquoi Eurovitas</span>
+                <span class="section-subtitle">Pourquoi Eurovitas Finanzen</span>
                 <h2 class="section-title mb-20">Ce qui nous différencie des banques traditionnelles</h2>
-                <p class="description">Les banques classiques imposent des délais, des rendez-vous, des dossiers papier et des critères rigides. Chez Eurovitas, tout est différent : nous avons conçu une expérience entièrement digitale, humaine et flexible.</p>
+                <p class="description">Les banques classiques imposent des délais, des rendez-vous, des dossiers papier et des critères rigides. Chez Eurovitas Finanzen, tout est différent : nous avons conçu une expérience entièrement digitale, humaine et flexible.</p>
             </div>
             <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1200">
                 <div class="compare-table">
                     <div class="compare-row compare-header">
                         <div class="compare-cell"></div>
-                        <div class="compare-cell text-center"><strong>Eurovitas</strong></div>
+                        <div class="compare-cell text-center"><strong>Eurovitas Finanzen</strong></div>
                         <div class="compare-cell text-center"><strong>Banque traditionnelle</strong></div>
                     </div>
                     <div class="compare-row">
@@ -217,7 +217,7 @@
         <div class="row gy-30 justify-content-center">
             @php
             $team = [
-                ['name'=>'Alexandre Moreau','poste'=>'Co-fondateur & CEO','desc'=>'15 ans d\'expérience en banque d\'investissement. Ancien directeur chez BNP Paribas, Alexandre a fondé Eurovitas pour rendre la finance plus accessible.'],
+                ['name'=>'Alexandre Moreau','poste'=>'Co-fondateur & CEO','desc'=>'15 ans d\'expérience en banque d\'investissement. Ancien directeur chez BNP Paribas, Alexandre a fondé Eurovitas Finanzen pour rendre la finance plus accessible.'],
                 ['name'=>'Sophie Laurent','poste'=>'Co-fondatrice & CTO','desc'=>'Ingénieure en informatique diplômée de l\'École Polytechnique. Sophie pilote l\'architecture technique et l\'IA de scoring de la plateforme.'],
                 ['name'=>'Karim Benali','poste'=>'Directeur des Risques','desc'=>'Expert en analyse du risque crédit avec 12 ans d\'expérience. Karim garantit une gestion responsable et durable du portefeuille de prêts.'],
                 ['name'=>'Marie Fontaine','poste'=>'Directrice Relation Client','desc'=>'Passionnée par l\'expérience client, Marie dirige une équipe de 30 conseillers dédiés à vous accompagner à chaque étape de votre projet.'],

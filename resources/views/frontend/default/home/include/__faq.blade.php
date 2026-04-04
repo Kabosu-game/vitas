@@ -17,10 +17,10 @@
                     <div class="accordion" id="accordionExample">
                         <div data-aos="fade-up" data-aos-duration="1000" class="accordion-item">
                             <h2 class="accordion-header" id="heading14">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="true" aria-controls="collapse14">Comment fonctionne le processus de prêt chez Eurovitas ?</button>
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="true" aria-controls="collapse14">Comment fonctionne le processus de prêt chez Eurovitas Finanzen ?</button>
                             </h2>
                             <div id="collapse14" class="accordion-collapse collapse show" aria-labelledby="heading14" data-bs-parent="#accordionExample">
-                                <div class="accordion-body"><p>Chez Eurovitas, le processus de prêt est simple et rapide. Vous pouvez faire une demande en ligne en quelques minutes, fournir les documents nécessaires, et recevoir une réponse d'approbation sous 24 heures. Une fois approuvé, les fonds sont transférés directement sur votre compte.</p></div>
+                                <div class="accordion-body"><p>Chez Eurovitas Finanzen, le processus de prêt est simple et rapide. Vous pouvez faire une demande en ligne en quelques minutes, fournir les documents nécessaires, et recevoir une réponse d'approbation sous 24 heures. Une fois approuvé, les fonds sont transférés directement sur votre compte.</p></div>
                             </div>
                         </div>
                         <div data-aos="fade-up" data-aos-duration="1000" class="accordion-item">
@@ -28,7 +28,7 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">Quels sont les critères d'éligibilité pour un prêt ?</button>
                             </h2>
                             <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15" data-bs-parent="#accordionExample">
-                                <div class="accordion-body"><p>Pour être éligible à un prêt Eurovitas, vous devez être majeur, avoir un revenu stable, et fournir des documents d'identification valides. Nous évaluons chaque demande de manière individuelle pour garantir une décision équitable.</p></div>
+                                <div class="accordion-body"><p>Pour être éligible à un prêt Eurovitas Finanzen, vous devez être majeur, avoir un revenu stable, et fournir des documents d'identification valides. Nous évaluons chaque demande de manière individuelle pour garantir une décision équitable.</p></div>
                             </div>
                         </div>
                         <div data-aos="fade-up" data-aos-duration="1000" class="accordion-item">

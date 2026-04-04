@@ -8,7 +8,7 @@
                         <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle bg-lightest">Expériences Sur Mesure</span>
                         <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title text-white">Nos Solutions Puissantes</h2>
                     </div>
-                    <p data-aos="fade-up" data-aos-duration="2000" class="description">Eurovitas offre des expériences personnalisées pour vos besoins de prêt, avec des processus transparents et des solutions adaptées à votre situation financière.</p>
+                    <p data-aos="fade-up" data-aos-duration="2000" class="description">Eurovitas Finanzen offre des expériences personnalisées pour vos besoins de prêt, avec des processus transparents et des solutions adaptées à votre situation financière.</p>
                     <div data-aos="fade-up" data-aos-duration="2500" class="experiences-info">
                         <div class="list">
                             <ul>

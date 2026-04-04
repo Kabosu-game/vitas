@@ -103,6 +103,7 @@ class TransactionController extends Controller
     public function virtualCardsList()
     {
         $cards = Card::with('user')
+            ->when(request('status'), fn($q) => $q->where('status', request('status')))
             ->when(in_array(request('sort_field'), ['created_at', 'balance', 'card_number', 'expiration_year']), function ($query) {
                 $query->orderBy(request('sort_field'), request('sort_dir'));
             })

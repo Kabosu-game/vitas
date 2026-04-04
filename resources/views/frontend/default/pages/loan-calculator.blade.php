@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Calculateur de Prêt @endsection
-@section('meta_keywords') calculateur prêt, simulation prêt, Eurovitas @endsection
-@section('meta_description') Simulez votre prêt en quelques secondes avec le calculateur Eurovitas @endsection
+@section('meta_keywords') calculateur prêt, simulation prêt, Eurovitas Finanzen @endsection
+@section('meta_description') Simulez votre prêt en quelques secondes avec le calculateur Eurovitas Finanzen @endsection
 
 @section('page-content')
 <section class="section-space position-relative">
@@ -11,7 +11,7 @@
 
                 <div class="section-title-wrapper text-center mb-50">
                     <span class="section-subtitle">Simulation gratuite</span>
-                    <h2 class="section-title">Calculateur de Prêt Eurovitas</h2>
+                    <h2 class="section-title">Calculateur de Prêt Eurovitas Finanzen</h2>
                     <p class="mt-10" style="color:var(--clr-body-text,#6b7280)">Ajustez les paramètres pour estimer vos mensualités instantanément.</p>
                 </div>
 

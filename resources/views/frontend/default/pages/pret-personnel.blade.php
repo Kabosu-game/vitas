@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Prêt Personnel @endsection
-@section('meta_keywords') prêt personnel, crédit personnel, financement personnel, Eurovitas @endsection
-@section('meta_description') Financez vos projets personnels avec le prêt personnel Eurovitas. Réponse en 24h, taux compétitifs, sans justificatif d'utilisation. @endsection
+@section('meta_keywords') prêt personnel, crédit personnel, financement personnel, Eurovitas Finanzen @endsection
+@section('meta_description') Financez vos projets personnels avec le prêt personnel Eurovitas Finanzen. Réponse en 24h, taux compétitifs, sans justificatif d'utilisation. @endsection
 
 @section('page-content')
 
@@ -11,7 +11,7 @@
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
                 <span class="section-subtitle">Financement flexible</span>
                 <h2 class="section-title mb-20">Prêt Personnel</h2>
-                <p class="description mb-20">Le <strong>prêt personnel Eurovitas</strong> est la solution idéale pour financer tous vos projets sans avoir à justifier l'utilisation des fonds. Voyage, rénovation, mariage, équipement électroménager ou dépense imprévue — vous disposez librement des fonds versés sur votre compte.</p>
+                <p class="description mb-20">Le <strong>prêt personnel Eurovitas Finanzen</strong> est la solution idéale pour financer tous vos projets sans avoir à justifier l'utilisation des fonds. Voyage, rénovation, mariage, équipement électroménager ou dépense imprévue — vous disposez librement des fonds versés sur votre compte.</p>
                 <p class="description mb-20">Avec un processus entièrement en ligne et une réponse de principe sous 24 heures, nous vous garantissons une expérience rapide, transparente et sans stress. Nos conseillers sont disponibles 7j/7 pour vous accompagner dans le choix du montant et de la durée les mieux adaptés à votre budget.</p>
                 <p class="description">Aucun frais de dossier caché. Aucune pénalité en cas de remboursement anticipé. C'est le prêt pensé pour votre liberté.</p>
             </div>

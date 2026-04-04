@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Prêt Auto @endsection
-@section('meta_keywords') prêt auto, crédit voiture, financement véhicule, achat voiture, Eurovitas @endsection
-@section('meta_description') Financez votre véhicule neuf ou d'occasion avec le prêt auto Eurovitas. Taux compétitifs, sans apport obligatoire, réponse en 24h. @endsection
+@section('meta_keywords') prêt auto, crédit voiture, financement véhicule, achat voiture, Eurovitas Finanzen @endsection
+@section('meta_description') Financez votre véhicule neuf ou d'occasion avec le prêt auto Eurovitas Finanzen. Taux compétitifs, sans apport obligatoire, réponse en 24h. @endsection
 
 @section('page-content')
 
@@ -11,7 +11,7 @@
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
                 <span class="section-subtitle">Prenez le volant</span>
                 <h2 class="section-title mb-20">Prêt Auto</h2>
-                <p class="description mb-20">Voiture neuve, véhicule d'occasion, deux-roues ou utilitaire — le <strong>prêt auto Eurovitas</strong> finance l'achat de votre véhicule quelle que soit sa nature. Nous vous proposons un financement rapide, sans apport obligatoire, avec des taux parmi les plus compétitifs du marché.</p>
+                <p class="description mb-20">Voiture neuve, véhicule d'occasion, deux-roues ou utilitaire — le <strong>prêt auto Eurovitas Finanzen</strong> finance l'achat de votre véhicule quelle que soit sa nature. Nous vous proposons un financement rapide, sans apport obligatoire, avec des taux parmi les plus compétitifs du marché.</p>
                 <p class="description mb-20">Contrairement au crédit-bail ou à la LOA, notre prêt auto classique vous rend immédiatement propriétaire de votre véhicule. Vous négociez votre achat comme si vous payiez comptant — ce qui vous permet souvent d'obtenir une remise supplémentaire chez le concessionnaire.</p>
                 <p class="description">Véhicule électrique, hybride ou thermique, chez un particulier ou un professionnel : notre prêt auto s'adapte à toutes les situations, y compris les achats à l'étranger dans l'espace européen.</p>
             </div>

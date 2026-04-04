@@ -19,11 +19,11 @@
                             @endphp
                             <div class="footer-logo mb-20">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ asset('logo/logo.png') }}" style="height:{{ $height }};width:{{ $width }};max-width:none" alt="Eurovitas">
+                                    <img src="{{ asset('logo/logo.png') }}" style="height:{{ $height }};width:{{ $width }};max-width:none" alt="Eurovitas Finanzen">
                                 </a>
                             </div>
                             <div class="footer-content">
-                                <p>Eurovitas est une plateforme européenne de prêt en ligne agréée ACPR, fondée sur la transparence, la rapidité et la confiance. Vos projets méritent un financement à la hauteur.</p>
+                                <p>Eurovitas Finanzen est une plateforme européenne de prêt en ligne agréée ACPR, fondée sur la transparence, la rapidité et la confiance. Vos projets méritent un financement à la hauteur.</p>
                                 <div class="footer-trust-badges mt-20">
                                     <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> ACPR agréé</span>
                                     <span class="trust-badge"><i class="fa-solid fa-lock"></i> SSL 256 bits</span>
@@ -105,7 +105,7 @@
                 <div class="col-12">
                     <div class="footer-bottom">
                         <div class="footer-copyright">
-                            <p>Copyright © Eurovitas 2026. Tous droits réservés. — Eurovitas SAS, établissement de crédit agréé ACPR n° CIB 17489 — <a href="{{ url('mentions-legales') }}" style="color:inherit;text-decoration:underline;">Mentions légales</a></p>
+                            <p>Copyright © Eurovitas Finanzen 2026. Tous droits réservés. — Eurovitas Finanzen SAS, établissement de crédit agréé ACPR n° CIB 17489 — <a href="{{ url('mentions-legales') }}" style="color:inherit;text-decoration:underline;">Mentions légales</a></p>
                         </div>
                         <div class="footer-social">
                             @foreach(\App\Models\Social::all() as $social)

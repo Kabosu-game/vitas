@@ -5,7 +5,7 @@
             <div class="col-lg-6">
                 <div class="section-title-wrapper section-title-space text-center">
                     <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle">Simulation gratuite</span>
-                    <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">Calculateur de Prêt Eurovitas</h2>
+                    <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">Calculateur de Prêt Eurovitas Finanzen</h2>
                 </div>
             </div>
         </div>

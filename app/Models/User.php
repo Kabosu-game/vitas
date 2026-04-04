@@ -31,6 +31,8 @@ class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
         'avatar',
         'first_name',
         'last_name',
+        'civility',
+        'id_number',
         'country',
         'phone',
         'username',

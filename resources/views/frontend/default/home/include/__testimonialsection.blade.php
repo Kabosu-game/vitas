@@ -17,18 +17,18 @@
 
                             @php
                             $avis = [
-                                ['name' => 'Marie L.', 'poste' => 'Infirmière', 'note' => 5, 'msg' => 'Demande traitée en moins de 24h. Le processus en ligne est vraiment simple et le service client m\'a guidée à chaque étape. Je recommande vivement Eurovitas.'],
-                                ['name' => 'Thomas B.', 'poste' => 'Artisan', 'note' => 5, 'msg' => 'J\'avais besoin d\'un financement urgent pour mon atelier. Eurovitas a répondu présent avec un taux très compétitif. Parfait.'],
+                                ['name' => 'Marie L.', 'poste' => 'Infirmière', 'note' => 5, 'msg' => 'Demande traitée en moins de 24h. Le processus en ligne est vraiment simple et le service client m\'a guidée à chaque étape. Je recommande vivement Eurovitas Finanzen.'],
+                                ['name' => 'Thomas B.', 'poste' => 'Artisan', 'note' => 5, 'msg' => 'J\'avais besoin d\'un financement urgent pour mon atelier. Eurovitas Finanzen a répondu présent avec un taux très compétitif. Parfait.'],
                                 ['name' => 'Nadia K.', 'poste' => 'Enseignante', 'note' => 5, 'msg' => 'Interface claire, aucun jargon compliqué. J\'ai obtenu mon prêt en quelques jours seulement. Très satisfaite.'],
                                 ['name' => 'Julien M.', 'poste' => 'Chef de projet IT', 'note' => 4, 'msg' => 'Très bonne expérience globale. Les conditions sont transparentes et le remboursement flexible. Je n\'ai pas eu de mauvaise surprise.'],
-                                ['name' => 'Sophie D.', 'poste' => 'Comptable', 'note' => 5, 'msg' => 'Dossier monté rapidement, réponse positive le lendemain. Chez les banques traditionnelles j\'attendais des semaines. Merci Eurovitas !'],
-                                ['name' => 'Karim A.', 'poste' => 'Auto-entrepreneur', 'note' => 5, 'msg' => 'En tant qu\'indépendant, trouver un prêt était compliqué. Eurovitas a étudié mon dossier sérieusement et m\'a accordé ce dont j\'avais besoin.'],
+                                ['name' => 'Sophie D.', 'poste' => 'Comptable', 'note' => 5, 'msg' => 'Dossier monté rapidement, réponse positive le lendemain. Chez les banques traditionnelles j\'attendais des semaines. Merci Eurovitas Finanzen !'],
+                                ['name' => 'Karim A.', 'poste' => 'Auto-entrepreneur', 'note' => 5, 'msg' => 'En tant qu\'indépendant, trouver un prêt était compliqué. Eurovitas Finanzen a étudié mon dossier sérieusement et m\'a accordé ce dont j\'avais besoin.'],
                                 ['name' => 'Isabelle R.', 'poste' => 'Responsable RH', 'note' => 5, 'msg' => 'Excellent suivi, conseiller disponible et à l\'écoute. Le tableau de bord en ligne pour suivre ses remboursements est très pratique.'],
                                 ['name' => 'Marc P.', 'poste' => 'Commercial', 'note' => 4, 'msg' => 'Bon rapport qualité/prix. Le taux est honnête et les mensualités s\'adaptent à mon budget. Je recommande.'],
                                 ['name' => 'Amina S.', 'poste' => 'Médecin', 'note' => 5, 'msg' => 'Service impeccable du début à la fin. J\'ai apprécié la totale transparence sur les coûts, aucun frais caché. Parfait.'],
-                                ['name' => 'François G.', 'poste' => 'Ingénieur', 'note' => 5, 'msg' => 'J\'ai comparé plusieurs plateformes, Eurovitas offre les meilleures conditions. Versement rapide et sans complications.'],
+                                ['name' => 'François G.', 'poste' => 'Ingénieur', 'note' => 5, 'msg' => 'J\'ai comparé plusieurs plateformes, Eurovitas Finanzen offre les meilleures conditions. Versement rapide et sans complications.'],
                                 ['name' => 'Laura V.', 'poste' => 'Graphiste', 'note' => 5, 'msg' => 'Simplicité et efficacité. Tout se fait en ligne, sans paperasse inutile. Mon prêt a été validé en un temps record.'],
-                                ['name' => 'Rachid O.', 'poste' => 'Restaurateur', 'note' => 4, 'msg' => 'Bon service, conditions claires. J\'ai pu financer l\'équipement de mon restaurant sans stress. Je ferai à nouveau appel à Eurovitas.'],
+                                ['name' => 'Rachid O.', 'poste' => 'Restaurateur', 'note' => 4, 'msg' => 'Bon service, conditions claires. J\'ai pu financer l\'équipement de mon restaurant sans stress. Je ferai à nouveau appel à Eurovitas Finanzen.'],
                                 ['name' => 'Chloé F.', 'poste' => 'Étudiante en master', 'note' => 5, 'msg' => 'Même en tant qu\'étudiante, j\'ai pu obtenir un prêt adapté à mes besoins. L\'équipe a su trouver la meilleure solution pour moi.'],
                                 ['name' => 'David N.', 'poste' => 'Directeur commercial', 'note' => 5, 'msg' => 'Fiable, rapide et professionnel. Exactement ce qu\'on attend d\'une plateforme de financement moderne. Je n\'hésiterai pas à revenir.'],
                             ];

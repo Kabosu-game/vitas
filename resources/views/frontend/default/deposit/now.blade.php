@@ -30,7 +30,7 @@
                             </div>
                             <div class="ev-deposit-card__body">
                                 <div class="ev-deposit-card__title">{{ __('Via Your Agent') }}</div>
-                                <div class="ev-deposit-card__desc">{{ __('Deposit cash or by transfer via your personal Eurovitas agent.') }}</div>
+                                <div class="ev-deposit-card__desc">{{ __('Deposit cash or by transfer via your personal Eurovitas Finanzen agent.') }}</div>
                             </div>
                             <div class="ev-deposit-card__arrow">
                                 <i data-lucide="arrow-right"></i>
@@ -58,7 +58,7 @@
 
                 <div class="ev-deposit-whatsapp-note">
                     <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
-                    {{ __('An Eurovitas advisor will respond on WhatsApp as soon as possible.') }}
+                    {{ __('An Eurovitas Finanzen advisor will respond on WhatsApp as soon as possible.') }}
                 </div>
 
             </div>

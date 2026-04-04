@@ -13,7 +13,7 @@
             @endphp
             <div class="ev-balance-card">
                 <div class="ev-balance-card__top">
-                    <div class="ev-balance-card__logo">Eurovitas</div>
+                    <div class="ev-balance-card__logo">Eurovitas Finanzen</div>
                     @if (setting('user_portfolio', 'permission') && Auth::user()->portfolio_status && auth()->user()->portfolio_id != null)
                         <a href="{{ route('user.portfolio') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ auth()->user()->portfolio?->portfolio_name }}">
                             <img src="{{ asset(auth()->user()->portfolio?->icon) }}" alt="" style="height:28px;">
@@ -167,37 +167,41 @@
             .ev-balance-card__btn--outline:hover { background: rgba(255,255,255,.2); color:#fff; }
             </style>
         </div>
-        {{-- Colonne droite : My Loan --}}
+        {{-- Colonne droite : Prêts approuvés --}}
         <div class="col-xl-8 col-lg-12 col-md-12 col-12">
-            @if (setting('user_loan', 'permission'))
             <div class="ev-info-card h-100">
                 <div class="ev-info-card__header">
-                    <div class="ev-info-card__icon"><i data-lucide="credit-card"></i></div>
+                    <div class="ev-info-card__icon"><i data-lucide="banknote"></i></div>
                     <div>
-                        <div class="ev-info-card__title">{{ __('My Active Loan') }}</div>
-                        <div class="ev-info-card__sub">{{ __('Repayment Tracking') }}</div>
+                        <div class="ev-info-card__title">Mon Prêt en cours</div>
+                        <div class="ev-info-card__sub">Suivi de remboursement</div>
                     </div>
-                    <a href="{{ route('user.loan.history') }}" class="ev-info-card__link ms-auto"><i data-lucide="arrow-up-right"></i></a>
+                    <a href="{{ route('loan-request.create') }}" class="ev-info-card__link ms-auto" title="Nouvelle demande"><i data-lucide="plus"></i></a>
                 </div>
                 <div class="ev-info-card__amount">
-                    {{ $currencySymbol . number_format($total_running_loan > 0 ? $total_loan_amount : 0, 2) }}
+                    {{ $currencySymbol . number_format($total_loan_amount, 2) }}
                 </div>
                 <div class="ev-info-card__body">
                     @if ($total_running_loan > 0)
-                        @foreach ($user->loan->whereIn('status', [\App\Enums\LoanStatus::Running, \App\Enums\LoanStatus::Due])->take(3) as $loan)
+                        @foreach ($approved_loan_requests as $lr)
                         <div class="ev-info-card__row">
-                            <span>{{ $loan->plan?->name }}</span>
-                            <span class="ev-info-card__badge">
-                                {{ $loan->last_date ? $loan->last_date->format('d M Y') : 'N/A' }}
-                            </span>
+                            <div style="display:flex;flex-direction:column;gap:2px">
+                                <span style="font-weight:600">{{ $lr->loan_type }}</span>
+                                <span style="font-size:11px;color:#9ca3af">Réf. {{ $lr->reference }}</span>
+                            </div>
+                            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+                                <span class="ev-info-card__badge">
+                                    {{ $lr->currency ?? 'EUR' }} {{ number_format($lr->approved_amount, 2) }}
+                                </span>
+                                <span style="font-size:11px;color:#9ca3af">{{ $lr->created_at->format('d M Y') }}</span>
+                            </div>
                         </div>
                         @endforeach
                     @else
-                        <p class="ev-info-card__empty">{{ __('No active loan.') }}</p>
+                        <p class="ev-info-card__empty">Aucun prêt approuvé. <a href="{{ route('loan-request.create') }}" style="color:var(--clr-theme-1,#4f46e5)">Faire une demande →</a></p>
                     @endif
                 </div>
             </div>
-            @endif
         </div>
     </div>
 
@@ -250,17 +254,15 @@
                 </div>
             </div>
         </div>
-        @if (setting('user_loan', 'permission'))
         <div class="col-xl-3 col-lg-3 col-md-6 col-12">
             <div class="ev-stat-card">
-                <div class="ev-stat-card__icon" style="background:rgba(239,68,68,.1);color:#ef4444;"><i data-lucide="credit-card"></i></div>
+                <div class="ev-stat-card__icon" style="background:rgba(239,68,68,.1);color:#ef4444;"><i data-lucide="banknote"></i></div>
                 <div class="ev-stat-card__info">
                     <div class="ev-stat-card__value">{{ $total_loan }}</div>
-                    <div class="ev-stat-card__label">{{ __('Total Loans') }}</div>
+                    <div class="ev-stat-card__label">Total Prêts</div>
                 </div>
             </div>
         </div>
-        @endif
         @if (setting('sign_up_referral', 'permission'))
         <div class="col-xl-3 col-lg-3 col-md-6 col-12">
             <div class="ev-stat-card">

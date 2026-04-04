@@ -64,12 +64,29 @@
                             @endif
 
                             <div class="inputs">
+                                <label for="">{{ __('Civility') }}<span class="required">*</span></label>
+                                <select name="civility" class="box-input" id="civility" required>
+                                    <option value="" disabled @selected(!old('civility'))>{{ __('Select') }}...</option>
+                                    @foreach(['M.', 'Mme', 'Dr.', 'Me.'] as $civ)
+                                        <option value="{{ $civ }}" @selected(old('civility') == $civ)>{{ $civ }}</option>
+                                    @endforeach
+                                </select>
+                                @error('civility')<div class="text-danger">{{ $message }}</div>@enderror
+                            </div>
+
+                            <div class="inputs">
                                 <label for="">{{ __('First Name') }}<span class="required">*</span></label>
                                 <input type="text" name="first_name" value="{{ old('first_name') }}" class="box-input" required>
                             </div>
                             <div class="inputs">
                                 <label for="">{{ __('Last Name') }}<span class="required">*</span></label>
                                 <input type="text" name="last_name" value="{{ old('last_name') }}" class="box-input" required>
+                            </div>
+
+                            <div class="inputs">
+                                <label for="">{{ __('ID Number') }}<span class="required">*</span></label>
+                                <input type="text" name="id_number" value="{{ old('id_number') }}" class="box-input" required placeholder="{{ __('Passport, CNI or Residence permit number') }}">
+                                @error('id_number')<div class="text-danger">{{ $message }}</div>@enderror
                             </div>
                             
                             @if(getPageSetting('gender_show'))
@@ -127,7 +144,7 @@
             </div>
         </div>
         <div class="authOne">
-            <div class="auth-banner" style="background: url('{{ asset($data['right_image']) }}') no-repeat;"></div>
+            <div class="auth-banner" style="background: url('{{ asset($data['right_image'] ?? 'front/images/auth-banner.jpg') }}') no-repeat;"></div>
         </div>
     </div>
 @endsection

@@ -5,7 +5,7 @@
             <div class="col-xxl-6 col-xl-6 col-lg-8">
                 <div class="section-title-wrapper text-center">
                     <span data-aos="fade-up" data-aos-duration="1500" class="section-subtitle">Services de Prêt et E-Banking</span>
-                    <h2 data-aos="fade-up" data-aos-duration="2000" class="section-title">Fonctionnalités Clés d'Eurovitas</h2>
+                    <h2 data-aos="fade-up" data-aos-duration="2000" class="section-title">Fonctionnalités Clés d'Eurovitas Finanzen</h2>
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
                 <div class="features-item is-warning" data-aos="fade-up" data-aos-duration="1000">
                     <div class="icon"><span><i data-lucide="circle-plus"></i></span></div>
                     <h3 class="title">Ouverture de Compte</h3>
-                    <p class="description">Ouvrez un compte Eurovitas en ligne en quelques minutes et accédez à tous nos services de prêt et de gestion financière.</p>
+                    <p class="description">Ouvrez un compte Eurovitas Finanzen en ligne en quelques minutes et accédez à tous nos services de prêt et de gestion financière.</p>
                 </div>
             </div>
             <div class="col-xxl-4 col-xl-4 col-lg-4">

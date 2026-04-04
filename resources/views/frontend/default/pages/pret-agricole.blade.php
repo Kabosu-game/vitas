@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Prêt Agricole @endsection
-@section('meta_keywords') prêt agricole, crédit agriculteur, financement exploitation, Eurovitas @endsection
-@section('meta_description') Financez votre exploitation agricole avec le prêt agricole Eurovitas. Conditions adaptées aux cycles saisonniers, montants élevés, taux compétitifs. @endsection
+@section('meta_keywords') prêt agricole, crédit agriculteur, financement exploitation, Eurovitas Finanzen @endsection
+@section('meta_description') Financez votre exploitation agricole avec le prêt agricole Eurovitas Finanzen. Conditions adaptées aux cycles saisonniers, montants élevés, taux compétitifs. @endsection
 
 @section('page-content')
 
@@ -11,7 +11,7 @@
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
                 <span class="section-subtitle">Soutenir l'agriculture</span>
                 <h2 class="section-title mb-20">Prêt Agricole</h2>
-                <p class="description mb-20">L'agriculture est un secteur d'activité aux contraintes financières uniques : saisonnalité des revenus, besoins en équipements lourds, aléas climatiques et délais entre investissement et récolte. Le <strong>prêt agricole Eurovitas</strong> a été conçu spécifiquement pour répondre à ces réalités du terrain.</p>
+                <p class="description mb-20">L'agriculture est un secteur d'activité aux contraintes financières uniques : saisonnalité des revenus, besoins en équipements lourds, aléas climatiques et délais entre investissement et récolte. Le <strong>prêt agricole Eurovitas Finanzen</strong> a été conçu spécifiquement pour répondre à ces réalités du terrain.</p>
                 <p class="description mb-20">Que vous soyez agriculteur exploitant, maraîcher, éleveur, viticulteur ou en cours d'installation, notre offre s'adapte à votre cycle d'activité. Nous proposons des remboursements calés sur vos rentrées de trésorerie et des montants suffisants pour couvrir des investissements structurants.</p>
                 <p class="description">Nos chargés de clientèle spécialisés comprennent les enjeux du monde agricole et vous accompagnent avec une approche humaine et pragmatique, loin des modèles rigides des banques classiques.</p>
             </div>

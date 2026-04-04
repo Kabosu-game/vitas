@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Prêt Professionnel @endsection
-@section('meta_keywords') prêt professionnel, crédit entreprise, financement TPE, prêt indépendant, Eurovitas @endsection
-@section('meta_description') Financez le développement de votre activité professionnelle avec Eurovitas. Prêt professionnel adapté aux TPE, indépendants et auto-entrepreneurs. @endsection
+@section('meta_keywords') prêt professionnel, crédit entreprise, financement TPE, prêt indépendant, Eurovitas Finanzen @endsection
+@section('meta_description') Financez le développement de votre activité professionnelle avec Eurovitas Finanzen. Prêt professionnel adapté aux TPE, indépendants et auto-entrepreneurs. @endsection
 
 @section('page-content')
 
@@ -11,9 +11,9 @@
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
                 <span class="section-subtitle">Développez votre activité</span>
                 <h2 class="section-title mb-20">Prêt Professionnel</h2>
-                <p class="description mb-20">Que vous soyez auto-entrepreneur, artisan, commerçant, professionnel libéral ou dirigeant de TPE/PME, le <strong>prêt professionnel Eurovitas</strong> est conçu pour accompagner toutes les étapes de la vie de votre entreprise : création, développement, acquisition de matériel ou renforcement de trésorerie.</p>
+                <p class="description mb-20">Que vous soyez auto-entrepreneur, artisan, commerçant, professionnel libéral ou dirigeant de TPE/PME, le <strong>prêt professionnel Eurovitas Finanzen</strong> est conçu pour accompagner toutes les étapes de la vie de votre entreprise : création, développement, acquisition de matériel ou renforcement de trésorerie.</p>
                 <p class="description mb-20">Nous comprenons que l'accès au financement professionnel est souvent un parcours du combattant pour les petites structures. C'est pourquoi nous avons simplifié notre processus de demande et adapté nos critères d'éligibilité à la réalité des entrepreneurs d'aujourd'hui.</p>
-                <p class="description">Avec Eurovitas, votre projet d'entreprise bénéficie d'une analyse personnalisée, d'un conseiller dédié et d'une réponse rapide — parce que les opportunités professionnelles n'attendent pas.</p>
+                <p class="description">Avec Eurovitas Finanzen, votre projet d'entreprise bénéficie d'une analyse personnalisée, d'un conseiller dédié et d'une réponse rapide — parce que les opportunités professionnelles n'attendent pas.</p>
             </div>
             <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200">
                 @include('frontend::pages._pret_sidebar', ['montant_min'=>'5 000 €', 'montant_max'=>'500 000 €', 'duree'=>'12 à 120 mois', 'taux'=>'Dès 4,2 % TAEG', 'delai'=>'48 à 96 heures', 'justif'=>'Kbis + bilans comptables (2 ans)'])

@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Contact Us @endsection
-@section('meta_keywords') Contact, Eurovitas, support @endsection
-@section('meta_description') Contactez Eurovitas pour toute question @endsection
+@section('meta_keywords') Contact, Eurovitas Finanzen, support @endsection
+@section('meta_description') Contactez Eurovitas Finanzen pour toute question @endsection
 @section('page-content')
     <section class="contact-card-area fix position-relative section-space">
         <div class="container">
@@ -18,7 +18,7 @@
             <div class="row gy-30 justify-content-center">
                 <div class="col-xxl-6 col-xl-6 col-lg-6">
                     <div class="contact-form-content" data-aos="fade-up" data-aos-duration="1500">
-                        <div class="section-title-wrapper"><h2 class="section-title text-white mb-4">Entrer en Contact</h2><p class="description text-white-80">Eurovitas est là pour répondre à toutes vos questions concernant nos services de prêt. Contactez-nous pour une assistance personnalisée.</p></div>
+                        <div class="section-title-wrapper"><h2 class="section-title text-white mb-4">Entrer en Contact</h2><p class="description text-white-80">Eurovitas Finanzen est là pour répondre à toutes vos questions concernant nos services de prêt. Contactez-nous pour une assistance personnalisée.</p></div>
                         <div class="contact-info">
                             <div class="item"><div class="icon"><span><i class="fa-regular fa-envelope"></i></span></div><div class="content"><h3 class="title">Adresse Email</h3><span class="info">contact@eurovitas.de</span></div></div>
                             <div class="item"><div class="icon"><span><i class="fa-regular fa-phone"></i></span></div><div class="content"><h3 class="title">WhatsApp</h3><span class="info">+34669877781</span></div></div>

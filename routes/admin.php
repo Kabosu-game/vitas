@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\KycController;
 use App\Http\Controllers\Backend\LanguageController;
 use App\Http\Controllers\Backend\LoanController;
 use App\Http\Controllers\Backend\LoanPlanController;
+use App\Http\Controllers\Backend\LoanRequestController;
 use App\Http\Controllers\Backend\NavigationController;
 use App\Http\Controllers\Backend\NotificationController;
 use App\Http\Controllers\Backend\OthersBankController;
@@ -75,6 +76,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'controller' => UserControlle
     Route::post('mail-send', 'mailSend')->name('mail-send');
     Route::get('destroy/{id}', 'destroy')->name('destroy');
     Route::get('status/{card:card_id}', 'updateCardStatus')->name('card.status.update');
+    Route::post('card/{card}/approve', 'approveCard')->name('card.approve');
     Route::put('card/balance/topup/{card}', 'cardBalanceUpdate')->name('card.balance.update');
 });
 
@@ -441,6 +443,14 @@ Route::controller(CronJobController::class)->as('cron.jobs.')->prefix('cron-jobs
     Route::get('run-now/{id}', 'runNow')->name('run.now');
     Route::get('logs/{id}', 'logs')->name('logs');
     Route::get('clear-logs/{id}', 'clearLogs')->name('clear.logs');
+});
+
+// Loan requests (public form submissions)
+Route::prefix('loan-request')->name('loan-request.')->controller(LoanRequestController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/{loanRequest}', 'show')->name('show');
+    Route::post('/{loanRequest}/update', 'update')->name('update');
+    Route::post('/{loanRequest}/credit', 'credit')->name('credit');
 });
 
 Route::get('custom-css', [CustomCssController::class, 'customCss'])->name('custom-css');

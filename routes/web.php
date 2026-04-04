@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CronJobController;
+use App\Http\Controllers\Frontend\LoanRequestController;
 use App\Http\Controllers\Frontend\BeneficiaryController;
 use App\Http\Controllers\Frontend\BillPayController;
 use App\Http\Controllers\Frontend\CardController;
@@ -47,11 +48,8 @@ Route::group(['middleware' => ['auth', '2fa', 'isActive', setting('otp_verificat
         ->name('card.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::post('/create', 'store')->name('store');
+            Route::post('/store', 'store')->name('store');
             Route::get('/details/{card:card_id}', 'details')->name('details');
-            Route::get('/status/{card:card_id}', 'updateStatus')->name('status');
-            Route::put('/balance/{card}', 'updateCardBalance')->name('balance.update');
-            Route::get('/sync/transactions/{card}', 'syncCardTransaction')->name('transaction.sync');
         });
 
     // Wallet
@@ -267,6 +265,13 @@ Route::get('/lang/{lang}', function ($lang) {
     }
     return redirect()->back();
 })->name('lang.switch');
+
+// Public loan request (no auth required)
+Route::prefix('demande-pret')->name('loan-request.')->group(function () {
+    Route::get('/', [LoanRequestController::class, 'create'])->name('create');
+    Route::post('/', [LoanRequestController::class, 'store'])->name('store');
+    Route::get('confirmation/{reference}', [LoanRequestController::class, 'confirmation'])->name('confirmation');
+});
 
 // Without auth
 Route::get('notification-tune', [AppController::class, 'notificationTune'])->name('notification-tune');

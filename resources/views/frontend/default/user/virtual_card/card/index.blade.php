@@ -1,258 +1,184 @@
-@php use App\Enums\TxnStatus; @endphp
 @extends('frontend::layouts.user')
-@section('title')
-{{ __('Virtual Card') }}
-@endsection
-@push('style')
-<link rel="stylesheet" href="{{ asset('front/css/daterangepicker.css') }}">
-@endpush
+@section('title') Carte Virtuelle @endsection
+
 @section('content')
-<div class="row">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-        <div class="site-card">
-            <div class="site-card-header d-flex justify-content-between">
-                <div class="title-small">{{ __('Cards') }}</div>
+<div class="row gy-4">
 
-                @if(setting('card_creation','permission'))
-                <a href="javascript:void(0)" class="site-btn-sm primary-btn" data-bs-toggle="modal"
-                    data-bs-target="#createWalletModal">
-                    <i data-lucide="plus-circle"></i>
-                    {{ __('Create a new card') }}
-                </a>
-                @endif
+    {{-- Demande de carte --}}
+    <div class="col-xl-4 col-lg-5">
+        <div class="site-card h-100">
+            <div class="site-card-header vc-toggle-header" id="vc-form-toggle" style="cursor:pointer">
+                <div class="title-small">Nouvelle carte virtuelle</div>
+                <span class="vc-toggle-icon ms-auto d-lg-none"><i data-lucide="chevron-down" id="vc-chevron" style="width:18px;height:18px;transition:transform .3s"></i></span>
             </div>
-            <div class="site-card-body p-0 overflow-x-auto">
-                <div class="site-custom-table">
-                    <div class="contents">
-                        <div class="site-table-list site-table-head">
-                            <div class="site-table-col">{{ __('Cardholder Name') }}</div>
-                            <div class="site-table-col">{{ __('Card Last 4') }}</div>
-                            <div class="site-table-col">{{ __('Balance') }}</div>
-                            <div class="site-table-col">{{ __('Status') }}</div>
-                            <div class="site-table-col">{{ __('Created At') }}</div>
-                            <div class="site-table-col">{{ __('Action') }}</div>
-                        </div>
-                        @foreach ($cards as $card)
-                            <div class="site-table-list">
-                                <div class="site-table-col">
-                                    <div class="trx fw-bold">{{ $card?->cardHolder?->name }}</div>
-                                </div>
-                                <div class="site-table-col">
-                                    <div class="trx fw-bold">{{ $card?->last_four_digits }}</div>
-                                </div>
-                                <div class="site-table-col">
-                                    <div class="trx fw-bold">
-                                        {{ setting('currency_symbol','global') . $card?->amount }}
-                                    </div>
-                                </div>
-                                <div class="site-table-col">
-                                    @if($card->status == 'active')
-                                        <div class="type site-badge badge-primary">{{ $card->status }}</div>
-                                    @else
-                                        <div class="type site-badge badge-failed">{{ $card->status }}</div>
-                                    @endif
-                                </div>
-                                <div class="site-table-col">
-                                    <div class="trx fw-bold">{{ Carbon\Carbon::parse($card->created_at)->format('M d, Y') }}</div>
-                                </div>
-                                <div class="site-table-col">
-                                    <div class="action">
-                                        <a href="{{ route('user.card.details', $card->card_id) }}"
-                                        class="icon-btn details-btn">
-                                            <i data-lucide="eye"></i>
-                                            {{ __('Details') }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    @if(count($cards) == 0)
-                        <div class="no-data-found">{{ __('No Data Found') }}</div>
-                    @endif
-                </div>
+            <div class="site-card-body" id="vc-form-body">
 
-                <div class="modal fade" id="createWalletModal" aria-labelledby="openTicketModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content site-table-modal">
-                            <div class="modal-body popup-body"> <button type="button" class="modal-btn-close" data-bs-dismiss="modal" aria-label="Close"> <i data-lucide="x"></i> </button>
-                                <div class="popup-body-text">
-                                    <div class="title">{{ __('Create a new card') }}</div>
-
-                                    <form action="{{ route('user.card.store') }}" method="post">
-                                        @csrf
-                                        {{-- all card_providers --}}
-                                        <div class="step-details-form">
-                                            <div class="row">
-                                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                                    <div class="inputs">
-                                                        <label for="" class="input-label">{{ __('Choose Card Provider') }}<span class="required">*</span></label>
-                                                        <select class="add-priority box-input page-count" id="card_provider_name" name="card_provider_name">
-                                                            <option selected disabled value="">{{ __('Select Card Provider') }}</option>
-                                                            @foreach ($card_providers as $card_provider)
-                                                                <option value="{{ $card_provider->name }}">
-                                                                    {{ $card_provider->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-holder-block">
-                                            <div class="step-details-form">
-                                                <div class="row">
-                                                    <div class="col-xl-12 col-md-12 inputs">
-                                                        <label for="" class="input-label">
-                                                            {{ __('Cardholder') }}
-                                                            <span class="required">*</span></label>
-                                                        <br>
-                                                        <div class="form-check form-check-inline">
-                                                            <input onclick="changeCardholderType('existing_one')" class="form-check-input" type="radio" name="type" id="existing_one" value="existing_one" checked>
-                                                            <label class="form-check-label" for="existing_one">
-                                                                {{ __('Existing Cardholders') }}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input onclick="changeCardholderType('new_one')" class="form-check-input" type="radio" name="type" id="new_one" value="new_one">
-                                                            <label class="form-check-label" for="new_one">
-                                                                {{ __('Create New Cardholder') }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="step-details-form" id="existing_cardholder_part">
-                                                <div class="row">
-                                                    <div class="col-xl-12 col-lg-12 col-md-12">
-                                                        <div class="inputs">
-                                                            <label for="" class="input-label">{{ __('Choose Cardholder') }}<span class="required">*</span></label>
-                                                            <select class="add-priority box-input page-count" name="cardholder_id">
-                                                                <option selected disabled value="">{{ __('Select Cardholder') }}</option>
-                                                                @foreach ($card_holders as $card_holder)
-                                                                    <option value="{{ $card_holder->id }}">
-                                                                        {{ $card_holder->name }} - {{ $card_holder->email }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="step-details-form" id="new_cardholder_part">
-                                                <div class="row">
-                                                    <div class="col-xl-12 col-md-12 inputs">
-                                                        <label class="form-label">{{ __('Name') }} <span class="required">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" name="name" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl-12 col-md-12 inputs">
-                                                        <label class="form-label">{{ __('Email') }} <span class="required">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" name="email" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl-12 col-md-12 inputs">
-                                                        <label class="form-label">{{ __('Phone Number') }} <span class="required">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" name="phone_number" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl-12 col-md-12 inputs">
-                                                        <label class="form-label">{{ __('Address') }} <span class="required">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" name="address" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                   <div class="row">
-                                                        <div class="col-xl-4 col-md-4 inputs">
-                                                            <label class="form-label">{{ __('City') }} <span class="required">*</span></label>
-                                                            <div class="input-group">
-                                                                <input type="text" name="city" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-md-4 inputs">
-                                                            <label class="form-label">{{ __('State') }} <span class="required">*</span></label>
-                                                            <div class="input-group">
-                                                                <input type="text" name="state" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-md-4 inputs">
-                                                            <label class="form-label">{{ __('Postal Code') }} <span class="required">*</span></label>
-                                                            <div class="input-group">
-                                                                <input type="text" name="postal_code" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                   </div>
-                                                    <div class="col-xl-12 col-lg-12 col-md-12">
-                                                        <div class="inputs">
-                                                            <label for="" class="input-label">{{ __('Country') }}<span class="required">*</span></label>
-                                                            <select class="country-select-input" name="country">
-                                                                <option selected value="">{{ __('Select Country') }}</option>
-                                                                @foreach ($countries_list as $country)
-                                                                    <option value="{{ $country['code'] }}">{{ $country['name'] }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="action-btns">
-                                            <button type="submit" class="site-btn-sm primary-btn me-2">
-                                                <i data-lucide="check"></i> {{ __('Create New') }}
-                                            </button>
-
-                                            <button type="button" class="site-btn-sm red-btn" data-bs-dismiss="modal" aria-label="Close">
-                                                <i data-lucide="x"></i> {{ __('Close') }}
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                <div class="vc-fee-info mb-4">
+                    <div class="vc-fee-icon"><i data-lucide="credit-card"></i></div>
+                    <div>
+                        <div class="vc-fee-label">Frais de création</div>
+                        <div class="vc-fee-amount">€ 10,00</div>
+                        <div class="vc-fee-note">Déduit immédiatement de votre solde principal</div>
                     </div>
                 </div>
+
+                @if(auth()->user()->balance < 10)
+                <div class="alert alert-danger" style="font-size:13px;border-radius:10px">
+                    <i data-lucide="alert-triangle" style="width:14px;height:14px;margin-right:6px"></i>
+                    Solde insuffisant. Vous avez besoin d'au moins <strong>€ 10,00</strong>.
+                </div>
+                @else
+                <form action="{{ route('user.card.store') }}" method="POST">
+                    @csrf
+                    <div class="inputs mb-3">
+                        <label class="input-label">Nom sur la carte <span class="required">*</span></label>
+                        <input type="text" name="cardholder_name" class="form-control"
+                               value="{{ old('cardholder_name', auth()->user()->full_name) }}"
+                               placeholder="Ex : JEAN DUPONT" style="text-transform:uppercase" required>
+                        <small class="text-muted">Entrez votre nom tel qu'il apparaîtra sur la carte.</small>
+                    </div>
+
+                    <div class="vc-confirm-row mb-4">
+                        <span>Solde disponible</span>
+                        <span class="fw-bold">{{ $currencySymbol }}{{ number_format(auth()->user()->balance, 2) }}</span>
+                    </div>
+                    <div class="vc-confirm-row mb-4">
+                        <span>Frais de carte</span>
+                        <span class="fw-bold text-danger">- {{ $currencySymbol }}10,00</span>
+                    </div>
+                    <div class="vc-confirm-row mb-4" style="border-top:1px solid rgba(0,0,0,.08);padding-top:10px">
+                        <span style="font-weight:700">Solde après</span>
+                        <span class="fw-bold">{{ $currencySymbol }}{{ number_format(auth()->user()->balance - 10, 2) }}</span>
+                    </div>
+
+                    <button type="submit" class="site-btn-sm primary-btn w-100">
+                        <i data-lucide="credit-card"></i> Demander ma carte
+                    </button>
+                </form>
+                @endif
+
             </div>
         </div>
     </div>
+
+    {{-- Liste des cartes --}}
+    <div class="col-xl-8 col-lg-7">
+        <div class="site-card">
+            <div class="site-card-header">
+                <div class="title-small">Mes cartes</div>
+            </div>
+            <div class="site-card-body p-0 overflow-x-auto">
+                @forelse($cards as $card)
+                <div class="vc-card-item {{ $card->statusValue }}">
+                    <div class="vc-card-visual">
+                        <div class="vc-card-brand">Eurovitas Finanzen</div>
+                        <div class="vc-card-number">
+                            @if($card->statusValue === 'pending')
+                                •••• •••• •••• ••••
+                            @else
+                                {{ chunk_split($card->card_number, 4, ' ') }}
+                            @endif
+                        </div>
+                        <div class="vc-card-bottom">
+                            <div>
+                                <div class="vc-card-label">Titulaire</div>
+                                <div class="vc-card-value">{{ strtoupper($card->cardholder_name ?? '—') }}</div>
+                            </div>
+                            <div>
+                                <div class="vc-card-label">Expiration</div>
+                                <div class="vc-card-value">
+                                    @if($card->statusValue === 'pending')
+                                        --/----
+                                    @else
+                                        {{ str_pad($card->expiration_month, 2, '0', STR_PAD_LEFT) }}/{{ $card->expiration_year }}
+                                    @endif
+                                </div>
+                            </div>
+                            <div>
+                                <div class="vc-card-label">CVV</div>
+                                <div class="vc-card-value">
+                                    @if($card->statusValue === 'pending') ••• @else {{ $card->cvc }} @endif
+                                </div>
+                            </div>
+                            <div>
+                                @if($card->statusValue === 'pending')
+                                    <span class="vc-badge pending">En attente</span>
+                                @elseif($card->statusValue === 'active')
+                                    <span class="vc-badge active">Active</span>
+                                @else
+                                    <span class="vc-badge inactive">Inactive</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="no-data-found">Aucune carte. Faites votre première demande →</div>
+                @endforelse
+            </div>
+        </div>
+    </div>
+
 </div>
-@endsection
 
-@push('js')
-    <script>
-        $('#existing_one').is(':checked') ? $('#new_cardholder_part').addClass('d-none') : $('#existing_cardholder_part').addClass('d-none');
+<style>
+.vc-fee-info { display:flex; gap:14px; align-items:center; background:rgba(79,70,229,.05); border:1px solid rgba(79,70,229,.15); border-radius:12px; padding:16px; }
+.vc-fee-icon { width:44px; height:44px; background:rgba(79,70,229,.1); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--clr-theme-1,#4f46e5); flex-shrink:0; }
+.vc-fee-icon svg { width:22px; height:22px; }
+.vc-fee-label { font-size:11px; color:#9ca3af; text-transform:uppercase; letter-spacing:.06em; }
+.vc-fee-amount { font-size:22px; font-weight:800; color:var(--clr-theme-1,#4f46e5); line-height:1.2; }
+.vc-fee-note { font-size:11px; color:#6b7280; margin-top:2px; }
+.vc-confirm-row { display:flex; justify-content:space-between; font-size:13px; color:#374151; }
+.dark .vc-confirm-row { color:#e5e7eb; }
 
-        function changeCardholderType(type){
-            if(type == 'existing_one'){
-                $('#existing_cardholder_part').removeClass('d-none');
-                $('#new_cardholder_part').addClass('d-none');
-            }else{
-                $('#existing_cardholder_part').addClass('d-none');
-                $('#new_cardholder_part').removeClass('d-none');
-            }
+/* Card visual */
+.vc-card-item { padding:16px 20px; border-bottom:1px solid rgba(0,0,0,.06); }
+.dark .vc-card-item { border-color:rgba(255,255,255,.06); }
+.vc-card-item:last-child { border-bottom:none; }
+.vc-card-visual {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    border-radius:16px; padding:22px 24px; color:#fff; position:relative; overflow:hidden;
+}
+.vc-card-item.pending .vc-card-visual { background: linear-gradient(135deg, #374151 0%, #4b5563 100%); }
+.vc-card-item.inactive .vc-card-visual { background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%); }
+.vc-card-visual::before { content:''; position:absolute; top:-30px; right:-30px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,.05); }
+.vc-card-brand { font-size:14px; font-weight:800; letter-spacing:1px; margin-bottom:20px; opacity:.9; }
+.vc-card-number { font-size:18px; font-weight:700; letter-spacing:3px; font-family:monospace; margin-bottom:20px; }
+.vc-card-bottom { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px; }
+.vc-card-label { font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.5); margin-bottom:2px; }
+.vc-card-value { font-size:13px; font-weight:700; color:#fff; }
+.vc-badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; }
+.vc-badge.active { background:rgba(34,197,94,.2); color:#4ade80; }
+.vc-badge.pending { background:rgba(245,158,11,.2); color:#fbbf24; }
+.vc-badge.inactive { background:rgba(239,68,68,.2); color:#f87171; }
+@media (max-width: 991px) {
+    #vc-form-body { display: none; }
+    #vc-form-body.open { display: block; }
+    .vc-toggle-header { user-select: none; }
+}
+</style>
+<script>
+(function () {
+    var header  = document.getElementById('vc-form-toggle');
+    var body    = document.getElementById('vc-form-body');
+    var chevron = document.getElementById('vc-chevron');
+    if (!header || !body) return;
+
+    function isMobile() { return window.innerWidth < 992; }
+
+    header.addEventListener('click', function () {
+        if (!isMobile()) return;
+        var open = body.classList.toggle('open');
+        if (chevron) chevron.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+
+    window.addEventListener('resize', function () {
+        if (!isMobile()) {
+            body.classList.remove('open');
+            body.style.display = '';
+            if (chevron) chevron.style.transform = 'rotate(0deg)';
         }
-
-        
-        // on createWalletModal modal open
-        $('#createWalletModal').on('show.bs.modal', function (e) {
-            if(!$('.country-select-input').hasClass('select2-hidden-accessible')){
-                $('.country-select-input').select2({
-                    placeholder: "{{ __(key: 'Select Country') }}",
-                    dropdownParent: $('#createWalletModal')
-                });
-            }
-        });
-
-        $(document).on('change','#card_provider_name',function(){
-            var card_provider_name = $(this).val();
-            if(['Stripe Virtual Card','Ufitpay Virtual Card'].includes(card_provider_name)){
-                $('.card-holder-block').removeClass('d-none');
-            }else{
-                $('.card-holder-block').addClass('d-none');
-            }
-        });
-    </script>
-@endpush
+    });
+})();
+</script>
+@endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Enums\CardStatus;
 use App\Enums\KYCStatus;
 use App\Enums\TxnStatus;
 use App\Enums\TxnType;
@@ -893,22 +894,50 @@ class UserController extends Controller
 
     public function updateCardStatus($card_id)
     {
-
         $card = Card::where('card_id', $card_id)->firstOrFail();
 
+        // Si la carte est manuelle (créée via notre formulaire simplifié)
+        if ($card->provider === 'manual') {
+            $newStatus = $card->status === CardStatus::Active ? CardStatus::Inactive : CardStatus::Active;
+            $card->update(['status' => $newStatus]);
+            notify()->success('Statut de la carte mis à jour.');
+            return back();
+        }
+
         try {
-            // update card status
             $this->cardProviderMap($card->provider)->updateCardStatus($card);
-
-            // Notify user and redirect back
             notify()->success(__('Card status updated successfully'));
-
             return back();
         } catch (\Throwable $th) {
             notify()->error($th->getMessage());
-
             return back();
         }
+    }
+
+    public function approveCard(Card $card)
+    {
+        if ($card->provider !== 'manual' || $card->status !== CardStatus::Pending) {
+            notify()->error('Cette carte ne peut pas être approuvée de cette façon.');
+            return back();
+        }
+
+        // Générer les numéros de carte
+        $cardNumber = implode('', array_map(fn() => rand(0, 9), range(1, 16)));
+        $cvv        = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+        $expMonth   = (int) date('m');
+        $expYear    = (int) date('Y') + 3;
+
+        $card->update([
+            'card_number'      => $cardNumber,
+            'cvc'              => $cvv,
+            'expiration_month' => $expMonth,
+            'expiration_year'  => $expYear,
+            'last_four_digits' => substr($cardNumber, -4),
+            'status'           => CardStatus::Active,
+        ]);
+
+        notify()->success('Carte approuvée et activée avec succès.');
+        return back();
     }
 
     public function cardBalanceUpdate(Request $request, Card $card)

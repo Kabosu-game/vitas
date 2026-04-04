@@ -285,7 +285,7 @@
                     @if($hasMsg)
                     <div class="wl-card__msg wl-card__msg--{{ $isSuccess ? 'success' : ($isFailed ? 'failed' : 'pending') }}">
                         <i data-lucide="message-square"></i>
-                        <div><strong>{{ __('Eurovitas message:') }}</strong> {{ $w->approval_cause }}</div>
+                        <div><strong>{{ __('Eurovitas Finanzen message:') }}</strong> {{ $w->approval_cause }}</div>
                     </div>
                     @endif
                 </div>

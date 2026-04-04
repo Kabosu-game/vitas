@@ -169,7 +169,7 @@
             </div>
         </div>
         <div class="authOne">
-            <div class="auth-banner" style="background: url('{{ asset($data['right_image']) }}') no-repeat;"></div>
+            <div class="auth-banner" style="background: url('{{ asset($data['right_image'] ?? 'front/images/auth-banner.jpg') }}') no-repeat;"></div>
         </div>
     </div>
     <!-- Register Section End -->

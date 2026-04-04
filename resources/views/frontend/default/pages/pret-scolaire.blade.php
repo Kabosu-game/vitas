@@ -1,7 +1,7 @@
 @extends('frontend::pages.index')
 @section('title') Prêt Scolaire @endsection
-@section('meta_keywords') prêt scolaire, crédit étudiant, financement études, bourse Eurovitas @endsection
-@section('meta_description') Financez vos études ou celles de vos enfants avec le prêt scolaire Eurovitas. Taux préférentiels, remboursement différé, réponse rapide. @endsection
+@section('meta_keywords') prêt scolaire, crédit étudiant, financement études, bourse Eurovitas Finanzen @endsection
+@section('meta_description') Financez vos études ou celles de vos enfants avec le prêt scolaire Eurovitas Finanzen. Taux préférentiels, remboursement différé, réponse rapide. @endsection
 
 @section('page-content')
 
@@ -11,9 +11,9 @@
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
                 <span class="section-subtitle">Investir dans l'avenir</span>
                 <h2 class="section-title mb-20">Prêt Scolaire</h2>
-                <p class="description mb-20">L'éducation est le meilleur investissement que vous puissiez faire. Le <strong>prêt scolaire Eurovitas</strong> est conçu pour financer les frais de scolarité, le logement étudiant, le matériel pédagogique, les formations professionnelles ou les études à l'étranger — pour vous ou pour vos enfants.</p>
+                <p class="description mb-20">L'éducation est le meilleur investissement que vous puissiez faire. Le <strong>prêt scolaire Eurovitas Finanzen</strong> est conçu pour financer les frais de scolarité, le logement étudiant, le matériel pédagogique, les formations professionnelles ou les études à l'étranger — pour vous ou pour vos enfants.</p>
                 <p class="description mb-20">Nous proposons des conditions spécialement adaptées aux étudiants et aux familles : taux préférentiels, possibilité de différer le début des remboursements jusqu'à la fin des études, et mensualités allégées pendant la période de formation.</p>
-                <p class="description">Parce qu'aucun projet éducatif ne devrait être compromis par un manque de financement, Eurovitas s'engage à vos côtés dès le premier cours jusqu'à l'obtention de votre diplôme.</p>
+                <p class="description">Parce qu'aucun projet éducatif ne devrait être compromis par un manque de financement, Eurovitas Finanzen s'engage à vos côtés dès le premier cours jusqu'à l'obtention de votre diplôme.</p>
             </div>
             <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200">
                 @include('frontend::pages._pret_sidebar', ['montant_min'=>'500 €', 'montant_max'=>'30 000 €', 'duree'=>'12 à 120 mois', 'taux'=>'Dès 2,9 % TAEG', 'delai'=>'24 à 48 heures', 'justif'=>'Justificatif de scolarité / inscription'])

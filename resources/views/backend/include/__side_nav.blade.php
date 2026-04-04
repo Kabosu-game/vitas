@@ -173,60 +173,31 @@
             @endcanany
 
 
-            {{-- ************************************************************* Loan
+            {{-- ************************************************************* Demandes de Prêt
             ********************************************************* --}}
-            @canany(['pending-loan', 'running-loan', 'due-loan', 'paid-loan', 'rejected-loan', 'all-loan',
-                'loan-plan-list', 'loan-plan-create', 'loan-plan-edit', 'loan-plan-delete'])
-                <li class="side-nav-item side-nav-dropdown {{ isActive(['admin.plan.loan*', 'admin.loan*']) }}">
-                    <a href="javascript:void(0);" class="dropdown-link"><i
-                            data-lucide="alert-triangle"></i><span>{{ __('Loan') }}</span>
-                        <span class="right-arrow"><i data-lucide="chevron-down"></i></span></a>
-                    <ul class="dropdown-items">
-                        @can('pending-loan')
-                            <li class="side-nav-item {{ isActive('admin.loan.request') }}">
-                                <a href="{{ route('admin.loan.request') }}"><i
-                                        data-lucide="user-check"></i><span>{{ __('Loan Request') }}</span></a>
-                            </li>
-                        @endcan
-                        @can('running-loan')
-                            <li class="side-nav-item {{ isActive('admin.loan.approved*') }}">
-                                <a href="{{ route('admin.loan.approved') }}"><i
-                                        data-lucide="user-check"></i><span>{{ __('Approved Loan') }}</span></a>
-                            </li>
-                        @endcan
-                        @can('due-loan')
-                            <li class="side-nav-item {{ isActive('admin.loan.payable*') }}">
-                                <a href="{{ route('admin.loan.payable') }}"><i
-                                        data-lucide="user-check"></i><span>{{ __('Payable Installment') }}</span></a>
-                            </li>
-                        @endcan
-                        @can('paid-loan')
-                            <li class="side-nav-item {{ isActive('admin.loan.completed*') }}">
-                                <a href="{{ route('admin.loan.completed') }}"><i
-                                        data-lucide="user-check"></i><span>{{ __('Completed Loan') }}</span></a>
-                            </li>
-                        @endcan
-                        @can('rejected-loan')
-                            <li class="side-nav-item {{ isActive('admin.loan.rejected*') }}">
-                                <a href="{{ route('admin.loan.rejected') }}"><i
-                                        data-lucide="user-check"></i><span>{{ __('Rejected Loan') }}</span></a>
-                            </li>
-                        @endcan
-                        @can('all-loan')
-                            <li class="side-nav-item {{ isActive('admin.loan.all*') }}">
-                                <a href="{{ route('admin.loan.all') }}"><i
-                                        data-lucide="user-check"></i><span>{{ __('All Loan') }}</span></a>
-                            </li>
-                        @endcan
-                        @canany(['loan-plan-list', 'loan-plan-create', 'loan-plan-edit', 'loan-plan-delete'])
-                            <li class="side-nav-item {{ isActive('admin.plan.loan*') }}">
-                                <a href="{{ route('admin.plan.loan.index') }}"><i
-                                        data-lucide="airplay"></i><span>{{ __('Loan Plans') }}</span></a>
-                            </li>
-                        @endcanany
-                    </ul>
-                </li>
-            @endcanany
+            <li class="side-nav-item category-title">
+                <span>Demandes de Prêt</span>
+            </li>
+            <li class="side-nav-item side-nav-dropdown {{ isActive('admin.loan-request*') }}">
+                <a href="javascript:void(0);" class="dropdown-link">
+                    <i data-lucide="banknote"></i><span>Demandes de Prêt</span>
+                    <span class="right-arrow"><i data-lucide="chevron-down"></i></span>
+                </a>
+                <ul class="dropdown-items">
+                    <li class="{{ isActive('admin.loan-request.index') }}">
+                        <a href="{{ route('admin.loan-request.index') }}"><i data-lucide="list"></i><span>Toutes les demandes</span></a>
+                    </li>
+                    <li class="{{ request('status') === 'pending' && request()->routeIs('admin.loan-request.index') ? 'active' : '' }}">
+                        <a href="{{ route('admin.loan-request.index', ['status'=>'pending']) }}"><i data-lucide="clock"></i><span>En attente</span></a>
+                    </li>
+                    <li class="{{ request('status') === 'approved' && request()->routeIs('admin.loan-request.index') ? 'active' : '' }}">
+                        <a href="{{ route('admin.loan-request.index', ['status'=>'approved']) }}"><i data-lucide="check-circle"></i><span>Approuvées</span></a>
+                    </li>
+                    <li class="{{ request('status') === 'rejected' && request()->routeIs('admin.loan-request.index') ? 'active' : '' }}">
+                        <a href="{{ route('admin.loan-request.index', ['status'=>'rejected']) }}"><i data-lucide="x-circle"></i><span>Rejetées</span></a>
+                    </li>
+                </ul>
+            </li>
 
 
             {{-- ************************************************************* Bill Management
