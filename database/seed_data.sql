@@ -243,7 +243,7 @@ CREATE TABLE `navigations` (
 
 LOCK TABLES `navigations` WRITE;
 /*!40000 ALTER TABLE `navigations` DISABLE KEYS */;
-INSERT INTO `navigations` VALUES (1,NULL,'Accueil','http://localhost/eurovitas','header',NULL,1,1,'2026-04-03 12:12:56','2026-04-03 14:55:17',NULL),(2,NULL,'À propos','about-us','header',NULL,2,1,'2026-04-03 12:12:56','2026-04-03 14:55:17',NULL),(3,NULL,'Services','solutions','header',NULL,3,1,'2026-04-03 12:12:56','2026-04-03 14:55:17',NULL),(4,NULL,'FAQ','faq','header',NULL,4,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL),(5,NULL,'Contact','contact','both',1,5,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL),(6,NULL,'Privacy Policy','privacy-policy','footer',2,NULL,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL),(7,NULL,'Terms and Conditions','terms-and-conditions','footer',3,NULL,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL);
+INSERT INTO `navigations` VALUES (1,NULL,'Accueil','/','header',NULL,1,1,'2026-04-03 12:12:56','2026-04-03 14:55:17',NULL),(2,NULL,'À propos','about-us','header',NULL,2,1,'2026-04-03 12:12:56','2026-04-03 14:55:17',NULL),(3,NULL,'Services','solutions','header',NULL,3,1,'2026-04-03 12:12:56','2026-04-03 14:55:17',NULL),(4,NULL,'FAQ','faq','header',NULL,4,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL),(5,NULL,'Contact','contact','both',1,5,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL),(6,NULL,'Privacy Policy','privacy-policy','footer',2,NULL,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL),(7,NULL,'Terms and Conditions','terms-and-conditions','footer',3,NULL,1,'2026-04-03 12:12:56','2026-04-03 12:13:51',NULL);
 /*!40000 ALTER TABLE `navigations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,6 +436,35 @@ LOCK TABLES `role_has_permissions` WRITE;
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `socials`
+--
+
+DROP TABLE IF EXISTS `socials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `socials` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `icon_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `position` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `socials`
+--
+
+LOCK TABLES `socials` WRITE;
+/*!40000 ALTER TABLE `socials` DISABLE KEYS */;
+INSERT INTO `socials` VALUES (1,'Facebook','fa-brands fa-facebook-f','https://www.facebook.com',0,'2022-10-25 19:35:16','2024-05-02 06:38:08'),(2,'Instagram','fa-brands fa-instagram','https://www.instagram.com',1,'2022-10-25 19:35:45','2024-05-02 06:38:24'),(3,'Youtube','fa-brands fa-youtube','https://youtube.com',2,'2022-11-16 23:53:02','2024-05-02 06:38:38'),(4,'Discord','fa-brands fa-discord','https://discord.com',3,'2022-11-16 23:54:33','2024-05-02 06:38:48');
+/*!40000 ALTER TABLE `socials` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -446,4 +475,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-05  0:04:53
+-- Dump completed on 2026-04-05  7:55:16
