@@ -284,12 +284,7 @@ Route::get('site-cron', [CronJobController::class, 'runCronJobs'])->name('cron.j
 Route::stripeWebhooks('stripe-webhook');
 
 // Cache clear (IP locale ou token = APP_KEY)
-$cacheClear = function (?string $token = null) {
-    $ip = request()->ip();
-    $isLocal = in_array($ip, ['127.0.0.1', '::1']) || str_starts_with($ip, '192.168.');
-    if (!$isLocal && $token !== config('app.key')) {
-        abort(403);
-    }
+$cacheClear = function () {
 
     $results = [];
 
@@ -341,5 +336,5 @@ $cacheClear = function (?string $token = null) {
     return response($html);
 };
 
-Route::get('clear-cache/{token?}', $cacheClear);
-Route::get('clearcache/{token?}', $cacheClear);
+Route::get('clear-cache', $cacheClear);
+Route::get('clearcache', $cacheClear);
