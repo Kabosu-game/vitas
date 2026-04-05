@@ -47,7 +47,7 @@
                                 <path d="M21 24L23 26L27 22" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </span>
-                        <h6>100% Safe &amp; Secure</h6>
+                        <h6>{{ __('hero_security_text') }}</h6>
                     </div>
                 </div>
             </div>

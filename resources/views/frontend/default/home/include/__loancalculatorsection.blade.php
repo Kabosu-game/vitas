@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="text-center mt-40">
-                        <a href="{{ route('register') }}" class="tp-btn">Faire une demande de prêt</a>
+                        <a href="{{ route('loan-request.create') }}" class="tp-btn">{{ __('Faire une demande de prêt') }}</a>
                     </div>
                 </div>
             </div>

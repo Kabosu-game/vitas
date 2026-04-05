@@ -23,11 +23,11 @@
                                 </a>
                             </div>
                             <div class="footer-content">
-                                <p>Eurovitas Finanzen est une plateforme européenne de prêt en ligne agréée ACPR, fondée sur la transparence, la rapidité et la confiance. Vos projets méritent un financement à la hauteur.</p>
+                                <p>{{ __('footer_description') }}</p>
                                 <div class="footer-trust-badges mt-20">
-                                    <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> ACPR agréé</span>
-                                    <span class="trust-badge"><i class="fa-solid fa-lock"></i> SSL 256 bits</span>
-                                    <span class="trust-badge"><i class="fa-solid fa-award"></i> RGPD conforme</span>
+                                    <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> {{ __('footer_badge_acpr') }}</span>
+                                    <span class="trust-badge"><i class="fa-solid fa-lock"></i> {{ __('footer_badge_ssl') }}</span>
+                                    <span class="trust-badge"><i class="fa-solid fa-award"></i> {{ __('footer_badge_rgpd') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -36,15 +36,15 @@
                     {{-- Col 2 : Pages principales --}}
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
                         <div class="footer-widget-1-2">
-                            <div class="footer-widget-title"><h5>Navigation</h5></div>
+                            <div class="footer-widget-title"><h5>{{ __('footer_nav_title') }}</h5></div>
                             <div class="footer-link">
                                 <ul>
-                                    <li><a href="{{ route('home') }}">Accueil</a></li>
-                                    <li><a href="{{ url('about-us') }}">À propos</a></li>
-                                    <li><a href="{{ url('solutions') }}">Services</a></li>
-                                    <li><a href="{{ url('faq') }}">FAQ</a></li>
-                                    <li><a href="{{ url('contact') }}">Contact</a></li>
-                                    <li><a href="{{ url('loan-calculator') }}">Simulateur</a></li>
+                                    <li><a href="{{ route('home') }}">{{ __('footer_nav_home') }}</a></li>
+                                    <li><a href="{{ url('about-us') }}">{{ __('footer_nav_about') }}</a></li>
+                                    <li><a href="{{ url('solutions') }}">{{ __('footer_nav_services') }}</a></li>
+                                    <li><a href="{{ url('faq') }}">{{ __('footer_nav_faq') }}</a></li>
+                                    <li><a href="{{ url('contact') }}">{{ __('footer_nav_contact') }}</a></li>
+                                    <li><a href="{{ url('loan-calculator') }}">{{ __('footer_nav_simulator') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -71,17 +71,17 @@
                     {{-- Col 4 : Légal + Contact --}}
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="footer-widget-1-4">
-                            <div class="footer-widget-title"><h5>Informations légales</h5></div>
+                            <div class="footer-widget-title"><h5>{{ __('footer_legal_title') }}</h5></div>
                             <div class="footer-link">
                                 <ul>
-                                    <li><a href="{{ url('privacy-policy') }}">Politique de confidentialité</a></li>
-                                    <li><a href="{{ url('terms-and-conditions') }}">Conditions générales</a></li>
-                                    <li><a href="{{ url('politique-cookies') }}">Politique de cookies</a></li>
-                                    <li><a href="{{ url('mentions-legales') }}">Mentions légales</a></li>
-                                    <li><a href="{{ url('protection-donnees') }}">Protection des données (RGPD)</a></li>
+                                    <li><a href="{{ url('privacy-policy') }}">{{ __('footer_legal_privacy') }}</a></li>
+                                    <li><a href="{{ url('terms-and-conditions') }}">{{ __('footer_legal_terms') }}</a></li>
+                                    <li><a href="{{ url('politique-cookies') }}">{{ __('footer_legal_cookies') }}</a></li>
+                                    <li><a href="{{ url('mentions-legales') }}">{{ __('footer_legal_mentions') }}</a></li>
+                                    <li><a href="{{ url('protection-donnees') }}">{{ __('footer_legal_rgpd') }}</a></li>
                                 </ul>
                             </div>
-                            <div class="footer-widget-title mt-30"><h5>Contact</h5></div>
+                            <div class="footer-widget-title mt-30"><h5>{{ __('footer_contact_title') }}</h5></div>
                             <div class="footer-contact">
                                 <div class="footer-info">
                                     <div class="footer-info-item mb-10">
@@ -105,7 +105,7 @@
                 <div class="col-12">
                     <div class="footer-bottom">
                         <div class="footer-copyright">
-                            <p>Copyright © Eurovitas Finanzen 2026. Tous droits réservés. — Eurovitas Finanzen SAS, établissement de crédit agréé ACPR n° CIB 17489 — <a href="{{ url('mentions-legales') }}" style="color:inherit;text-decoration:underline;">Mentions légales</a></p>
+                            <p>{{ __('footer_copyright') }} — <a href="{{ url('mentions-legales') }}" style="color:inherit;text-decoration:underline;">{{ __('footer_legal_mentions') }}</a></p>
                         </div>
                         <div class="footer-social">
                             @foreach(\App\Models\Social::all() as $social)
