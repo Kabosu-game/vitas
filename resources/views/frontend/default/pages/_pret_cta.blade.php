@@ -5,7 +5,7 @@
             <p class="pret-cta-desc">Complétez votre dossier en ligne en moins de 10 minutes. Réponse de principe sous 24h, sans engagement.</p>
         </div>
         <div class="col-lg-4 text-lg-end">
-            <a href="{{ route('register') }}" class="tp-btn">Faire une demande</a>
+            <a href="{{ route('loan-request.create') }}" class="tp-btn">Faire une demande</a>
         </div>
     </div>
 </div>

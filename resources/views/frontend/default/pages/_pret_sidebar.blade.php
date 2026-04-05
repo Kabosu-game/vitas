@@ -26,7 +26,7 @@
             <span class="pret-sidebar-value">{{ $justif }}</span>
         </li>
     </ul>
-    <a href="{{ route('register') }}" class="tp-btn w-100 text-center mt-20" style="display:block;">Faire une demande</a>
+    <a href="{{ route('loan-request.create') }}" class="tp-btn w-100 text-center mt-20" style="display:block;">Faire une demande</a>
     <a href="{{ url('loan-calculator') }}" class="pret-sim-link mt-10">
         <i data-lucide="calculator" style="width:14px;height:14px;"></i> Simuler ce prêt
     </a>
