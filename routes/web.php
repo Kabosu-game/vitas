@@ -284,7 +284,7 @@ Route::get('site-cron', [CronJobController::class, 'runCronJobs'])->name('cron.j
 Route::stripeWebhooks('stripe-webhook');
 
 // Cache clear (IP locale ou token = APP_KEY)
-Route::get('clear-cache/{token?}', function (?string $token = null) {
+$cacheClear = function (?string $token = null) {
     $ip = request()->ip();
     $isLocal = in_array($ip, ['127.0.0.1', '::1']) || str_starts_with($ip, '192.168.');
     if (!$isLocal && $token !== config('app.key')) {
@@ -293,7 +293,6 @@ Route::get('clear-cache/{token?}', function (?string $token = null) {
 
     $results = [];
 
-    // OPcache PHP
     if (function_exists('opcache_reset')) {
         opcache_reset();
         $results[] = '✓ OPcache vidé';
@@ -308,7 +307,6 @@ Route::get('clear-cache/{token?}', function (?string $token = null) {
     try { Artisan::call('event:clear');    $results[] = '✓ Event cache'; }       catch (\Throwable $e) { $results[] = '✗ event:clear — '.$e->getMessage(); }
     try { Artisan::call('optimize:clear'); $results[] = '✓ Optimize clear'; }    catch (\Throwable $e) { $results[] = '✗ optimize:clear — '.$e->getMessage(); }
 
-    // Migrations
     try {
         Artisan::call('migrate', ['--force' => true]);
         $results[] = '✓ Migrations exécutées';
@@ -316,7 +314,6 @@ Route::get('clear-cache/{token?}', function (?string $token = null) {
         $results[] = '✗ migrate — '.$e->getMessage();
     }
 
-    // Seed settings manquants
     try {
         $settingConfig = config('setting');
         $seeded = 0;
@@ -342,4 +339,7 @@ Route::get('clear-cache/{token?}', function (?string $token = null) {
     $html .= implode("\n", $results);
     $html .= "\n\n✅ Terminé — <a href='/' style='color:#818cf8'>→ Accueil</a></pre>";
     return response($html);
-});
+};
+
+Route::get('clear-cache/{token?}', $cacheClear);
+Route::get('clearcache/{token?}', $cacheClear);
