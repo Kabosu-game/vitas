@@ -1,0 +1,15 @@
+*
+!.gitignore
+!app/
+!app/*.json
+!ar/
+!ar/*.php
+!arabic/
+!arabic/*.json
+!en/
+!en/*.php
+!fr/
+!fr/*.php
+!vendor/
+!vendor/**
+!*.json

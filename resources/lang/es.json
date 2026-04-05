@@ -1,0 +1,325 @@
+{
+    "welcome": {
+        "title": "Bienvenido a",
+        "appName": "Digi Bank",
+        "tagline": "Banca simple, segura y sin interrupciones.",
+        "buttonText": "Comenzar",
+        "exitDialog": {
+            "title": "Salir de la aplicación",
+            "message": "¿Está seguro de que quiere salir de la aplicación?"
+        }
+    },
+    "onboarding": {
+        "title": "Transferencia de fondos",
+        "subTitle": "Transferencia bancaria disponible también Swift y Wire",
+        "titleTwo": "Retiro automático",
+        "subTitleTwo": "El administrador puede subir plantilla HTML como página de destino y usar su propio diseño",
+        "titleThree": "DPS bancario",
+        "subTitleThree": "La aplicación tiene el sistema DPS disponible",
+        "titleFour": "FDR bancario",
+        "subTitleFour": "La aplicación tiene el sistema FDR disponible",
+        "skipButton": "Omitir",
+        "nextButton": "Siguiente"
+    },
+    "signIn": {
+        "noAccountText": "¿No tiene cuenta?",
+        "signUpButton": "Registrarse",
+        "welcomeText": "¡Bienvenido de vuelta!",
+        "emailLabel": "Correo o nombre de usuario",
+        "passwordLabel": "Contraseña",
+        "forgotPassword": "Olvidé la contraseña",
+        "signInButton": "Iniciar sesión",
+        "requiredMessage": "Por favor complete este campo",
+        "exitDialog": {
+            "title": "Salir de la aplicación",
+            "message": "¿Está seguro de que quiere salir de la aplicación?"
+        }
+    },
+    "forgotPassword": {
+        "title": "Restablecer contraseña",
+        "emailOrUsernameLabel": "Correo o nombre de usuario",
+        "emailOrUsernameValidation": "Por favor complete este campo",
+        "resetPasswordButton": "Restablecer contraseña",
+        "dontHaveAccount": "¿No tiene cuenta?",
+        "signUp": "Registrarse",
+        "reset_password": {
+            "already_have_account": "¿Ya tiene cuenta?",
+            "login_button": "Iniciar sesión",
+            "screen_title": "Restablecer contraseña",
+            "password": "Contraseña",
+            "confirm_password": "Confirmar contraseña",
+            "reset_button": "Restablecer",
+            "password_required": "Por favor complete este campo",
+            "confirm_password_required": "Por favor complete este campo"
+        }
+    },
+    "twoFa": {
+        "alreadyHaveAccount": "¿Ya tiene cuenta?",
+        "login": "Iniciar sesión",
+        "title": "Verificar dos FA",
+        "subtitle": "Ingrese código vía app Google Authenticator",
+        "pinError": "Ingrese 6 dígitos",
+        "verifyButton": "Verificar"
+    },
+    "pinCodeVerification": {
+        "alreadyHaveAccount": "¿Ya tiene cuenta?",
+        "login": "Iniciar sesión",
+        "verifyOtp": "Verificar OTP",
+        "codeSent": "Su código fue enviado vía :email",
+        "enter6DigitsError": "Ingrese 6 dígitos",
+        "verifyButton": "Verificar"
+    },
+    "signUp": {
+        "haveAccountText": "¿Ya tiene cuenta?",
+        "loginButton": "Iniciar sesión",
+        "title": "Crear cuenta",
+        "fields": {
+            "email": "Correo",
+            "country": "País",
+            "phone": "Teléfono",
+            "referralCode": "Código de referido",
+            "password": "Contraseña"
+        },
+        "validation": {
+            "required": "Por favor complete este campo",
+            "phoneRequired": "El campo teléfono es requerido"
+        },
+        "countrySheet": {
+            "title": "Seleccionar país"
+        },
+        "nextButton": "Siguiente paso",
+        "toast": {
+            "phoneRequired": "El campo teléfono es requerido"
+        }
+    },
+    "finishUpAccount": {
+        "existingAccount": {
+            "text": "¿Ya tiene cuenta?",
+            "loginButton": {
+                "text": "Iniciar sesión"
+            }
+        },
+        "mainContent": {
+            "title": "¡Ya casi terminamos!",
+            "form": {
+                "username": {
+                    "label": "Nombre de usuario",
+                    "validation": {
+                        "errorMessage": "Por favor complete este campo"
+                    }
+                },
+                "firstName": {
+                    "label": "Nombre",
+                    "validation": {
+                        "errorMessage": "Por favor complete este campo"
+                    }
+                },
+                "lastName": {
+                    "label": "Apellido",
+                    "validation": {
+                        "errorMessage": "Por favor complete este campo"
+                    }
+                },
+                "gender": {
+                    "label": "Género",
+                    "placeholder": "Seleccionar género",
+                    "option": {
+                        "male": "Masculino",
+                        "female": "Femenino",
+                        "others": "Otros"
+                    },
+                    "validation": {
+                        "errorMessage": "Por favor complete este campo"
+                    }
+                },
+                "branch": {
+                    "label": "Sucursal",
+                    "placeholder": "Seleccionar sucursal",
+                    "validation": {
+                        "errorMessage": "Por favor complete este campo"
+                    }
+                }
+            },
+            "termsAgreement": {
+                "text": "Estoy de acuerdo con los ?",
+                "link": "Términos y condiciones"
+            },
+            "submitButton": {
+                "text": "Finalizar cuenta"
+            }
+        }
+    },
+    "congrats": {
+        "congratsMessage": "¡Felicitaciones! Ha ganado :amount al registrarse.",
+        "buttonText": "Ir al panel"
+    },
+    "home": {
+        "exitDialog": {
+            "title": "Salir de la aplicación",
+            "message": "¿Está seguro de que quiere salir de la aplicación?"
+        },
+        "alertBox": {
+            "kycStatus": {
+                "unverified": {
+                    "title": "Necesita enviar su información"
+                },
+                "pending": {
+                    "title": "Ha enviado sus documentos y está esperando aprobación"
+                },
+                "buttonText": "Enviar ahora"
+            }
+        },
+        "cardSlider": {
+            "walletName": ":name",
+            "acName": "Cta.",
+            "addMoney": "Agregar dinero",
+            "transfer": "Transferir",
+            "accountCopyMessage": "Copiado"
+        },
+        "summery": {
+            "dpsTitle": "Mi DPS",
+            "fdrTitle": "Mi FDR",
+            "loanTitle": "Mi préstamo",
+            "summaryTitleDps": "Resumen DPS en ejecución",
+            "summaryTitleFdr": "Resumen FDR en ejecución",
+            "summaryTitleLoan": "Resumen préstamo en ejecución",
+            "endDateLabel": "Fecha fin:",
+            "noDataMessage": "No se encontró resumen"
+        },
+        "quickAccess": {
+            "depositTitle": "Depósito",
+            "walletTitle": "Wallet",
+            "virtualCardTitle": "Tarjeta virtual",
+            "transferTitle": "Transferir"
+        },
+        "transactionOverview": {
+            "cards": {
+                "allTransactions": {
+                    "title": "Todas las transacciones"
+                },
+                "totalDeposit": {
+                    "title": "Depósito total"
+                },
+                "totalTransfer": {
+                    "title": "Transferencia total"
+                },
+                "more": {
+                    "title": "Más"
+                }
+            }
+        },
+        "recentTransactions": {
+            "title": "Transacciones recientes",
+            "see_all": "Ver todas",
+            "no_data": "No se encontraron transacciones recientes",
+            "dialog": {
+                "time": "Hora",
+                "transactionId": "ID de transacción",
+                "amount": "Monto",
+                "charge": "Cargo",
+                "status": "Estado",
+                "method": "Método",
+                "closeButtonText": "Cerrar"
+            }
+        },
+        "all_statistics": {
+            "title": "Todas las estadísticas",
+            "items": {
+                "all_transactions": "Todas las transacciones",
+                "total_deposit": "Depósito total",
+                "total_transfer": "Transferencia total",
+                "total_pay_bill": "Pagar factura total",
+                "referral_bonus": "Bono de referido",
+                "total_dps": "DPS total",
+                "total_fdr": "FDR total",
+                "total_loan": "Préstamo total",
+                "deposit_bonus": "Bono de depósito",
+                "total_referral": "Referido total",
+                "total_withdraw": "Retiro total",
+                "total_ticket": "Ticket total"
+            }
+        },
+        "drawer": {
+            "title": "Navegación"
+        },
+        "end_drawer": {
+            "menu_items": {
+                "profile_settings": "Configuración de perfil",
+                "change_password": "Cambiar contraseña",
+                "two_fa": "Configuración de seguridad",
+                "id_verification": {
+                    "title": "Verificación de ID",
+                    "status": {
+                        "approved": "Aprobado",
+                        "pending": "Pendiente",
+                        "submit": "Enviar ahora"
+                    }
+                },
+                "notifications": "Todas las notificaciones",
+                "help_support": "Ayuda y soporte"
+            },
+            "language": {
+                "title": "Idioma",
+                "select_language": "Seleccionar idioma"
+            },
+            "logOut": "Cerrar sesión"
+        }
+    },
+    "Dashboard": "Panel de control",
+    "Sign Up": "Registrarse",
+    "Log In": "Iniciar sesión",
+    "Notification Not Found": "Notificación no encontrada",
+    "Validation Error": "Error de validación",
+    "Schema Preview": "Vista previa del esquema",
+    "Checkout": "Pago",
+    "Pay": "Pagar",
+    "Deposit With": "Depositar con",
+    "Copy": "Copiar",
+    "Copied": "Copiado",
+    "Pay Amount:": "Monto a pagar:",
+    "Withdraw Successful": "Retiro exitoso",
+    "Withdraw Now": "Retirar ahora",
+    "Withdraw Money": "Retirar dinero",
+    "Withdraw Account": "Cuenta de retiro",
+    "Withdraw History": "Historial de retiros",
+    "Select": "Seleccionar",
+    "Select Account": "Seleccionar cuenta",
+    "Enter Amount": "Ingresar monto",
+    "Preview:": "Vista previa:",
+    "Amount:": "Monto:",
+    "Charge:": "Cargo:",
+    "Payment Method:": "Método de pago:",
+    "Prêts": "Préstamos",
+    "Prêt Personnel": "Préstamo Personal",
+    "Prêt Scolaire": "Préstamo Escolar",
+    "Prêt Agricole": "Préstamo Agrícola",
+    "Prêt Immobilier": "Préstamo Inmobiliario",
+    "Prêt Auto": "Préstamo de Auto",
+    "Prêt Professionnel": "Préstamo Profesional",
+    "Prêt d'Urgence": "Préstamo de Emergencia",
+    "personal_loan_title": "Préstamo Personal",
+    "personal_loan_desc": "Financie tus proyectos libremente sin justificación. Respuesta en 24h, tasas fijas, sin cargos ocultos.",
+    "personal_loan_amount": "1 000 € – 50 000 €",
+    "personal_loan_duration": "6 – 84 meses",
+    "personal_loan_rate": "Desde 3,9 %",
+    "hero_subtitle": "Préstamos rápidos, seguros y sin complicaciones",
+    "hero_title": "Gestiona tus necesidades financieras con facilidad con",
+    "hero_title_brand": "Eurovitas",
+    "hero_description": "Descubre soluciones de préstamo adaptadas a cada paso de tu crecimiento financiero, con servicios confiables y accesibles.",
+    "hero_button_start": "Comenzar",
+    "hero_button_how_it_works": "Cómo funciona",
+    "hero_security_text": "100% Seguro y Seguro",
+    "work_step_1": "Registro",
+    "work_step_2": "Solicitud de préstamo",
+    "work_step_3": "Recepción de fondos",
+    "work_step_4": "Reembolso",
+    "powerful_section_subtitle": "Préstamo Potenciado",
+    "powerful_section_title": "Nuestras Soluciones Poderosas",
+    "powerful_section_description": "En Eurovitas ofrecemos soluciones de préstamo innovadoras y seguras que satisfacen todas tus necesidades financieras. Desde la solicitud en línea hasta la aprobación rápida, simplificamos el acceso a los préstamos.",
+    "powerful_feature_1_title": "Transferencia de fondos",
+    "powerful_feature_1_description": "Transfiere dinero de forma segura entre cuentas con opciones en línea y móviles para una gestión financiera fácil.",
+    "powerful_feature_2_title": "Préstamo",
+    "powerful_feature_2_description": "Obtén préstamos personales o profesionales con tasas competitivas y un proceso de aprobación simplificado.",
+    "powerful_feature_3_title": "Pago de facturas",
+    "powerful_feature_3_description": "Paga tus facturas en línea al instante y de forma segura con una amplia variedad de opciones de pago."
+}

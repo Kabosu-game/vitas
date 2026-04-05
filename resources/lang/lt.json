@@ -1,0 +1,325 @@
+{
+    "welcome": {
+        "title": "Sveiki atvykę į",
+        "appName": "Digi Bank",
+        "tagline": "Bankininkystė paprasta, saugi ir sklandi.",
+        "buttonText": "Pradėti",
+        "exitDialog": {
+            "title": "Išeiti iš programos",
+            "message": "Ar tikrai norite išeiti iš programos?"
+        }
+    },
+    "onboarding": {
+        "title": "Lėšų pervedimas",
+        "subTitle": "Galimas banko į banką lėšų pervedimas, taip pat Swift ir Wire",
+        "titleTwo": "Automatinis išėmimas",
+        "subTitleTwo": "Administratorius gali įkelti HTML šabloną kaip nukreipimo puslapį ir naudoti savo dizainą",
+        "titleThree": "Banko DPS",
+        "subTitleThree": "Programoje yra DPS sistema",
+        "titleFour": "Banko FDR",
+        "subTitleFour": "Programoje yra FDR sistema",
+        "skipButton": "Praleisti",
+        "nextButton": "Kitas"
+    },
+    "signIn": {
+        "noAccountText": "Neturite paskyros?",
+        "signUpButton": "Registruotis",
+        "welcomeText": "Sveiki sugrįžę!",
+        "emailLabel": "El. paštas arba vartotojo vardas",
+        "passwordLabel": "Slaptažodis",
+        "forgotPassword": "Pamiršau slaptažodį",
+        "signInButton": "Prisijungti",
+        "requiredMessage": "Prašome užpildyti šį lauką",
+        "exitDialog": {
+            "title": "Išeiti iš programos",
+            "message": "Ar tikrai norite išeiti iš programos?"
+        }
+    },
+    "forgotPassword": {
+        "title": "Slaptažodžio atkūrimas",
+        "emailOrUsernameLabel": "El. paštas arba vartotojo vardas",
+        "emailOrUsernameValidation": "Prašome užpildyti šį lauką",
+        "resetPasswordButton": "Atkurti slaptažodį",
+        "dontHaveAccount": "Neturite paskyros?",
+        "signUp": "Registruotis",
+        "reset_password": {
+            "already_have_account": "Jau turite paskyrą?",
+            "login_button": "Prisijungti",
+            "screen_title": "Atkurti slaptažodį",
+            "password": "Slaptažodis",
+            "confirm_password": "Patvirtinti slaptažodį",
+            "reset_button": "Atkurti",
+            "password_required": "Prašome užpildyti šį lauką",
+            "confirm_password_required": "Prašome užpildyti šį lauką"
+        }
+    },
+    "twoFa": {
+        "alreadyHaveAccount": "Jau turite paskyrą?",
+        "login": "Prisijungti",
+        "title": "Patvirtinti du FA",
+        "subtitle": "Įveskite kodą per Google Authenticator programą",
+        "pinError": "Įveskite 6 skaitmenis",
+        "verifyButton": "Patvirtinti"
+    },
+    "pinCodeVerification": {
+        "alreadyHaveAccount": "Jau turite paskyrą?",
+        "login": "Prisijungti",
+        "verifyOtp": "Patvirtinti OTP",
+        "codeSent": "Jūsų kodas buvo išsiųstas per :email",
+        "enter6DigitsError": "Įveskite 6 skaitmenis",
+        "verifyButton": "Patvirtinti"
+    },
+    "signUp": {
+        "haveAccountText": "Jau turite paskyrą?",
+        "loginButton": "Prisijungti",
+        "title": "Sukurti paskyrą",
+        "fields": {
+            "email": "El. paštas",
+            "country": "Šalis",
+            "phone": "Telefonas",
+            "referralCode": "Rekomendacijos kodas",
+            "password": "Slaptažodis"
+        },
+        "validation": {
+            "required": "Prašome užpildyti šį lauką",
+            "phoneRequired": "Telefono laukas yra privalomas"
+        },
+        "countrySheet": {
+            "title": "Pasirinkti šalį"
+        },
+        "nextButton": "Kitas žingsnis",
+        "toast": {
+            "phoneRequired": "Telefono laukas yra privalomas"
+        }
+    },
+    "finishUpAccount": {
+        "existingAccount": {
+            "text": "Jau turite paskyrą?",
+            "loginButton": {
+                "text": "Prisijungti"
+            }
+        },
+        "mainContent": {
+            "title": "Beveik baigta!",
+            "form": {
+                "username": {
+                    "label": "Vartotojo vardas",
+                    "validation": {
+                        "errorMessage": "Prašome užpildyti šį lauką"
+                    }
+                },
+                "firstName": {
+                    "label": "Vardas",
+                    "validation": {
+                        "errorMessage": "Prašome užpildyti šį lauką"
+                    }
+                },
+                "lastName": {
+                    "label": "Pavardė",
+                    "validation": {
+                        "errorMessage": "Prašome užpildyti šį lauką"
+                    }
+                },
+                "gender": {
+                    "label": "Lytis",
+                    "placeholder": "Pasirinkti lytį",
+                    "option": {
+                        "male": "Vyras",
+                        "female": "Moteris",
+                        "others": "Kiti"
+                    },
+                    "validation": {
+                        "errorMessage": "Prašome užpildyti šį lauką"
+                    }
+                },
+                "branch": {
+                    "label": "Filialas",
+                    "placeholder": "Pasirinkti filialą",
+                    "validation": {
+                        "errorMessage": "Prašome užpildyti šį lauką"
+                    }
+                }
+            },
+            "termsAgreement": {
+                "text": "Sutinku su ?",
+                "link": "Taisyklės ir sąlygos"
+            },
+            "submitButton": {
+                "text": "Užbaigti paskyrą"
+            }
+        }
+    },
+    "congrats": {
+        "congratsMessage": "Sveikiname! Užsiregistravę uždirbote :amount.",
+        "buttonText": "Eiti į prietaisų skydelį"
+    },
+    "home": {
+        "exitDialog": {
+            "title": "Išeiti iš programos",
+            "message": "Ar tikrai norite išeiti iš programos?"
+        },
+        "alertBox": {
+            "kycStatus": {
+                "unverified": {
+                    "title": "Reikia pateikti informaciją"
+                },
+                "pending": {
+                    "title": "Pateikėte dokumentus ir laukiate patvirtinimo"
+                },
+                "buttonText": "Pateikti dabar"
+            }
+        },
+        "cardSlider": {
+            "walletName": ":name",
+            "acName": "Sąsk.",
+            "addMoney": "Pridėti pinigų",
+            "transfer": "Pervesti",
+            "accountCopyMessage": "Nukopijuota"
+        },
+        "summery": {
+            "dpsTitle": "Mano DPS",
+            "fdrTitle": "Mano FDR",
+            "loanTitle": "Mano paskola",
+            "summaryTitleDps": "Veikianti DPS suvestinė",
+            "summaryTitleFdr": "Veikianti FDR suvestinė",
+            "summaryTitleLoan": "Veikianti paskolos suvestinė",
+            "endDateLabel": "Pabaigos data:",
+            "noDataMessage": "Suvestinė nerasta"
+        },
+        "quickAccess": {
+            "depositTitle": "Indėlis",
+            "walletTitle": "Piniginė",
+            "virtualCardTitle": "Virtuali kortelė",
+            "transferTitle": "Pervesti"
+        },
+        "transactionOverview": {
+            "cards": {
+                "allTransactions": {
+                    "title": "Visos transakcijos"
+                },
+                "totalDeposit": {
+                    "title": "Bendras indėlis"
+                },
+                "totalTransfer": {
+                    "title": "Bendra pervedimas"
+                },
+                "more": {
+                    "title": "Daugiau"
+                }
+            }
+        },
+        "recentTransactions": {
+            "title": "Naujausios transakcijos",
+            "see_all": "Žiūrėti visas",
+            "no_data": "Nerasta naujesnių transakcijų istorija",
+            "dialog": {
+                "time": "Laikas",
+                "transactionId": "Transakcijos ID",
+                "amount": "Suma",
+                "charge": "Mokestis",
+                "status": "Būsena",
+                "method": "Metodas",
+                "closeButtonText": "Uždaryti"
+            }
+        },
+        "all_statistics": {
+            "title": "Visos statistikos",
+            "items": {
+                "all_transactions": "Visos transakcijos",
+                "total_deposit": "Bendras indėlis",
+                "total_transfer": "Bendra pervedimas",
+                "total_pay_bill": "Bendra mokėti sąskaitą",
+                "referral_bonus": "Rekomendacijos premija",
+                "total_dps": "Bendras DPS",
+                "total_fdr": "Bendras FDR",
+                "total_loan": "Bendra paskola",
+                "deposit_bonus": "Indėlio premija",
+                "total_referral": "Bendra rekomendacija",
+                "total_withdraw": "Bendras išėmimas",
+                "total_ticket": "Bendras bilietas"
+            }
+        },
+        "drawer": {
+            "title": "Navigacija"
+        },
+        "end_drawer": {
+            "menu_items": {
+                "profile_settings": "Profilio nustatymai",
+                "change_password": "Keisti slaptažodį",
+                "two_fa": "Saugumo nustatymai",
+                "id_verification": {
+                    "title": "ID patvirtinimas",
+                    "status": {
+                        "approved": "Patvirtinta",
+                        "pending": "Laukiama",
+                        "submit": "Pateikti dabar"
+                    }
+                },
+                "notifications": "Visi pranešimai",
+                "help_support": "Pagalba ir palaikymas"
+            },
+            "language": {
+                "title": "Kalba",
+                "select_language": "Pasirinkti kalbą"
+            },
+            "logOut": "Atsijungti"
+        }
+    },
+    "Dashboard": "PrietaisÅ³ skydelis",
+    "Sign Up": "Registruotis",
+    "Log In": "Prisijungti",
+    "Notification Not Found": "PraneÅ¡imas nerastas",
+    "Validation Error": "Patvirtinimo klaida",
+    "Schema Preview": "Schemos perÅ¾iÅ«ra",
+    "Checkout": "ApmokÄ—jimas",
+    "Pay": "MokÄ—ti",
+    "Deposit With": "Depozitas su",
+    "Copy": "Kopijuoti",
+    "Copied": "Nukopijuota",
+    "Pay Amount:": "MokÄ—tinas kiekis:",
+    "Withdraw Successful": "SÄ—kmingas iÅ¡Ä—mimas",
+    "Withdraw Now": "IÅ¡imti dabar",
+    "Withdraw Money": "IÅ¡imti pinigus",
+    "Withdraw Account": "IÅ¡Ä—mimo sÄ…skaita",
+    "Withdraw History": "IÅ¡Ä—mimÅ³ istorija",
+    "Select": "Pasirinkti",
+    "Select Account": "Pasirinkti sÄ…skaitÄ…",
+    "Enter Amount": "Ä®vesti kiekÄ¯",
+    "Preview:": "PerÅ¾iÅ«ra:",
+    "Amount:": "Kiekis:",
+    "Charge:": "Mokestis:",
+    "Payment Method:": "MokÄ—jimo bÅ«das:",
+    "Prêts": "Paskolos",
+    "Prêt Personnel": "Asmeninė paskola",
+    "Prêt Scolaire": "Mokyklinė paskola",
+    "Prêt Agricole": "Å½emÄ—s Å«kio paskola",
+    "Prêt Immobilier": "Nekilnojamojo turto paskola",
+    "Prêt Auto": "Automobilio paskola",
+    "Prêt Professionnel": "Profesinė paskola",
+    "Prêt d'Urgence": "Avarinė paskola",
+    "personal_loan_title": "Asmeninė paskola",
+    "personal_loan_desc": "Finansuoikite savo projektus laisvai be pateisinimo. Atsakymas per 24h, fiksuoti palūkanų tarifai, jokių paslėptų mokesčių.",
+    "personal_loan_amount": "1 000 € – 50 000 €",
+    "personal_loan_duration": "6 – 84 mėnesiai",
+    "personal_loan_rate": "Nuo 3,9 %",
+    "hero_subtitle": "Greiti, saugūs ir nerūpestingi kreditai",
+    "hero_title": "Valdykite savo finansinius poreikius lengvai su",
+    "hero_title_brand": "Eurovitas",
+    "hero_description": "Atraskite paskolų sprendimus, pritaikytus kiekvienam jūsų finansinio augimo žingsniui, su patikimais ir prieinamais paslaugomis.",
+    "hero_button_start": "Pradėti",
+    "hero_button_how_it_works": "Kaip tai veikia",
+    "hero_security_text": "100% Saugu ir Saugu",
+    "work_step_1": "Registracija",
+    "work_step_2": "Paskolos paraiška",
+    "work_step_3": "Lėšų gavimas",
+    "work_step_4": "Grąžinimas",
+    "powerful_section_subtitle": "Paskolos maitinimas",
+    "powerful_section_title": "Mūsų galingi sprendimai",
+    "powerful_section_description": "Eurovitas siūlome inovatyvius ir saugius paskolų sprendimus, kurie patenkina visus jūsų finansinius poreikius. Nuo internetinės paraiškos iki greito patvirtinimo, mes supaprastiname prieigą prie paskolų.",
+    "powerful_feature_1_title": "Lėšų pervedimas",
+    "powerful_feature_1_description": "Pervedėkite pinigus saugiai tarp sąskaitų su internetinėmis ir mobiliosiomis parinktimis lengvam finansų valdymui.",
+    "powerful_feature_2_title": "Paskola",
+    "powerful_feature_2_description": "Gaukite asmeninių ar profesinių paskolų su konkurencingais palūkanų tarifais ir supaprastintu patvirtinimo procesu.",
+    "powerful_feature_3_title": "Sąskaitų apmokėjimas",
+    "powerful_feature_3_description": "Apmokėkite savo sąskaitas internetu nedelsiant ir saugiai su plačiu mokėjimo būdų pasirinkimu."
+}

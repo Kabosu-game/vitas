@@ -1,0 +1,325 @@
+{
+    "welcome": {
+        "title": "Laipni lūdzam",
+        "appName": "Digi Bank",
+        "tagline": "Banku pakalpojumi vienkārši, droši un nepārtraukti.",
+        "buttonText": "Sākt",
+        "exitDialog": {
+            "title": "Iziet no lietotnes",
+            "message": "Vai tiešām vēlaties iziet no lietotnes?"
+        }
+    },
+    "onboarding": {
+        "title": "Līdzekļu pārskaitījums",
+        "subTitle": "Pieejams bankas uz banku līdzekļu pārskaitījums, kā arī Swift un Wire",
+        "titleTwo": "Automātiskā izņemšana",
+        "subTitleTwo": "Administrators var augšupielādēt HTML veidni kā galveno lapu un izmantot savu dizainu",
+        "titleThree": "Bankas DPS",
+        "subTitleThree": "Lietotnē ir pieejama DPS sistēma",
+        "titleFour": "Bankas FDR",
+        "subTitleFour": "Lietotnē ir pieejama FDR sistēma",
+        "skipButton": "Izlaist",
+        "nextButton": "Nākamais"
+    },
+    "signIn": {
+        "noAccountText": "Nav konta?",
+        "signUpButton": "Reģistrēties",
+        "welcomeText": "Laipni lūdzam atpakaļ!",
+        "emailLabel": "E-pasts vai lietotājvārds",
+        "passwordLabel": "Parole",
+        "forgotPassword": "Aizmirsu paroli",
+        "signInButton": "Pierakstīties",
+        "requiredMessage": "Lūdzu, aizpildiet šo lauku",
+        "exitDialog": {
+            "title": "Iziet no lietotnes",
+            "message": "Vai tiešām vēlaties iziet no lietotnes?"
+        }
+    },
+    "forgotPassword": {
+        "title": "Paroles atiestatīšana",
+        "emailOrUsernameLabel": "E-pasts vai lietotājvārds",
+        "emailOrUsernameValidation": "Lūdzu, aizpildiet šo lauku",
+        "resetPasswordButton": "Atiestatīt paroli",
+        "dontHaveAccount": "Nav konta?",
+        "signUp": "Reģistrēties",
+        "reset_password": {
+            "already_have_account": "Jau ir konts?",
+            "login_button": "Pierakstīties",
+            "screen_title": "Atiestatīt paroli",
+            "password": "Parole",
+            "confirm_password": "Apstiprināt paroli",
+            "reset_button": "Atiestatīt",
+            "password_required": "Lūdzu, aizpildiet šo lauku",
+            "confirm_password_required": "Lūdzu, aizpildiet šo lauku"
+        }
+    },
+    "twoFa": {
+        "alreadyHaveAccount": "Jau ir konts?",
+        "login": "Pierakstīties",
+        "title": "Pārbaudīt divus FA",
+        "subtitle": "Ievadiet kodu caur Google Authenticator lietotni",
+        "pinError": "Ievadiet 6 ciparus",
+        "verifyButton": "Pārbaudīt"
+    },
+    "pinCodeVerification": {
+        "alreadyHaveAccount": "Jau ir konts?",
+        "login": "Pierakstīties",
+        "verifyOtp": "Pārbaudīt OTP",
+        "codeSent": "Jūsu kods tika nosūtīts caur :email",
+        "enter6DigitsError": "Ievadiet 6 ciparus",
+        "verifyButton": "Pārbaudīt"
+    },
+    "signUp": {
+        "haveAccountText": "Jau ir konts?",
+        "loginButton": "Pierakstīties",
+        "title": "Izveidot kontu",
+        "fields": {
+            "email": "E-pasts",
+            "country": "Valsts",
+            "phone": "Tālrunis",
+            "referralCode": "Norādes kods",
+            "password": "Parole"
+        },
+        "validation": {
+            "required": "Lūdzu, aizpildiet šo lauku",
+            "phoneRequired": "Tālruņa lauks ir obligāts"
+        },
+        "countrySheet": {
+            "title": "Izvēlēties valsti"
+        },
+        "nextButton": "Nākamais solis",
+        "toast": {
+            "phoneRequired": "Tālruņa lauks ir obligāts"
+        }
+    },
+    "finishUpAccount": {
+        "existingAccount": {
+            "text": "Jau ir konts?",
+            "loginButton": {
+                "text": "Pierakstīties"
+            }
+        },
+        "mainContent": {
+            "title": "Gandrīz gatavs!",
+            "form": {
+                "username": {
+                    "label": "Lietotājvārds",
+                    "validation": {
+                        "errorMessage": "Lūdzu, aizpildiet šo lauku"
+                    }
+                },
+                "firstName": {
+                    "label": "Vārds",
+                    "validation": {
+                        "errorMessage": "Lūdzu, aizpildiet šo lauku"
+                    }
+                },
+                "lastName": {
+                    "label": "Uzvārds",
+                    "validation": {
+                        "errorMessage": "Lūdzu, aizpildiet šo lauku"
+                    }
+                },
+                "gender": {
+                    "label": "Dzimums",
+                    "placeholder": "Izvēlēties dzimumu",
+                    "option": {
+                        "male": "Vīrietis",
+                        "female": "Sieviete",
+                        "others": "Citi"
+                    },
+                    "validation": {
+                        "errorMessage": "Lūdzu, aizpildiet šo lauku"
+                    }
+                },
+                "branch": {
+                    "label": "Filiāle",
+                    "placeholder": "Izvēlēties filiāli",
+                    "validation": {
+                        "errorMessage": "Lūdzu, aizpildiet šo lauku"
+                    }
+                }
+            },
+            "termsAgreement": {
+                "text": "Es piekrītu ?",
+                "link": "Noteikumi un nosacījumi"
+            },
+            "submitButton": {
+                "text": "Pabeigt kontu"
+            }
+        }
+    },
+    "congrats": {
+        "congratsMessage": "Apsveicam! Reģistrējoties nopelnījāt :amount.",
+        "buttonText": "Doties uz paneli"
+    },
+    "home": {
+        "exitDialog": {
+            "title": "Iziet no lietotnes",
+            "message": "Vai tiešām vēlaties iziet no lietotnes?"
+        },
+        "alertBox": {
+            "kycStatus": {
+                "unverified": {
+                    "title": "Nepieciešams iesniegt informāciju"
+                },
+                "pending": {
+                    "title": "Jūs esat iesnieguši dokumentus un gaida apstiprinājumu"
+                },
+                "buttonText": "Iesniegt tagad"
+            }
+        },
+        "cardSlider": {
+            "walletName": ":name",
+            "acName": "Konts",
+            "addMoney": "Pievienot naudu",
+            "transfer": "Pārskaitīt",
+            "accountCopyMessage": "Kopēts"
+        },
+        "summery": {
+            "dpsTitle": "Mans DPS",
+            "fdrTitle": "Mans FDR",
+            "loanTitle": "Mans aizdevums",
+            "summaryTitleDps": "Darbojošās DPS kopsavilkums",
+            "summaryTitleFdr": "Darbojošās FDR kopsavilkums",
+            "summaryTitleLoan": "Darbojošās aizdevuma kopsavilkums",
+            "endDateLabel": "Beigu datums:",
+            "noDataMessage": "Kopsavilkums nav atrasts"
+        },
+        "quickAccess": {
+            "depositTitle": "Depozīts",
+            "walletTitle": "Maks",
+            "virtualCardTitle": "Virtuālā karte",
+            "transferTitle": "Pārskaitīt"
+        },
+        "transactionOverview": {
+            "cards": {
+                "allTransactions": {
+                    "title": "Visas transakcijas"
+                },
+                "totalDeposit": {
+                    "title": "Kopējais depozīts"
+                },
+                "totalTransfer": {
+                    "title": "Kopējais pārskaitījums"
+                },
+                "more": {
+                    "title": "Vairāk"
+                }
+            }
+        },
+        "recentTransactions": {
+            "title": "Nesenās transakcijas",
+            "see_all": "Skatīt visas",
+            "no_data": "Nav atrasta nesenā transakciju vēsture",
+            "dialog": {
+                "time": "Laiks",
+                "transactionId": "Transakcijas ID",
+                "amount": "Summa",
+                "charge": "Maksa",
+                "status": "Statuss",
+                "method": "Metode",
+                "closeButtonText": "Aizvērt"
+            }
+        },
+        "all_statistics": {
+            "title": "Visa statistika",
+            "items": {
+                "all_transactions": "Visas transakcijas",
+                "total_deposit": "Kopējais depozīts",
+                "total_transfer": "Kopējais pārskaitījums",
+                "total_pay_bill": "Kopējais maksāt rēķinu",
+                "referral_bonus": "Norādes bonuss",
+                "total_dps": "Kopējais DPS",
+                "total_fdr": "Kopējais FDR",
+                "total_loan": "Kopējais aizdevums",
+                "deposit_bonus": "Depozīta bonuss",
+                "total_referral": "Kopējā norāde",
+                "total_withdraw": "Kopējais izņemšana",
+                "total_ticket": "Kopējais biļete"
+            }
+        },
+        "drawer": {
+            "title": "Navigācija"
+        },
+        "end_drawer": {
+            "menu_items": {
+                "profile_settings": "Profila iestatījumi",
+                "change_password": "Mainīt paroli",
+                "two_fa": "Drošības iestatījumi",
+                "id_verification": {
+                    "title": "ID verifikācija",
+                    "status": {
+                        "approved": "Apstiprināts",
+                        "pending": "Gaida",
+                        "submit": "Iesniegt tagad"
+                    }
+                },
+                "notifications": "Visi paziņojumi",
+                "help_support": "Palīdzība un atbalsts"
+            },
+            "language": {
+                "title": "Valoda",
+                "select_language": "Izvēlēties valodu"
+            },
+            "logOut": "Izrakstīties"
+        }
+    },
+    "Dashboard": "Instrumentu panelis",
+    "Sign Up": "ReÄ£istrÄ“ties",
+    "Log In": "PieslÄ“gties",
+    "Notification Not Found": "PaziÅ†ojums nav atrasts",
+    "Validation Error": "ValidÄcijas kÄ¼Å«da",
+    "Schema Preview": "ShÄ“mas priekÅ¡skatÄ«jums",
+    "Checkout": "NorÄ“Ä·inÄšana",
+    "Pay": "MaksÄt",
+    "Deposit With": "DepozÄ«ts ar",
+    "Copy": "KopÄ“t",
+    "Copied": "NokopÄ“ts",
+    "Pay Amount:": "MaksÄjuma summa:",
+    "Withdraw Successful": "VeiksmÄ«ga izÅ†emÅ¡ana",
+    "Withdraw Now": "IzÅ†emt tagad",
+    "Withdraw Money": "IzÅ†emt naudu",
+    "Withdraw Account": "IzÅ†emÅ¡anas konts",
+    "Withdraw History": "IzÅ†emÅ¡anu vÄ“sture",
+    "Select": "IzvÄ“lÄ“ties",
+    "Select Account": "IzvÄ“lÄ“ties kontu",
+    "Enter Amount": "IevadÄ«t summu",
+    "Preview:": "PriekÅ¡skatÄ«jums:",
+    "Amount:": "Summa:",
+    "Charge:": "Maksa:",
+    "Payment Method:": "MaksÄjuma metode:",
+    "Prêts": "KredÄ«ti",
+    "Prêt Personnel": "PersonÄ«gais kredÄ«ts",
+    "Prêt Scolaire": "Skolas kredÄ«ts",
+    "Prêt Agricole": "LauksaimniecÄ«bas kredÄ«ts",
+    "Prêt Immobilier": "NekustamÄ kredÄ«ts",
+    "Prêt Auto": "AutomaÅ¡Ä«nas kredÄ«ts",
+    "Prêt Professionnel": "ProfesionÄlais kredÄ«ts",
+    "Prêt d'Urgence": "Ārkārtas kredīts",
+    "personal_loan_title": "Personīgais kredīts",
+    "personal_loan_desc": "Finansējiet savus projektus brīvi bez pamatojuma. Atbilde 24h laikā, fiksētas procentu likmes, bez slēptām maksām.",
+    "personal_loan_amount": "1 000 € – 50 000 €",
+    "personal_loan_duration": "6 – 84 mēneši",
+    "personal_loan_rate": "No 3,9 %",
+    "hero_subtitle": "Ātri, droši un bezrūpīgi kredīti",
+    "hero_title": "Pārvaldiet savas finansiālās vajadzības viegli ar",
+    "hero_title_brand": "Eurovitas",
+    "hero_description": "Atklājiet kredītu risinājumus, kas pielāgoti katram jūsu finansiālā izaugsmes solim, ar uzticamiem un pieejamiem pakalpojumiem.",
+    "hero_button_start": "Sākt",
+    "hero_button_how_it_works": "Kā tas darbojas",
+    "hero_security_text": "100% Drošs un Drošs",
+    "work_step_1": "Reģistrācija",
+    "work_step_2": "Kredīta pieteikums",
+    "work_step_3": "Līdzekļu saņemšana",
+    "work_step_4": "Atmaksāšana",
+    "powerful_section_subtitle": "Barots kredīts",
+    "powerful_section_title": "Mūsu jaudīgie risinājumi",
+    "powerful_section_description": "Eurovitas mēs piedāvājam inovatīvus un drošus kredītu risinājumus, kas apmierina visas jūsu finansiālās vajadzības. No tiešsaistes pieteikuma līdz ātrai apstiprināšanai, mēs vienkāršojam piekļuvi kredītiem.",
+    "powerful_feature_1_title": "Līdzekļu pārskaitīšana",
+    "powerful_feature_1_description": "Pārskaitiet naudu droši starp kontiem ar tiešsaistes un mobilajām iespējām vieglai finanšu pārvaldībai.",
+    "powerful_feature_2_title": "Kredīts",
+    "powerful_feature_2_description": "Saņemiet personīgos vai profesionālos kredītus ar konkurētspējīgām procentu likmēm un vienkāršotu apstiprināšanas procesu.",
+    "powerful_feature_3_title": "Rēķinu apmaksa",
+    "powerful_feature_3_description": "Apmaksājiet savus rēķinus tiešsaistē uzreiz un droši ar plašu maksājumu iespēju klāstu."
+}

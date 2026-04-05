@@ -1,0 +1,335 @@
+{
+    "welcome": {
+        "title": "Willkommen bei",
+        "appName": "Digi Bank",
+        "tagline": "Banking einfach, sicher und nahtlos.",
+        "buttonText": "Loslegen",
+        "exitDialog": {
+            "message": "Sind Sie sicher, dass Sie die Anwendung beenden möchten?"
+        }
+    },
+    "onboarding": {
+        "subTitle": "Bank-zu-Bank-Geldüberweisung verfügbar, auch Swift und Wire",
+        "titleTwo": "Automatische Auszahlung",
+        "subTitleTwo": "Admin kann HTML-Vorlage als Landingpage hochladen und sein eigenes Design verwenden",
+        "titleThree": "Bank DPS",
+        "subTitleThree": "Die Anwendung hat das DPS-System verfügbar",
+        "titleFour": "Bank FDR",
+        "subTitleFour": "Die Anwendung hat das FDR-System verfügbar",
+        "skipButton": "Überspringen",
+        "nextButton": "Weiter"
+    },
+    "signIn": {
+        "noAccountText": "Haben Sie kein Konto?",
+        "signUpButton": "Registrieren",
+        "welcomeText": "Willkommen zurück!",
+        "emailLabel": "E-Mail oder Benutzername",
+        "passwordLabel": "Passwort",
+        "forgotPassword": "Passwort vergessen",
+        "signInButton": "Anmelden",
+        "requiredMessage": "Bitte füllen Sie dieses Feld aus",
+        "emailOrUsernameLabel": "E-Mail oder Benutzername",
+        "emailOrUsernameValidation": "Bitte füllen Sie dieses Feld aus",
+        "resetPasswordButton": "Passwort zurücksetzen",
+        "dontHaveAccount": "Haben Sie kein Konto?",
+        "signUp": "Registrieren",
+        "reset_password": {
+            "already_have_account": "Haben Sie bereits ein Konto?",
+            "login_button": "Anmelden",
+            "screen_title": "Passwort zurücksetzen",
+            "password": "Passwort",
+            "confirm_password": "Passwort bestätigen",
+            "reset_button": "Zurücksetzen",
+            "password_required": "Bitte füllen Sie dieses Feld aus",
+            "confirm_password_required": "Bitte füllen Sie dieses Feld aus"
+        }
+    },
+    "twoFa": {
+        "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+        "login": "Anmelden",
+        "pinError": "6 Ziffern eingeben",
+        "verifyButton": "Verifizieren"
+    },
+    "pinCodeVerification": {
+        "verifyOtp": "OTP verifizieren",
+        "codeSent": "Ihr Code wurde Ihnen per :email gesendet",
+        "enter6DigitsError": "6 Ziffern eingeben"
+    },
+    "signUpScreen": {
+        "haveAccountText": "Haben Sie bereits ein Konto?",
+        "loginButton": "Anmelden",
+        "fields": {
+            "email": "E-Mail",
+            "country": "Land",
+            "phone": "Telefon",
+            "referralCode": "Empfehlungscode"
+        },
+        "validation": {
+            "required": "Bitte füllen Sie dieses Feld aus",
+            "phoneRequired": "Das Telefonfeld ist erforderlich"
+        },
+        "countrySheet": {},
+        "toast": {}
+    },
+    "finishUpAccount": {
+        "existingAccount": {
+            "text": "Haben Sie bereits ein Konto?"
+        },
+        "mainContent": {
+            "form": {
+                "username": {
+                    "label": "Benutzername",
+                    "errorMessage": "Bitte füllen Sie dieses Feld aus"
+                },
+                "firstName": {},
+                "lastName": {},
+                "gender": {
+                    "placeholder": "Geschlecht auswählen",
+                    "option": {
+                        "male": "Männlich",
+                        "female": "Weiblich",
+                        "others": "Andere"
+                    }
+                },
+                "branch": {}
+            },
+            "termsAgreement": {
+                "link": "AGB & Bedingungen"
+            },
+            "submitButton": {}
+        }
+    },
+    "congrats": {
+        "congratsMessage": "Herzlichen Glückwunsch! Sie haben :amount durch die Anmeldung verdient."
+    },
+    "home": {
+        "alertBox": {
+            "kycStatus": {
+                "unverified": {},
+                "pending": {}
+            }
+        },
+        "cardSlider": {
+            "walletName": ":name",
+            "acName": "Kto.",
+            "addMoney": "Geld hinzufügen",
+            "transfer": "Überweisen",
+            "accountCopyMessage": "Kopiert"
+        },
+        "summery": {
+            "dpsTitle": "Mein DPS",
+            "fdrTitle": "Mein FDR",
+            "loanTitle": "Mein Kredit",
+            "summaryTitleDps": "Laufende DPS-Zusammenfassung",
+            "summaryTitleFdr": "Laufende FDR-Zusammenfassung",
+            "summaryTitleLoan": "Laufende Kredit-Zusammenfassung",
+            "endDateLabel": "Enddatum:",
+            "noDataMessage": "Keine Zusammenfassung gefunden"
+        },
+        "quickAccess": {
+            "depositTitle": "Einzahlung",
+            "walletTitle": "Wallet",
+            "virtualCardTitle": "Virtuelle Karte",
+            "transferTitle": "Überweisung"
+        },
+        "transactionOverview": {
+            "cards": {
+                "allTransactions": {},
+                "totalDeposit": {},
+                "totalTransfer": {},
+                "more": {}
+            }
+        },
+        "recentTransactions": {
+            "see_all": "Alle ansehen",
+            "no_data": "Keine kürzlichen Transaktionen gefunden",
+            "dialog": {
+                "time": "Zeit",
+                "transactionId": "Transaktions-ID",
+                "amount": "Betrag",
+                "charge": "Gebühr",
+                "status": "Status",
+                "method": "Methode",
+                "closeButtonText": "Schließen"
+            }
+        },
+        "all_statistics": {
+            "items": {
+                "all_transactions": "Alle Transaktionen",
+                "total_deposit": "Gesamteinzahlung",
+                "total_transfer": "Gesamtüberweisung",
+                "total_pay_bill": "Gesamtrechnung bezahlen",
+                "referral_bonus": "Empfehlungsbonus",
+                "total_dps": "Gesamt DPS",
+                "total_fdr": "Gesamt FDR",
+                "total_loan": "Gesamtkredit",
+                "deposit_bonus": "Einzahlungsbonus",
+                "total_referral": "Gesamt-Empfehlung",
+                "total_withdraw": "Gesamtauszahlung",
+                "total_ticket": "Gesamt-Ticket"
+            }
+        },
+        "drawer": {},
+        "end_drawer": {
+            "menu_items": {
+                "profile_settings": "Profileinstellungen",
+                "change_password": "Passwort ändern",
+                "two_fa": "Sicherheitseinstellungen",
+                "id_verification": {
+                    "approved": "Genehmigt",
+                    "submit": "Jetzt einreichen"
+                },
+                "notifications": "Alle Benachrichtigungen",
+                "help_support": "Hilfe & Support"
+            },
+            "language": {
+                "select_language": "Sprache auswählen"
+            },
+            "logOut": "Abmelden"
+        }
+    },
+    "Dashboard": "Dashboard",
+    "Sign Up": "Registrieren",
+    "Log In": "Anmelden",
+    "Notification Not Found": "Benachrichtigung nicht gefunden",
+    "Validation Error": "Validierungsfehler",
+    "Schema Preview": "Schema-Vorschau",
+    "Checkout": "Kasse",
+    "Pay": "Bezahlen",
+    "Deposit With": "Einzahlen mit",
+    "Copy": "Kopieren",
+    "Copied": "Kopiert",
+    "Pay Amount:": "Betrag bezahlen:",
+    "Withdraw Successful": "Abhebung erfolgreich",
+    "Withdraw Now": "Jetzt abheben",
+    "Withdraw Money": "Geld abheben",
+    "Withdraw Account": "Abhebungskonto",
+    "Withdraw History": "Abhebungsverlauf",
+    "Select": "Auswählen",
+    "Select Account": "Konto auswählen",
+    "Enter Amount": "Betrag eingeben",
+    "Preview:": "Vorschau:",
+    "Amount:": "Betrag:",
+    "Charge:": "Gebühr:",
+    "Payment Method:": "Zahlungsmethode:",
+    "Prêts": "Kredite",
+    "Prêt Personnel": "Persönlicher Kredit",
+    "Prêt Scolaire": "Schulkredit",
+    "Prêt Agricole": "Landwirtschaftlicher Kredit",
+    "Prêt Immobilier": "Immobilienkredit",
+    "Prêt Auto": "Autokredit",
+    "Prêt Professionnel": "Berufskredit",
+    "Prêt d'Urgence": "Notfallkredit",
+    "personal_loan_title": "Persönliches Darlehen",
+    "personal_loan_desc": "Finanzieren Sie Ihre Projekte frei ohne Rechtfertigung. Antwort in 24h, feste Zinssätze, keine versteckten Gebühren.",
+    "personal_loan_amount": "1 000 € – 50 000 €",
+    "personal_loan_duration": "6 – 84 Monate",
+    "personal_loan_rate": "Ab 3,9 %",
+    "hero_subtitle": "Schnelle, sichere und sorgenfreie Kredite",
+    "hero_title": "Verwalten Sie Ihre finanziellen Bedürfnisse mit Leichtigkeit mit",
+    "hero_title_brand": "Eurovitas",
+    "hero_description": "Entdecken Sie Kreditlösungen, die auf jeden Schritt Ihres finanziellen Wachstums zugeschnitten sind, mit zuverlässigen und zugänglichen Dienstleistungen.",
+    "hero_button_start": "Loslegen",
+    "hero_button_how_it_works": "Wie es funktioniert",
+    "hero_security_text": "100% Sicher & Sicher",
+    "work_step_1": "Registrierung",
+    "work_step_2": "Kreditantrag",
+    "work_step_3": "Fondsempfang",
+    "work_step_4": "Rückzahlung",
+    "powerful_section_subtitle": "Powered Loan",
+    "powerful_section_title": "Unsere leistungsstarken Lösungen",
+    "powerful_section_description": "Bei Eurovitas bieten wir innovative und sichere Kreditlösungen, die alle Ihre finanziellen Bedürfnisse erfüllen. Von der Online-Bewerbung bis zur schnellen Genehmigung vereinfachen wir den Zugang zu Krediten.",
+    "powerful_feature_1_title": "Fondsübertragung",
+    "powerful_feature_1_description": "Übertragen Sie Geld sicher zwischen Konten mit Online- und Mobiloptionen für einfache Finanzverwaltung.",
+    "powerful_feature_2_title": "Kredit",
+    "powerful_feature_2_description": "Erhalten Sie persönliche oder berufliche Kredite mit wettbewerbsfähigen Zinssätzen und einem vereinfachten Genehmigungsprozess.",
+    "powerful_feature_3_title": "Rechnungszahlung",
+    "powerful_feature_3_description": "Bezahlen Sie Ihre Rechnungen online sofort und sicher mit einer Vielzahl von Zahlungsoptionen.",
+    "personalLoan": {
+        "title": "Persönliches Darlehen",
+        "description": "Finanzieren Sie Ihre Projekte frei ohne Rechtfertigung. Antwort in 24h, feste Zinssätze, keine versteckten Gebühren."
+    },
+    "professionalLoan": {
+        "title": "Berufskredit"
+    },
+    "loans": {
+        "school": {
+            "title": "Schulkredit",
+            "desc": "Finanzieren Sie Ihre Ausbildung zu günstigen Konditionen.",
+            "amount": "1 000 € – 30 000 €",
+            "duration": "6 – 60 Monate",
+            "rate": "Ab 2,9 %"
+        },
+        "agricultural": {
+            "title": "Landwirtschaftlicher Kredit",
+            "desc": "Unterstützen Sie Ihre landwirtschaftlichen Projekte.",
+            "amount": "5 000 € – 100 000 €",
+            "duration": "12 – 120 Monate",
+            "rate": "Ab 3,5 %"
+        },
+        "realEstate": {
+            "title": "Immobilienkredit",
+            "desc": "Verwirklichen Sie Ihr Immobilienprojekt.",
+            "amount": "50 000 € – 500 000 €",
+            "duration": "12 – 300 Monate",
+            "rate": "Ab 1,9 %"
+        },
+        "auto": {
+            "title": "Autokredit",
+            "desc": "Finanzieren Sie Ihr Fahrzeug zu wettbewerbsfähigen Zinssätzen.",
+            "amount": "3 000 € – 50 000 €",
+            "duration": "12 – 84 Monate",
+            "rate": "Ab 3,2 %"
+        },
+        "professional": {
+            "title": "Berufskredit",
+            "desc": "Entwickeln Sie Ihr Unternehmen mit dedizierten Finanzierungen.",
+            "amount": "10 000 € – 200 000 €",
+            "duration": "12 – 84 Monate",
+            "rate": "Ab 4,5 %"
+        },
+        "emergency": {
+            "title": "Notfallkredit",
+            "desc": "Bewältigen Sie unvorhergesehene Ausgaben mit einem schnellen Kredit.",
+            "amount": "500 € – 10 000 €",
+            "duration": "3 – 24 Monate",
+            "rate": "Ab 5,9 %"
+        }
+    },
+    "personalLoan.title": "Persoenliches Darlehen",
+    "personalLoan.description": "Finanzieren Sie Ihre Projekte frei. Antwort in 24h, feste Zinssaetze, keine versteckten Gebuehren.",
+    "professionalLoan.title": "Berufskredit",
+    "loans.school.title": "Schulkredit",
+    "loans.school.desc": "Finanzieren Sie Ihre Ausbildung zu guenstigen Konditionen.",
+    "loans.school.amount": "1.000 EUR - 30.000 EUR",
+    "loans.school.duration": "6 - 60 Monate",
+    "loans.school.rate": "Ab 2,9 %",
+    "loans.agricultural.title": "Landwirtschaftlicher Kredit",
+    "loans.agricultural.desc": "Unterstuetzen Sie Ihre landwirtschaftlichen Projekte.",
+    "loans.agricultural.amount": "5.000 EUR - 100.000 EUR",
+    "loans.agricultural.duration": "12 - 120 Monate",
+    "loans.agricultural.rate": "Ab 3,5 %",
+    "loans.realEstate.title": "Immobilienkredit",
+    "loans.realEstate.desc": "Verwirklichen Sie Ihr Immobilienprojekt mit wettbewerbsfaehiger Finanzierung.",
+    "loans.realEstate.amount": "50.000 EUR - 500.000 EUR",
+    "loans.realEstate.duration": "12 - 300 Monate",
+    "loans.realEstate.rate": "Ab 1,9 %",
+    "loans.auto.title": "Autokredit",
+    "loans.auto.desc": "Finanzieren Sie Ihr Fahrzeug zu wettbewerbsfaehigen Zinssaetzen.",
+    "loans.auto.amount": "3.000 EUR - 50.000 EUR",
+    "loans.auto.duration": "12 - 84 Monate",
+    "loans.auto.rate": "Ab 3,2 %",
+    "loans.professional.title": "Berufskredit",
+    "loans.professional.desc": "Entwickeln Sie Ihr Unternehmen mit dedizierten Finanzierungen.",
+    "loans.professional.amount": "10.000 EUR - 200.000 EUR",
+    "loans.professional.duration": "12 - 84 Monate",
+    "loans.professional.rate": "Ab 4,5 %",
+    "loans.emergency.title": "Notfallkredit",
+    "loans.emergency.desc": "Bewaeltigen Sie unvorhergesehene Ausgaben mit einem schnellen Kredit.",
+    "loans.emergency.amount": "500 EUR - 10.000 EUR",
+    "loans.emergency.duration": "3 - 24 Monate",
+    "loans.emergency.rate": "Ab 5,9 %",
+    "Civility": "Anrede",
+    "ID Number": "Ausweisnummer",
+    "Passport, CNI or Residence permit number": "Reisepass-, Ausweis- oder Aufenthaltsgenehmigungsnummer"
+}

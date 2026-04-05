@@ -1,0 +1,360 @@
+{
+    "welcome": {
+        "title": "Bienvenue sur",
+        "appName": "Digi Bank",
+        "tagline": "La banque simplifiée, sécurisée et fluide.",
+        "buttonText": "Commencer",
+        "exitDialog": {
+            "title": "Quitter l'application",
+            "message": "Êtes-vous sûr de vouloir quitter l'application ?"
+        }
+    },
+    "onboarding": {
+        "title": "Transfert de fonds",
+        "subTitle": "Transfert de fonds de banque à banque disponible également Swift et Wire",
+        "titleTwo": "Retrait automatique",
+        "subTitleTwo": "L'admin peut télécharger un modèle HTML comme page d'accueil et utiliser son propre design",
+        "titleThree": "DPS bancaire",
+        "subTitleThree": "Le système DPS est disponible dans l'application",
+        "titleFour": "FDR bancaire",
+        "subTitleFour": "Le système FDR est disponible dans l'application",
+        "skipButton": "Ignorer",
+        "nextButton": "Suivant"
+    },
+    "signIn": {
+        "noAccountText": "Pas de compte ?",
+        "signUpButton": "S'inscrire",
+        "welcomeText": "Bienvenue !",
+        "emailLabel": "Email ou nom d'utilisateur",
+        "passwordLabel": "Mot de passe",
+        "forgotPassword": "Mot de passe oublié",
+        "signInButton": "Se connecter",
+        "requiredMessage": "Veuillez remplir ce champ",
+        "exitDialog": {
+            "title": "Quitter l'application",
+            "message": "Êtes-vous sûr de vouloir quitter l'application ?"
+        }
+    },
+    "forgotPassword": {
+        "title": "Réinitialisation du mot de passe",
+        "emailOrUsernameLabel": "Email ou nom d'utilisateur",
+        "emailOrUsernameValidation": "Veuillez remplir ce champ",
+        "resetPasswordButton": "Réinitialiser le mot de passe",
+        "dontHaveAccount": "Pas de compte ?",
+        "signUp": "S'inscrire",
+        "reset_password": {
+            "already_have_account": "Vous avez déjà un compte ?",
+            "login_button": "Se connecter",
+            "screen_title": "Réinitialiser le mot de passe",
+            "password": "Mot de passe",
+            "confirm_password": "Confirmer le mot de passe",
+            "reset_button": "Réinitialiser",
+            "password_required": "Veuillez remplir ce champ",
+            "confirm_password_required": "Veuillez remplir ce champ"
+        }
+    },
+    "twoFa": {
+        "alreadyHaveAccount": "Vous avez déjà un compte ?",
+        "login": "Se connecter",
+        "title": "Vérifier deux FA",
+        "subtitle": "Entrez le code via l'application Google Authenticator",
+        "pinError": "Entrez 6 chiffres",
+        "verifyButton": "Vérifier"
+    },
+    "pinCodeVerification": {
+        "alreadyHaveAccount": "Vous avez déjà un compte ?",
+        "login": "Se connecter",
+        "verifyOtp": "Vérifier OTP",
+        "codeSent": "Votre code vous a été envoyé via :email",
+        "enter6DigitsError": "Entrez 6 chiffres",
+        "verifyButton": "Vérifier"
+    },
+    "signUp": {
+        "haveAccountText": "Vous avez déjà un compte ?",
+        "loginButton": "Se connecter",
+        "title": "Créer un compte",
+        "fields": {
+            "email": "Email",
+            "country": "Pays",
+            "phone": "Téléphone",
+            "referralCode": "Code de parrainage",
+            "password": "Mot de passe"
+        },
+        "validation": {
+            "required": "Veuillez remplir ce champ",
+            "phoneRequired": "Le champ téléphone est requis"
+        },
+        "countrySheet": {
+            "title": "Sélectionner le pays"
+        },
+        "nextButton": "Étape suivante",
+        "toast": {
+            "phoneRequired": "Le champ téléphone est requis"
+        }
+    },
+    "finishUpAccount": {
+        "existingAccount": {
+            "text": "Vous avez déjà un compte ?",
+            "loginButton": {
+                "text": "Se connecter"
+            }
+        },
+        "mainContent": {
+            "title": "Nous y sommes presque !",
+            "form": {
+                "username": {
+                    "label": "Nom d'utilisateur",
+                    "validation": {
+                        "errorMessage": "Veuillez remplir ce champ"
+                    }
+                },
+                "firstName": {
+                    "label": "Prénom",
+                    "validation": {
+                        "errorMessage": "Veuillez remplir ce champ"
+                    }
+                },
+                "lastName": {
+                    "label": "Nom de famille",
+                    "validation": {
+                        "errorMessage": "Veuillez remplir ce champ"
+                    }
+                },
+                "gender": {
+                    "label": "Genre",
+                    "placeholder": "Sélectionner le genre",
+                    "option": {
+                        "male": "Homme",
+                        "female": "Femme",
+                        "others": "Autres"
+                    },
+                    "validation": {
+                        "errorMessage": "Veuillez remplir ce champ"
+                    }
+                },
+                "branch": {
+                    "label": "Agence",
+                    "placeholder": "Sélectionner l'agence",
+                    "validation": {
+                        "errorMessage": "Veuillez remplir ce champ"
+                    }
+                }
+            },
+            "termsAgreement": {
+                "text": "J'accepte les ?",
+                "link": "Termes et conditions"
+            },
+            "submitButton": {
+                "text": "Finaliser le compte"
+            }
+        }
+    },
+    "congrats": {
+        "congratsMessage": "Félicitations ! Vous avez gagné :amount en vous inscrivant.",
+        "buttonText": "Aller au tableau de bord"
+    },
+    "home": {
+        "exitDialog": {
+            "title": "Quitter l'application",
+            "message": "Êtes-vous sûr de vouloir quitter l'application ?"
+        },
+        "alertBox": {
+            "kycStatus": {
+                "unverified": {
+                    "title": "Besoin de soumettre vos informations"
+                },
+                "pending": {
+                    "title": "Vous avez soumis vos documents et ils sont en attente d'approbation"
+                },
+                "buttonText": "Soumettre maintenant"
+            }
+        },
+        "cardSlider": {
+            "walletName": ":name",
+            "acName": "Cpte",
+            "addMoney": "Ajouter de l'argent",
+            "transfer": "Transférer",
+            "accountCopyMessage": "Copié"
+        },
+        "summery": {
+            "dpsTitle": "Mon DPS",
+            "fdrTitle": "Mon FDR",
+            "loanTitle": "Mon prêt",
+            "summaryTitleDps": "Résumé DPS en cours",
+            "summaryTitleFdr": "Résumé FDR en cours",
+            "summaryTitleLoan": "Résumé prêt en cours",
+            "endDateLabel": "Date de fin :",
+            "noDataMessage": "Aucun résumé trouvé"
+        },
+        "quickAccess": {
+            "depositTitle": "Dépôt",
+            "walletTitle": "Portefeuille",
+            "virtualCardTitle": "Carte virtuelle",
+            "transferTitle": "Transférer"
+        },
+        "transactionOverview": {
+            "cards": {
+                "allTransactions": {
+                    "title": "Toutes les transactions"
+                },
+                "totalDeposit": {
+                    "title": "Dépôt total"
+                },
+                "totalTransfer": {
+                    "title": "Transfert total"
+                },
+                "more": {
+                    "title": "Plus"
+                }
+            }
+        },
+        "recentTransactions": {
+            "title": "Transactions récentes",
+            "see_all": "Voir tout",
+            "no_data": "Aucun historique de transaction récente trouvé",
+            "dialog": {
+                "time": "Heure",
+                "transactionId": "ID de transaction",
+                "amount": "Montant",
+                "charge": "Frais",
+                "status": "Statut",
+                "method": "Méthode",
+                "closeButtonText": "Fermer"
+            }
+        },
+        "all_statistics": {
+            "title": "Toutes les statistiques",
+            "items": {
+                "all_transactions": "Toutes les transactions",
+                "total_deposit": "Dépôt total",
+                "total_transfer": "Transfert total",
+                "total_pay_bill": "Payer la facture totale",
+                "referral_bonus": "Bonus de parrainage",
+                "total_dps": "DPS total",
+                "total_fdr": "FDR total",
+                "total_loan": "Prêt total",
+                "deposit_bonus": "Bonus de dépôt",
+                "total_referral": "Parrainage total",
+                "total_withdraw": "Retrait total",
+                "total_ticket": "Ticket total"
+            }
+        },
+        "drawer": {
+            "title": "Navigation"
+        },
+        "end_drawer": {
+            "menu_items": {
+                "profile_settings": "Paramètres de profil",
+                "change_password": "Changer le mot de passe",
+                "two_fa": "Paramètres de sécurité",
+                "id_verification": {
+                    "title": "Vérification d'identité",
+                    "status": {
+                        "approved": "Approuvé",
+                        "pending": "En attente",
+                        "submit": "Soumettre maintenant"
+                    }
+                },
+                "notifications": "Toutes les notifications",
+                "help_support": "Aide et support"
+            },
+            "language": {
+                "title": "Langue",
+                "select_language": "Sélectionner la langue"
+            },
+            "logOut": "Se déconnecter"
+        }
+    },
+    "Dashboard": "Tableau de bord",
+    "Sign Up": "S'inscrire",
+    "Log In": "Se connecter",
+    "Notification Not Found": "Notification introuvable",
+    "Validation Error": "Erreur de validation",
+    "Schema Preview": "Aperçu du schéma",
+    "Checkout": "Paiement",
+    "Pay": "Payer",
+    "Deposit With": "Dépôt avec",
+    "Copy": "Copier",
+    "Copied": "Copié",
+    "Pay Amount:": "Montant à payer:",
+    "Withdraw Successful": "Retrait réussi",
+    "Withdraw Now": "Retirer maintenant",
+    "Withdraw Money": "Retirer de l'argent",
+    "Withdraw Account": "Compte de retrait",
+    "Withdraw History": "Historique des retraits",
+    "Select": "Sélectionner",
+    "Select Account": "Sélectionner un compte",
+    "Enter Amount": "Entrer le montant",
+    "Preview:": "Aperçu:",
+    "Amount:": "Montant:",
+    "Charge:": "Frais:",
+    "Payment Method:": "Méthode de paiement:",
+    "Prêts": "Prêts",
+    "Prêt Personnel": "Prêt Personnel",
+    "Prêt Scolaire": "Prêt Scolaire",
+    "Prêt Agricole": "Prêt Agricole",
+    "Prêt Immobilier": "Prêt Immobilier",
+    "Prêt Auto": "Prêt Auto",
+    "Prêt Professionnel": "Prêt Professionnel",
+    "Prêt d'Urgence": "Prêt d'Urgence",
+    "Nos Prêts": "Nos Prêts",
+    "personalLoan": {
+        "title": "Prêt Personnel",
+        "description": "Accédez à un prêt personnel flexible, avec une approbation rapide et des conditions adaptées à votre profil."
+    },
+    "professionalLoan": {
+        "title": "Prêt Professionnel",
+        "description": "Financez vos projets professionnels avec des taux compétitifs et des modalités de remboursement flexibles."
+    },
+    "loans": {
+        "personal": {
+            "title": "Prêt Personnel",
+            "desc": "Financez librement vos projets sans justificatif d'utilisation. Réponse en 24h, taux fixes, sans frais cachés.",
+            "amount": "1 000 € – 50 000 €",
+            "duration": "6 – 84 mois",
+            "rate": "Dès 3,9 %"
+        },
+        "school": {
+            "title": "Prêt Scolaire",
+            "desc": "Investissez dans l'éducation avec des taux préférentiels et un remboursement différé possible jusqu'à la fin des études.",
+            "amount": "500 € – 30 000 €",
+            "duration": "12 – 120 mois",
+            "rate": "Dès 2,9 %"
+        },
+        "agricultural": {
+            "title": "Prêt Agricole",
+            "desc": "Des financements adaptés aux cycles saisonniers pour équiper et développer votre exploitation agricole.",
+            "amount": "5 000 € – 200 000 €",
+            "duration": "12 – 180 mois",
+            "rate": "Dès 3,5 %"
+        },
+        "realEstate": {
+            "title": "Prêt Immobilier",
+            "desc": "Réalisez votre projet immobilier avec un accompagnement personnalisé et des taux compétitifs sur mesure.",
+            "amount": "30 000 € – 1 000 000 €",
+            "duration": "5 – 25 ans",
+            "rate": "Dès 2,5 %"
+        },
+        "auto": {
+            "title": "Prêt Auto",
+            "desc": "Devenez propriétaire de votre véhicule immédiatement. Neuf, occasion ou électrique, sans apport obligatoire.",
+            "amount": "3 000 € – 80 000 €",
+            "duration": "12 – 84 mois",
+            "rate": "Dès 3,2 %"
+        },
+        "professional": {
+            "title": "Prêt Professionnel",
+            "desc": "Lancez ou développez votre activité. Solutions pour TPE, indépendants, artisans et auto-entrepreneurs.",
+            "amount": "5 000 € – 500 000 €",
+            "duration": "12 – 120 mois",
+            "rate": "Dès 4,2 %"
+        },
+        "emergency": {
+            "title": "Prêt d'Urgence",
+            "desc": "Liquidités versées sous 24h. Dossier ultra-simplifié, disponible 7j/7 pour faire face à l'imprévu.",
+            "amount": "500 € – 10 000 €",
+            "duration": "3 – 36 mois",
+            "rate": "Dès 5,9 %"
+        }
+    }
+}

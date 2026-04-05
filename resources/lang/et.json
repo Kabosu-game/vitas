@@ -1,0 +1,325 @@
+{
+    "welcome": {
+        "title": "Tere tulemast",
+        "appName": "Digi Bank",
+        "tagline": "Pangandus lihtne, turvaline ja sujuv.",
+        "buttonText": "Alusta",
+        "exitDialog": {
+            "title": "Välju rakendusest",
+            "message": "Kas olete kindel, et soovite rakendusest väljuda?"
+        }
+    },
+    "onboarding": {
+        "title": "Rahade ülekandmine",
+        "subTitle": "Saadaval panga panka rahade ülekandmine, samuti Swift ja Wire",
+        "titleTwo": "Automaatne väljavõte",
+        "subTitleTwo": "Administraator saab üles laadida HTML-malli maandumisleheküljena ja kasutada oma disaini",
+        "titleThree": "Panga DPS",
+        "subTitleThree": "Rakenduses on DPS-süsteem saadaval",
+        "titleFour": "Panga FDR",
+        "subTitleFour": "Rakenduses on FDR-süsteem saadaval",
+        "skipButton": "Jäta vahele",
+        "nextButton": "Järgmine"
+    },
+    "signIn": {
+        "noAccountText": "Pole kontot?",
+        "signUpButton": "Registreeru",
+        "welcomeText": "Tere tulemast tagasi!",
+        "emailLabel": "E-post või kasutajanimi",
+        "passwordLabel": "Parool",
+        "forgotPassword": "Unustasin parooli",
+        "signInButton": "Logi sisse",
+        "requiredMessage": "Palun täitke see väli",
+        "exitDialog": {
+            "title": "Välju rakendusest",
+            "message": "Kas olete kindel, et soovite rakendusest väljuda?"
+        }
+    },
+    "forgotPassword": {
+        "title": "Parooli lähtestamine",
+        "emailOrUsernameLabel": "E-post või kasutajanimi",
+        "emailOrUsernameValidation": "Palun täitke see väli",
+        "resetPasswordButton": "Lähtesta parool",
+        "dontHaveAccount": "Pole kontot?",
+        "signUp": "Registreeru",
+        "reset_password": {
+            "already_have_account": "On juba konto?",
+            "login_button": "Logi sisse",
+            "screen_title": "Lähtesta parool",
+            "password": "Parool",
+            "confirm_password": "Kinnita parool",
+            "reset_button": "Lähtesta",
+            "password_required": "Palun täitke see väli",
+            "confirm_password_required": "Palun täitke see väli"
+        }
+    },
+    "twoFa": {
+        "alreadyHaveAccount": "On juba konto?",
+        "login": "Logi sisse",
+        "title": "Kinnita kaks FA",
+        "subtitle": "Sisestage kood Google Authenticator rakenduse kaudu",
+        "pinError": "Sisestage 6 numbrit",
+        "verifyButton": "Kinnita"
+    },
+    "pinCodeVerification": {
+        "alreadyHaveAccount": "On juba konto?",
+        "login": "Logi sisse",
+        "verifyOtp": "Kinnita OTP",
+        "codeSent": "Teie kood saadeti teile :email kaudu",
+        "enter6DigitsError": "Sisestage 6 numbrit",
+        "verifyButton": "Kinnita"
+    },
+    "signUp": {
+        "haveAccountText": "On juba konto?",
+        "loginButton": "Logi sisse",
+        "title": "Loo konto",
+        "fields": {
+            "email": "E-post",
+            "country": "Riik",
+            "phone": "Telefon",
+            "referralCode": "Viite kood",
+            "password": "Parool"
+        },
+        "validation": {
+            "required": "Palun täitke see väli",
+            "phoneRequired": "Telefoniväli on kohustuslik"
+        },
+        "countrySheet": {
+            "title": "Valige riik"
+        },
+        "nextButton": "Järgmine samm",
+        "toast": {
+            "phoneRequired": "Telefoniväli on kohustuslik"
+        }
+    },
+    "finishUpAccount": {
+        "existingAccount": {
+            "text": "On juba konto?",
+            "loginButton": {
+                "text": "Logi sisse"
+            }
+        },
+        "mainContent": {
+            "title": "Peaaegu valmis!",
+            "form": {
+                "username": {
+                    "label": "Kasutajanimi",
+                    "validation": {
+                        "errorMessage": "Palun täitke see väli"
+                    }
+                },
+                "firstName": {
+                    "label": "Eesnimi",
+                    "validation": {
+                        "errorMessage": "Palun täitke see väli"
+                    }
+                },
+                "lastName": {
+                    "label": "Perekonnanimi",
+                    "validation": {
+                        "errorMessage": "Palun täitke see väli"
+                    }
+                },
+                "gender": {
+                    "label": "Sugu",
+                    "placeholder": "Valige sugu",
+                    "option": {
+                        "male": "Mees",
+                        "female": "Naine",
+                        "others": "Muud"
+                    },
+                    "validation": {
+                        "errorMessage": "Palun täitke see väli"
+                    }
+                },
+                "branch": {
+                    "label": "Haru",
+                    "placeholder": "Valige haru",
+                    "validation": {
+                        "errorMessage": "Palun täitke see väli"
+                    }
+                }
+            },
+            "termsAgreement": {
+                "text": "Nõustun ?",
+                "link": "Tingimused ja leping"
+            },
+            "submitButton": {
+                "text": "Lõpeta konto"
+            }
+        }
+    },
+    "congrats": {
+        "congratsMessage": "Palju õnne! Registreerudes teenisite :amount.",
+        "buttonText": "Mine armatuurlauale"
+    },
+    "home": {
+        "exitDialog": {
+            "title": "Välju rakendusest",
+            "message": "Kas olete kindel, et soovite rakendusest väljuda?"
+        },
+        "alertBox": {
+            "kycStatus": {
+                "unverified": {
+                    "title": "Vaja esitada oma teave"
+                },
+                "pending": {
+                    "title": "Olete esitanud oma dokumendid ja see ootab heakskiitu"
+                },
+                "buttonText": "Esita kohe"
+            }
+        },
+        "cardSlider": {
+            "walletName": ":name",
+            "acName": "Konto",
+            "addMoney": "Lisa raha",
+            "transfer": "Ülekanne",
+            "accountCopyMessage": "Kopeeritud"
+        },
+        "summery": {
+            "dpsTitle": "Minu DPS",
+            "fdrTitle": "Minu FDR",
+            "loanTitle": "Minu laen",
+            "summaryTitleDps": "Töötav DPS kokkuvõte",
+            "summaryTitleFdr": "Töötav FDR kokkuvõte",
+            "summaryTitleLoan": "Töötav laenu kokkuvõte",
+            "endDateLabel": "Lõppkuupäev:",
+            "noDataMessage": "Kokkuvõtet ei leitud"
+        },
+        "quickAccess": {
+            "depositTitle": "Hoius",
+            "walletTitle": "Rahakott",
+            "virtualCardTitle": "Virtuaalne kaart",
+            "transferTitle": "Ülekanne"
+        },
+        "transactionOverview": {
+            "cards": {
+                "allTransactions": {
+                    "title": "Kõik tehingud"
+                },
+                "totalDeposit": {
+                    "title": "Koguhoid"
+                },
+                "totalTransfer": {
+                    "title": "Kogu ülekanne"
+                },
+                "more": {
+                    "title": "Rohkem"
+                }
+            }
+        },
+        "recentTransactions": {
+            "title": "Viimased tehingud",
+            "see_all": "Vaata kõiki",
+            "no_data": "Viimast tehingute ajalugu ei leitud",
+            "dialog": {
+                "time": "Aeg",
+                "transactionId": "Tehingu ID",
+                "amount": "Summa",
+                "charge": "Tasu",
+                "status": "Staatus",
+                "method": "Meetod",
+                "closeButtonText": "Sulge"
+            }
+        },
+        "all_statistics": {
+            "title": "Kogu statistika",
+            "items": {
+                "all_transactions": "Kõik tehingud",
+                "total_deposit": "Koguhoid",
+                "total_transfer": "Kogu ülekanne",
+                "total_pay_bill": "Kogu maksa arve",
+                "referral_bonus": "Viite boonus",
+                "total_dps": "Kogu DPS",
+                "total_fdr": "Kogu FDR",
+                "total_loan": "Kogu laen",
+                "deposit_bonus": "Hoiuse boonus",
+                "total_referral": "Kogu viide",
+                "total_withdraw": "Kogu väljavõte",
+                "total_ticket": "Kogu pilet"
+            }
+        },
+        "drawer": {
+            "title": "Navigatsioon"
+        },
+        "end_drawer": {
+            "menu_items": {
+                "profile_settings": "Profiili seaded",
+                "change_password": "Muuda parooli",
+                "two_fa": "Turvaseaded",
+                "id_verification": {
+                    "title": "ID verifitseerimine",
+                    "status": {
+                        "approved": "Kinnitatud",
+                        "pending": "Ootel",
+                        "submit": "Esita kohe"
+                    }
+                },
+                "notifications": "Kõik teated",
+                "help_support": "Abi ja tugi"
+            },
+            "language": {
+                "title": "Keel",
+                "select_language": "Valige keel"
+            },
+            "logOut": "Logi välja"
+        }
+    },
+    "Dashboard": "Armatuurlaud",
+    "Sign Up": "Registreeru",
+    "Log In": "Logi sisse",
+    "Notification Not Found": "Teadet ei leitud",
+    "Validation Error": "Valideerimise viga",
+    "Schema Preview": "Skeemi eelvaade",
+    "Checkout": "Checkout",
+    "Pay": "Maksa",
+    "Deposit With": "Hoius koos",
+    "Copy": "Kopeeri",
+    "Copied": "Kopeeritud",
+    "Pay Amount:": "Makstav summa:",
+    "Withdraw Successful": "Edukas väljavõte",
+    "Withdraw Now": "Võta välja kohe",
+    "Withdraw Money": "Võta raha välja",
+    "Withdraw Account": "Väljavõtukonto",
+    "Withdraw History": "Väljavõtete ajalugu",
+    "Select": "Vali",
+    "Select Account": "Vali konto",
+    "Enter Amount": "Sisesta summa",
+    "Preview:": "Eelvaade:",
+    "Amount:": "Summa:",
+    "Charge:": "Tasud:",
+    "Payment Method:": "Makseviis:",
+    "Prêts": "Laenud",
+    "Prêt Personnel": "Isiklik laen",
+    "Prêt Scolaire": "Koolilaen",
+    "Prêt Agricole": "Põllumajanduslaen",
+    "Prêt Immobilier": "Kinnisvaralaen",
+    "Prêt Auto": "Autolaen",
+    "Prêt Professionnel": "Professionaalne laen",
+    "Prêt d'Urgence": "Hädaolukorra laen",
+    "personal_loan_title": "Isiklik laen",
+    "personal_loan_desc": "Rahasta oma projekte vabalt põhjenduseta. Vastus 24h jooksul, fikseeritud intressimäärad, varjatud tasudeta.",
+    "personal_loan_amount": "1 000 € – 50 000 €",
+    "personal_loan_duration": "6 – 84 kuud",
+    "personal_loan_rate": "Alates 3,9 %",
+    "hero_subtitle": "Kiired, turvalised ja muretu laenud",
+    "hero_title": "Halda oma finantsvajadusi hõlpsalt koos",
+    "hero_title_brand": "Eurovitas",
+    "hero_description": "Avastage laenulahendused, mis on kohandatud igale teie finantskasvu sammule, usaldusväärsete ja juurdepääsetavate teenustega.",
+    "hero_button_start": "Alusta",
+    "hero_button_how_it_works": "Kuidas see töötab",
+    "hero_security_text": "100% Turvaline ja Turvaline",
+    "work_step_1": "Registreerimine",
+    "work_step_2": "Laenutaotlus",
+    "work_step_3": "Rahade vastuvõtmine",
+    "work_step_4": "Tagasimaksmine",
+    "powerful_section_subtitle": "Toitega laen",
+    "powerful_section_title": "Meie võimsad lahendused",
+    "powerful_section_description": "Eurovitas pakume innovatiivseid ja turvalisi laenulahendusi, mis rahuldavad kõiki teie finantsvajadusi. Alates internetitaotlusest kuni kiire heakskiiduni lihtsustame juurdepääsu laenudele.",
+    "powerful_feature_1_title": "Rahade ülekandmine",
+    "powerful_feature_1_description": "Ülekanne raha turvaliselt kontode vahel interneti- ja mobiilivalikutega lihtsa finantshalduse jaoks.",
+    "powerful_feature_2_title": "Laen",
+    "powerful_feature_2_description": "Hankige isiklikke või professionaalseid laene konkurentsivõimeliste intressimääradega ja lihtsustatud heakskiidu protsessiga.",
+    "powerful_feature_3_title": "Arvete maksmine",
+    "powerful_feature_3_description": "Maksa oma arved internetis kohe ja turvaliselt laia valiku maksevalikutega."
+}
