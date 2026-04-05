@@ -46,6 +46,7 @@ jobs:
               /var/www/vitas/storage/framework/views \
               /var/www/vitas/storage/logs \
               /var/www/vitas/bootstrap/cache && \
+             touch /var/www/vitas/storage/installed && \
              chown -R apache:apache /var/www/vitas && \
              chmod -R 755 /var/www/vitas && \
              chmod -R 775 /var/www/vitas/storage && \
