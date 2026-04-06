@@ -1,5 +1,5 @@
 @extends('frontend::layouts.app')
-@section('title', 'Demande envoyée')
+@section('title', __('lr.confirm_title'))
 
 @section('content')
 <section class="section-space">
@@ -11,42 +11,42 @@
                     <div class="confirmation-icon">
                         <i data-lucide="circle-check-big"></i>
                     </div>
-                    <h2>Demande envoyée !</h2>
+                    <h2>{{ __('lr.confirm_heading') }}</h2>
                     <p class="text-muted mb-4">
-                        Votre demande de prêt a bien été reçue. Notre équipe l'examinera dans les 24-48 heures et vous contactera par email à <strong>{{ $loanRequest->email }}</strong>.
+                        {{ __('lr.confirm_desc') }} <strong>{{ $loanRequest->email }}</strong>.
                     </p>
 
                     <div class="ref-box mb-4">
-                        <div class="ref-label">Numéro de référence</div>
+                        <div class="ref-label">{{ __('lr.confirm_ref_label') }}</div>
                         <div class="ref-value">{{ $loanRequest->reference }}</div>
-                        <div class="ref-hint">Conservez ce numéro pour le suivi de votre demande.</div>
+                        <div class="ref-hint">{{ __('lr.confirm_ref_hint') }}</div>
                     </div>
 
                     <div class="summary-grid mb-4">
                         <div class="summary-item">
-                            <span class="s-label">Type de prêt</span>
+                            <span class="s-label">{{ __('lr.confirm_loan_type') }}</span>
                             <span class="s-value">{{ $loanRequest->loan_type }}</span>
                         </div>
                         <div class="summary-item">
-                            <span class="s-label">Montant demandé</span>
+                            <span class="s-label">{{ __('lr.confirm_amount') }}</span>
                             <span class="s-value">{{ setting('currency_symbol','global') }}{{ number_format($loanRequest->amount, 2) }}</span>
                         </div>
                         <div class="summary-item">
-                            <span class="s-label">Durée</span>
+                            <span class="s-label">{{ __('lr.confirm_duration') }}</span>
                             <span class="s-value">{{ $loanRequest->duration_months }} mois</span>
                         </div>
                         <div class="summary-item">
-                            <span class="s-label">Statut</span>
-                            <span class="s-value"><span class="badge bg-warning text-dark">En attente</span></span>
+                            <span class="s-label">{{ __('lr.confirm_status') }}</span>
+                            <span class="s-value"><span class="badge bg-warning text-dark">{{ __('lr.confirm_pending') }}</span></span>
                         </div>
                     </div>
 
                     <div class="d-flex gap-3 justify-content-center">
                         <a href="{{ route('home') }}" class="site-btn secondary-btn">
-                            <i data-lucide="home"></i> Retour à l'accueil
+                            <i data-lucide="home"></i> {{ __('lr.confirm_back') }}
                         </a>
                         <a href="{{ route('loan-request.create') }}" class="site-btn primary-btn">
-                            <i data-lucide="plus-circle"></i> Nouvelle demande
+                            <i data-lucide="plus-circle"></i> {{ __('lr.confirm_new') }}
                         </a>
                     </div>
                 </div>
