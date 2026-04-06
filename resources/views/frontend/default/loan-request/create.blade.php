@@ -194,7 +194,7 @@
                                         @endforeach
                                     </select>
                                     <input type="number" name="amount" id="lrAmount" class="form-control"
-                                           value="{{ old('amount') }}" min="100" max="10000000" step="100"
+                                           value="{{ old('amount') }}" min="100" max="9999999999" step="1"
                                            placeholder="Ex: 15 000" required
                                            style="border-left:0;border-radius:0 8px 8px 0">
                                 </div>
@@ -220,7 +220,7 @@
                             <div class="col-md-6">
                                 <label class="form-label">Revenus mensuels nets (€)</label>
                                 <input type="number" name="monthly_income" class="form-control"
-                                       value="{{ old('monthly_income') }}" min="0" step="100" placeholder="Ex: 2500">
+                                       value="{{ old('monthly_income') }}" min="0" max="9999999999" step="1" placeholder="Ex: 2500">
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Objet du prêt</label>

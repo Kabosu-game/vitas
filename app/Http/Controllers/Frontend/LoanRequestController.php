@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\LoanRequest;
+use App\Traits\NotifyTrait;
 use Illuminate\Http\Request;
 
 class LoanRequestController extends Controller
 {
+    use NotifyTrait;
     public function create()
     {
         $loanTypes = [
@@ -37,12 +39,12 @@ class LoanRequestController extends Controller
             'id_doc_verso'      => ['required', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
             'address_proof'     => ['required', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
             'loan_type'         => ['required', 'string'],
-            'amount'            => ['required', 'numeric', 'min:100', 'max:10000000'],
+            'amount'            => ['required', 'numeric', 'min:100', 'max:9999999999'],
             'currency'          => ['required', 'in:EUR,USD,GBP,CHF,CAD'],
             'duration_months'   => ['required', 'integer', 'min:3', 'max:300'],
             'purpose'           => ['nullable', 'string', 'max:1000'],
             'employment_status' => ['nullable', 'string'],
-            'monthly_income'    => ['nullable', 'numeric', 'min:0'],
+            'monthly_income'    => ['nullable', 'numeric', 'min:0', 'max:9999999999'],
         ]);
 
         $loanRequest = LoanRequest::create([
@@ -66,6 +68,28 @@ class LoanRequestController extends Controller
             'monthly_income'    => $request->monthly_income,
             'status'            => 'pending',
         ]);
+
+        // Send email to user and admin for loan request
+        $shortcodes = [
+            '[[full_name]]' => $request->first_name . ' ' . $request->last_name,
+            '[[reference]]' => $loanRequest->reference,
+            '[[loan_type]]' => $request->loan_type,
+            '[[loan_amount]]' => $request->amount . ' ' . $request->currency,
+            '[[duration_months]]' => $request->duration_months,
+            '[[purpose]]' => $request->purpose,
+            '[[email]]' => $request->email,
+            '[[phone]]' => $request->phone,
+            '[[site_title]]' => setting('site_title', 'global'),
+            '[[site_url]]' => route('home'),
+        ];
+        
+        // Email to user — confirmation de réception
+        $this->mailNotify($request->email, 'loan_request_user', $shortcodes);
+        $this->pushNotify('loan_request_user', $shortcodes, route('loan-request.confirmation', $loanRequest->reference), null);
+
+        // Email to admin — nouvelle demande
+        $this->mailNotify(setting('site_email', 'global'), 'loan_request_admin', $shortcodes);
+        $this->pushNotify('loan_request_admin', $shortcodes, route('admin.loan-request.show', $loanRequest), null, 'Admin');
 
         return redirect()->route('loan-request.confirmation', $loanRequest->reference);
     }

@@ -313,6 +313,7 @@ class WithdrawController extends Controller
         ];
 
         $this->mailNotify(setting('site_email', 'global'), 'withdraw_request', $shortcodes);
+        $this->mailNotify($user->email, 'withdraw_request_user', $shortcodes);
         $this->pushNotify('withdraw_request', $shortcodes, route('admin.withdraw.pending'), $user->id);
         $this->smsNotify('withdraw_request', $shortcodes, $user->phone);
 
@@ -403,7 +404,9 @@ class WithdrawController extends Controller
         ];
 
         $this->mailNotify(setting('site_email', 'global'), 'withdraw_request', $shortcodes);
+        $this->mailNotify($user->email, 'withdraw_request_user', $shortcodes);
         $this->pushNotify('withdraw_request', $shortcodes, route('admin.withdraw.pending'), $user->id);
+        $this->smsNotify('withdraw_request', $shortcodes, $user->phone);
 
         notify()->success('Votre demande de retrait a été soumise. Elle sera traitée sous 24-48h.');
         return redirect()->route('user.withdraw.log');

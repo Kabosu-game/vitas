@@ -7,11 +7,13 @@ use App\Enums\TxnType;
 use App\Http\Controllers\Controller;
 use App\Models\LoanRequest;
 use App\Models\User;
+use App\Traits\NotifyTrait;
 use Illuminate\Http\Request;
 use Txn;
 
 class LoanRequestController extends Controller
 {
+    use NotifyTrait;
     public function index(Request $request)
     {
         $status  = $request->get('status', 'all');
@@ -95,6 +97,19 @@ class LoanRequestController extends Controller
             'System', null,
             $user->id, null, 'User'
         );
+
+        // Send email to user when loan request is approved and credited
+        $shortcodes = [
+            '[[full_name]]'  => $user->full_name,
+            '[[reference]]'  => $loanRequest->reference,
+            '[[loan_amount]]'=> $amount.' '.setting('site_currency', 'global'),
+            '[[site_title]]' => setting('site_title', 'global'),
+            '[[site_url]]'   => route('home'),
+            '[[message]]'    => 'Votre prêt a été approuvé et le montant crédité sur votre compte.',
+        ];
+        $this->mailNotify($user->email, 'loan_request_approved', $shortcodes);
+        $this->pushNotify('loan_request_approved', $shortcodes, route('user.loan.details', $loanRequest->reference), $user->id);
+        $this->smsNotify('loan_request_approved', $shortcodes, $user->phone);
 
         notify()->success(__('Amount credited to user account successfully.'), 'Success');
 

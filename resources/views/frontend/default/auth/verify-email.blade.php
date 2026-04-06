@@ -35,17 +35,36 @@
                     <div class="content">
                         <h3>{{ __('Email Verification') }}</h3>
                         <div class="success-message">
-                            <p>{{ __('Sent the link on your email. Please check your inbox') }}</p>
+                            <p>{{ __('We sent a verification code to your email. Please check your inbox') }}</p>
                         </div>
-                        @if (session('status') === 'verification-link-sent')
-                            <div class="success-message">
-                                <p>{{ __('A new verification link has been sent to the email address you provided during registration.') }}</p>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                @endforeach
                             </div>
                         @endif
+                        @if (session('status') === 'verification-link-sent')
+                            <div class="success-message">
+                                <p>{{ __('A new verification code has been sent to the email address you provided during registration.') }}</p>
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('verification.otp.verify') }}">
+                            @csrf
+                            <div class="inputs">
+                                <label for="code">{{ __('Verification Code') }}</label>
+                                <input type="text" id="code" name="code" value="{{ old('code') }}" class="box-input" placeholder="{{ __('Enter the 6-digit code') }}" required autofocus>
+                            </div>
+                            <div class="inputs">
+                                <button type="submit" class="site-btn primary-btn w-100">{{ __('Verify') }}</button>
+                            </div>
+                        </form>
+
                         <form method="POST" action="{{ route('verification.send') }}">
                             @csrf
                             <div class="inputs">
-                                <button type="submit" class="site-btn primary-btn w-100 centered">{{ __('Resend the email') }}</button>
+                                <button type="submit" class="site-btn primary-btn w-100">{{ __('Resend the code') }}</button>
                             </div>
                         </form>
                         <p>{{ __('Already have an account?') }} <a href="{{ route('login') }}">{{ __('Login here') }}</a></p>

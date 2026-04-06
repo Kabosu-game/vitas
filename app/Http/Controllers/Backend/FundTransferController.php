@@ -272,8 +272,8 @@ class FundTransferController extends Controller
                 '[[site_url]]' => route('home'),
             ];
 
-            $this->mailNotify($transaction->user->email, 'fund_transfer', $shortcodes);
-            $this->smsNotify('fund_transfer', $shortcodes, $transaction->user->phone);
+            $this->mailNotify($transaction->user->email, 'fund_transfer_request', $shortcodes);
+            $this->smsNotify('fund_transfer_request', $shortcodes, $transaction->user->phone);
             $this->pushNotify('fund_transfer_request', $shortcodes, route('user.fund_transfer.transfer.log'), $transaction->user->id);
         } else {
 
@@ -292,8 +292,8 @@ class FundTransferController extends Controller
                 '[[site_url]]' => route('home'),
             ];
 
-            $this->mailNotify($transaction->user->email, 'wire_transfer', $shortcodes);
-            $this->smsNotify('wire_transfer', $shortcodes, $transaction->user->phone);
+            $this->mailNotify($transaction->user->email, 'wire_transfer_request', $shortcodes);
+            $this->smsNotify('wire_transfer_request', $shortcodes, $transaction->user->phone);
             $this->pushNotify('wire_transfer_request', $shortcodes, route('user.fund_transfer.transfer.log'), $transaction->user->id);
         }
 

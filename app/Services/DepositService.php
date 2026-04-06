@@ -64,6 +64,19 @@ class DepositService
         $currency = $gatewayInfo->currency;
         $txnInfo = (new Txn)->new($amount, $charge, $finalAmount, $gatewayInfo->gateway_code, 'Deposit With '.$gatewayInfo->name, $type, TxnStatus::Pending, $currency, $payAmount, $user->id, null, 'User', $manualData, $walletType);
 
+        $shortcodes = [
+            '[[full_name]]' => $user->full_name,
+            '[[txn]]' => $txnInfo->tnx,
+            '[[gateway_name]]' => $gatewayInfo->name,
+            '[[deposit_amount]]' => $amount.' '.setting('site_currency', 'global'),
+            '[[site_title]]' => setting('site_title', 'global'),
+            '[[site_url]]' => route('home'),
+        ];
+
+        $this->mailNotify(setting('site_email', 'global'), 'manual_deposit_request', $shortcodes);
+        $this->mailNotify($user->email, 'user_manual_deposit_request', $shortcodes);
+        $this->pushNotify('user_manual_deposit_request', $shortcodes, route('admin.deposit.pending'), $user->id, 'Admin');
+
         $result = self::depositAutoGateway($gatewayInfo->gateway_code, $txnInfo);
 
         if (request()->expectsJson()) {

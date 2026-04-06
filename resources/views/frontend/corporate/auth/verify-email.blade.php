@@ -12,20 +12,44 @@
                     <h3 class="title">{{ __('Email Verification') }}</h3>
                 </div>
                 <div class="auth-from-box">
-                    <form method="POST" action="{{ route('verification.send') }}">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    @if (session('status') === 'verification-link-sent')
+                        <div class="alert alert-success">
+                            <p>{{ __('A new verification code has been sent to the email address you provided during registration.') }}</p>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('verification.otp.verify') }}">
                         @csrf
                         <div class="row gy-24">
                             <div class="col-xxl-12">
-                                @if (session('status') === 'verification-link-sent')
-                                    <div class="alert alert-success">
-                                        <p>{{ __('A new verification link has been sent to the email address you provided during registration.') }}</p>
+                                <div class="single-floating-input">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="code" name="code" value="{{ old('code') }}" placeholder="{{ __('Verification Code') }}" required autofocus>
+                                        <label for="code">{{ __('Verification Code') }}</label>
                                     </div>
-                                @endif
+                                </div>
                             </div>
                         </div>
                         <div class="auth-bottom-content">
                             <div class="auth-from-btn-wrap">
-                               <button type="submit" class="site-btn gdt-btn w-100">{{ __('Resend the email') }}</button>
+                                <button type="submit" class="site-btn gdt-btn w-100">{{ __('Verify') }}</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form method="POST" action="{{ route('verification.send') }}">
+                        @csrf
+                        <div class="auth-bottom-content">
+                            <div class="auth-from-btn-wrap">
+                               <button type="submit" class="site-btn gdt-btn w-100">{{ __('Resend the code') }}</button>
                             </div>
                             <div class="auth-account">
                                <p class="description">{{ __('Already have an account?') }} <a class="link" href="{{ route('login') }}">{{ __('Login') }}</a></p>

@@ -133,6 +133,7 @@ class WithdrawController extends Controller
         ];
 
         $this->mailNotify(setting('site_email', 'global'), 'withdraw_request', $shortcodes);
+        $this->mailNotify($user->email, 'withdraw_request', $shortcodes);
         $this->pushNotify('withdraw_request', $shortcodes, route('admin.withdraw.pending'), $user->id);
         $this->smsNotify('withdraw_request', $shortcodes, $user->phone);
 

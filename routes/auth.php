@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\EmailOtpVerificationController;
 use App\Http\Controllers\Auth\OtpVerifyController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/register/finish', [RegisteredUserController::class, 'final'])->name('register.final');
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
         ->name('verification.notice');
+
+    Route::post('verify-email/otp', [EmailOtpVerificationController::class, 'verify'])
+        ->name('verification.otp.verify');
 
     Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
         ->middleware(['signed', 'throttle:6,1'])

@@ -44,9 +44,11 @@
 
     </div>
     <div class="main-content">
+        @if(!empty($details['banner']))
         <div class="banner" style="margin-bottom: 0px;">
             <img style="max-width: 100%;" src="{{ $details['banner'] }}" alt="">
         </div>
+        @endif
         <div class="contents" style="color: #666; background: #fff; padding: 35px;">
             <h2 class="title"
                 style="font-size: 24px; font-weight: 500; color: #333; margin-bottom: 40px;">{{ $details['title'] }}</h2>
@@ -54,8 +56,10 @@
                 {{ $details['salutation'] }}
             </div>
             <p style="margin-bottom: 0px; line-height: 32px; font-size: 16px;">{!! $details['message_body'] !!}</p>
+            @if(!empty($details['button_level']) && !empty($details['button_link']))
             <a href="{{ $details['button_link'] }}" class="btn-link"
                style="margin-top: 35px; display: inline-block; padding: 18px 42px; border-radius: 3px; color: #001219; background: #ffffff; font-weight: 500; text-transform: uppercase; font-size: 13px; box-shadow: 0px 0px 2px #00304966; background: #e73667; color: #ffffff; text-decoration: none; text-decoration: none; transition: 0.3s;">{{ $details['button_level'] }}</a>
+            @endif
 
             @if($details['footer_status'])
                 <div class="content-footer" style="margin-top: 50px;">

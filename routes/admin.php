@@ -71,6 +71,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'controller' => UserControlle
     Route::post('store', 'store')->name('store');
     Route::post('status-update/{id}', 'statusUpdate')->name('status-update');
     Route::post('password-update/{id}', 'passwordUpdate')->name('password-update');
+    Route::get('balance-update/{id}', fn($id) => redirect()->route('admin.user.edit', $id));
     Route::post('balance-update/{id}', 'balanceUpdate')->name('balance-update');
     Route::get('mail-send/all', 'mailSendAll')->name('mail-send.all');
     Route::post('mail-send', 'mailSend')->name('mail-send');
@@ -406,6 +407,7 @@ Route::get('language-sync-missing', [LanguageController::class, 'syncMissing'])-
 Route::get('email-template', [EmailTemplateController::class, 'index'])->name('email-template');
 Route::get('email-template-edit/{id}', [EmailTemplateController::class, 'edit'])->name('email-template-edit');
 Route::post('email-template-update', [EmailTemplateController::class, 'update'])->name('email-template-update');
+Route::post('email-template-test/{id}', [EmailTemplateController::class, 'sendTest'])->name('email-template-test');
 
 Route::group(['prefix' => 'template', 'as' => 'template.'], function () {
     Route::group(['prefix' => 'sms', 'as' => 'sms.', 'controller' => SmsController::class], function () {

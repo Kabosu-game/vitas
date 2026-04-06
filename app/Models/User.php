@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\KYCStatus;
 use App\Enums\TxnStatus;
 use App\Enums\TxnType;
+use App\Mail\MailSend;
 use Carbon\Carbon;
 use Coderflex\LaravelTicket\Concerns\HasTickets;
 use Coderflex\LaravelTicket\Contracts\CanUseTickets;
@@ -13,6 +14,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
@@ -38,6 +41,8 @@ class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
         'username',
         'email',
         'email_verified_at',
+        'email_otp',
+        'email_otp_expires_at',
         'gender',
         'date_of_birth',
         'city',
@@ -101,11 +106,93 @@ class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'email_otp_expires_at' => 'datetime',
         'two_fa' => 'boolean',
         'phone_verified' => 'boolean',
         'notifications_permission' => 'array',
         'custom_fields_data' => 'array',
     ];
+
+    public function generateEmailOtp(int $expiresInMinutes = 10): int
+    {
+        $otp = random_int(100000, 999999);
+
+        $this->forceFill([
+            'email_otp' => Hash::make((string) $otp),
+            'email_otp_expires_at' => now()->addMinutes($expiresInMinutes),
+        ])->save();
+
+        return $otp;
+    }
+
+    public function clearEmailOtp(): void
+    {
+        $this->forceFill([
+            'email_otp' => null,
+            'email_otp_expires_at' => null,
+        ])->save();
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        if ($this->hasVerifiedEmail()) {
+            return;
+        }
+
+        $otp = $this->generateEmailOtp();
+        $siteTitle = setting('site_title', 'global');
+
+        $template = EmailTemplate::where('status', true)->where('code', 'email_verification')->first();
+
+        if ($template) {
+            $shortcodes = [
+                '[[full_name]]' => $this->full_name,
+                '[[token]]'     => (string) $otp,
+                '[[site_title]]'=> $siteTitle,
+                '[[site_url]]'  => route('home'),
+            ];
+            $find    = array_keys($shortcodes);
+            $replace = array_values($shortcodes);
+
+            $details = [
+                'subject'      => str_replace($find, $replace, $template->subject),
+                'banner'       => $template->banner ? asset($template->banner) : asset('logo/logo.png'),
+                'title'        => str_replace($find, $replace, $template->title),
+                'salutation'   => str_replace($find, $replace, $template->salutation),
+                'message_body' => str_replace($find, $replace, $template->message_body),
+                'button_level' => $template->button_level,
+                'button_link'  => str_replace($find, $replace, $template->button_link),
+                'footer_status'=> $template->footer_status,
+                'footer_body'  => str_replace($find, $replace, $template->footer_body),
+                'bottom_status'=> $template->bottom_status,
+                'bottom_title' => str_replace($find, $replace, $template->bottom_title),
+                'bottom_body'  => str_replace($find, $replace, $template->bottom_body),
+                'site_logo'    => asset('logo/logo.png'),
+                'site_title'   => $siteTitle,
+                'site_link'    => route('home'),
+            ];
+        } else {
+            $details = [
+                'subject'      => "Confirmez votre adresse email — {$siteTitle}",
+                'banner'       => asset('logo/logo.png'),
+                'title'        => 'Vérification de votre adresse email',
+                'salutation'   => 'Bonjour '.$this->full_name.',',
+                'message_body' => 'Votre code de vérification est : <strong>'.$otp.'</strong>',
+                'button_level' => '',
+                'button_link'  => '',
+                'footer_status'=> 1,
+                'footer_body'  => 'Cordialement,<br />'.$siteTitle,
+                'bottom_status'=> 0,
+                'bottom_title' => '',
+                'bottom_body'  => '',
+                'site_logo'    => asset('logo/logo.png'),
+                'site_title'   => $siteTitle,
+                'site_link'    => route('home'),
+            ];
+        }
+
+        Mail::to($this->email)->send(new MailSend($details));
+    }
 
     /*
      * Scope Declaration

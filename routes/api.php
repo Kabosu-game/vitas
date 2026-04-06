@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\EmailVerificatinController;
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
+use App\Http\Controllers\Api\Auth\EmailOtpController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\TwoFactorController;
@@ -53,6 +54,12 @@ Route::controller(ForgotPasswordController::class)->group(function () {
     Route::post('forgot-password', 'sendResetLinkEmail');
     Route::post('reset-verify-otp', 'verifyOtp');
     Route::post('reset-password', 'resetPassword');
+});
+
+// Email OTP Verification (no auth required)
+Route::controller(EmailOtpController::class)->group(function () {
+    Route::post('email/otp/resend', 'resend');
+    Route::post('email/otp/verify', 'verify');
 });
 
 // Language

@@ -728,6 +728,22 @@ class UserController extends Controller
                     walletType: $wallet_type
                 );
 
+                // Send email to user when balance is added manually
+                $shortcodes = [
+                    '[[full_name]]' => $user->full_name,
+                    '[[subject]]' => 'Crédit sur votre compte — '.$amount.' '.setting('site_currency', 'global'),
+                    '[[amount]]' => $amount.' '.setting('site_currency', 'global'),
+                    '[[wallet_name]]' => $wallet_name == 'default' ? 'par défaut' : ucwords($wallet_name),
+                    '[[site_title]]' => setting('site_title', 'global'),
+                    '[[site_url]]' => route('home'),
+                    '[[message]]' => 'Votre compte a été crédité de '.$amount.' '.setting('site_currency', 'global').' par l\'administrateur.',
+                    '[[admin_name]]' => $adminUser->full_name,
+                ];
+                $this->mailNotify(setting('site_email', 'global'), 'user_mail', $shortcodes);
+                $this->mailNotify($user->email, 'user_mail', $shortcodes);
+                $this->pushNotify('user_mail', $shortcodes, route('user.dashboard'), $user->id);
+                $this->smsNotify('user_mail', $shortcodes, $user->phone);
+
                 $status = 'Success';
                 $message = __('Balance added successfully!');
             } elseif ($type == 'subtract') {
@@ -765,6 +781,22 @@ class UserController extends Controller
                     walletType: $wallet_type
                 );
 
+                // Send email to user when balance is subtracted manually
+                $shortcodes = [
+                    '[[full_name]]' => $user->full_name,
+                    '[[subject]]' => 'Débit sur votre compte — '.$amount.' '.setting('site_currency', 'global'),
+                    '[[amount]]' => $amount.' '.setting('site_currency', 'global'),
+                    '[[wallet_name]]' => $wallet_name == 'default' ? 'par défaut' : ucwords($wallet_name),
+                    '[[site_title]]' => setting('site_title', 'global'),
+                    '[[site_url]]' => route('home'),
+                    '[[message]]' => 'Votre compte a été débité de '.$amount.' '.setting('site_currency', 'global').' par l\'administrateur.',
+                    '[[admin_name]]' => $adminUser->full_name,
+                ];
+                $this->mailNotify(setting('site_email', 'global'), 'user_mail', $shortcodes);
+                $this->mailNotify($user->email, 'user_mail', $shortcodes);
+                $this->pushNotify('user_mail', $shortcodes, route('user.dashboard'), $user->id);
+                $this->smsNotify('user_mail', $shortcodes, $user->phone);
+
                 $status = 'Success';
                 $message = __('Balance subtracted successfully!');
             }
@@ -773,9 +805,9 @@ class UserController extends Controller
 
             return redirect()->back();
         } catch (Exception $e) {
-            $status = 'warning';
-            $message = __('something is wrong');
-            $code = 503;
+            notify()->error(__('something is wrong'), 'Error');
+
+            return redirect()->back();
         }
     }
 

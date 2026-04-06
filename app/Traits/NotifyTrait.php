@@ -29,7 +29,7 @@ trait NotifyTrait
                 $replace = array_values($shortcodes);
                 $details = [
                     'subject' => str_replace($find, $replace, $template->subject),
-                    'banner' => asset($template->banner),
+                    'banner' => $template->banner ? asset($template->banner) : '',
                     'title' => str_replace($find, $replace, $template->title),
                     'salutation' => str_replace($find, $replace, $template->salutation),
                     'message_body' => str_replace($find, $replace, $template->message_body),

@@ -54,6 +54,9 @@
                                             </li>
                                             @endif
                                         @endforeach
+                                        <li>
+                                            <a href="{{ route('loan-request.create') }}">{{ __('Demande de Prêt') }}</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>

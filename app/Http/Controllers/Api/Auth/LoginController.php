@@ -44,6 +44,14 @@ class LoginController extends Controller
             ], 401);
         }
 
+        if (setting('email_verification', 'permission') && ! $user->hasVerifiedEmail()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Email is not verified',
+                'requires_email_verification' => true,
+            ], 403);
+        }
+
         $this->ensureIsNotRateLimited($type, $request);
 
         RateLimiter::clear($this->throttleKey($request->email));

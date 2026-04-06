@@ -54,6 +54,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->authenticate();
         $request->session()->regenerate();
+
+        if (setting('email_verification', 'permission') && ! $request->user()->hasVerifiedEmail()) {
+            session()->put('site-color-mode', $oldTheme);
+            return redirect()->route('verification.notice');
+        }
+
         if (setting('otp_verification', 'permission')) {
             $user = Auth::user();
             $otp = random_int(1000, 9999);

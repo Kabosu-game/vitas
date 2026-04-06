@@ -20,7 +20,13 @@ class EmailVerificationPromptController extends Controller
             return redirect()->route('user.dashboard');
         }
 
-        $request->user()->sendEmailVerificationNotification();
+        $user = $request->user();
+        if (! $user->hasVerifiedEmail()) {
+            $shouldSend = ! $user->email_otp || ! $user->email_otp_expires_at || $user->email_otp_expires_at->isPast();
+            if ($shouldSend) {
+                $user->sendEmailVerificationNotification();
+            }
+        }
 
         return $request->user()->hasVerifiedEmail()
             ? redirect()->intended(RouteServiceProvider::HOME)

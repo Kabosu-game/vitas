@@ -147,6 +147,10 @@ class RegisteredUserController extends Controller
         ];
         $user = User::create($regiData);
 
+        if (setting('email_verification', 'permission')) {
+            $user->sendEmailVerificationNotification();
+        }
+
         $shortcodes = [
             '[[full_name]]' => $formData['first_name'].' '.$formData['last_name'],
         ];
@@ -171,6 +175,10 @@ class RegisteredUserController extends Controller
         LoginActivities::add();
 
         $request->session()->put('newly_registered', true);
+
+        if (setting('email_verification', 'permission') && ! $user->hasVerifiedEmail()) {
+            return to_route('verification.notice');
+        }
 
         return to_route('register.final');
     }

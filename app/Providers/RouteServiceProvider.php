@@ -44,11 +44,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix(setting('site_admin_prefix', 'global'))
                 ->name('admin.')
                 ->group(base_path('routes/admin.php'));
-
-            // Dyanmic Page
-            Route::middleware('web', 'translate')
-                ->get('/{page}', PageController::class)
-                ->name('page');
         });
     }
 

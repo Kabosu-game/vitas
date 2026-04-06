@@ -148,6 +148,22 @@ trait Payment
 
         Txn::update($ref, TxnStatus::Success, $txnInfo->user_id);
 
+        // Send email to user when account is credited
+        $shortcodes = [
+            '[[full_name]]' => $txnInfo->user->full_name,
+            '[[txn]]' => $txnInfo->tnx,
+            '[[gateway_name]]' => $txnInfo->method,
+            '[[deposit_amount]]' => $txnInfo->amount.' '.setting('site_currency', 'global'),
+            '[[site_title]]' => setting('site_title', 'global'),
+            '[[site_url]]' => route('home'),
+            '[[message]]' => 'Your account has been credited successfully.',
+            '[[status]]' => 'Success',
+        ];
+        $this->mailNotify(setting('site_email', 'global'), 'withdraw_request', $shortcodes);
+        $this->mailNotify($txnInfo->user->email, 'withdraw_request', $shortcodes);
+        $this->pushNotify('withdraw_request', $shortcodes, route('user.deposit.log'), $txnInfo->user->id);
+        $this->smsNotify('withdraw_request', $shortcodes, $txnInfo->user->phone);
+
         if (setting('deposit_level')) {
             $level = LevelReferral::where('type', 'deposit')->max('the_order') + 1;
             creditReferralBonus($txnInfo->user, 'deposit', $txnInfo->amount, $level);

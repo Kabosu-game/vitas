@@ -123,6 +123,10 @@ class RegisterController extends Controller
                 'kyc' => Kyc::where('status', 1)->exists() ? KYCStatus::NOT_SUBMITTED : KYCStatus::Verified,
             ]);
 
+            if (setting('email_verification', 'permission')) {
+                $user->sendEmailVerificationNotification();
+            }
+
             $shortcodes = [
                 '[[full_name]]' => $formData['first_name'].' '.$formData['last_name'],
             ];
@@ -150,7 +154,7 @@ class RegisterController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => __('Registered Successfully'),
-                'token' => $user->createToken('auth_token')->plainTextToken,
+                'requires_email_verification' => setting('email_verification', 'permission') ? true : false,
             ]);
         } catch (\Throwable $th) {
             DB::rollBack();

@@ -102,7 +102,8 @@ class LoanService
             '[[installment_rate]]' => $plan->installment_rate,
         ];
         $this->smsNotify('loan_apply', $shortcodes, $user->phone);
-        $this->mailNotify(setting('support_email', 'global'), 'loan_apply', $shortcodes);
+        $this->mailNotify(setting('support_email', 'global'), 'loan_apply_admin', $shortcodes);
+        $this->mailNotify($user->email, 'loan_apply', $shortcodes);
         $this->pushNotify('loan_apply', $shortcodes, route('user.loan.details', $loan->loan_no), $user->id);
         $this->pushNotify('loan_apply', $shortcodes, route('admin.loan.details', $loan->id), $user->id, 'Admin');
 

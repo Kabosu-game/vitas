@@ -89,6 +89,7 @@
     <!-- Body main wrapper end -->
 
     @include('frontend::include.__footer')
+    @include('frontend::include.__whatsapp')
     @include('frontend::cookie.gdpr_cookie')
     @include('frontend::include.__script')
 
