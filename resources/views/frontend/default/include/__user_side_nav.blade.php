@@ -26,7 +26,8 @@
                 @elseif ($navigation->type == 'fdr' && setting('user_fdr', 'permission') && auth()->user()->fdr_status)
                     @include('frontend::include.__menu-item',['navigation' => $navigation])
                 @elseif ($navigation->type == 'loan' && setting('user_loan', 'permission') && auth()->user()->loan_status)
-                    @include('frontend::include.__menu-item',['navigation' => $navigation])
+                    {{-- Loan menu disabled --}}
+                    {{-- @include('frontend::include.__menu-item',['navigation' => $navigation]) --}}
                 @elseif ($navigation->type == 'rewards' && setting('user_reward', 'permission') && auth()->user()->reward_status)
                     @include('frontend::include.__menu-item',['navigation' => $navigation])
                 @elseif ($navigation->type == 'referral' && setting('sign_up_referral', 'permission') && auth()->user()->referral_status)

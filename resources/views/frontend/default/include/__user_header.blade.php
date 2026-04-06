@@ -84,19 +84,7 @@
                                             <li><a class="dropdown-item" href="{{ route('user.setting.show') }}"><i data-lucide="settings"></i><span>{{ __('Profile Settings') }}</span></a></li>
                                             <li><a class="dropdown-item" href="{{ route('user.change.password') }}"><i data-lucide="lock"></i><span>{{ __('Change Password') }}</span></a></li>
                                             <li><a class="dropdown-item" href="{{ route('user.setting.security') }}"><i data-lucide="shield"></i><span>{{ __('2FA Authentication') }}</span></a></li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route('user.kyc') }}"><i data-lucide="file-text"></i><span>{{ __('ID Verification') }}</span>
-                                                    @if(auth()->user()->kyc == \App\Enums\KYCStatus::Pending->value)
-                                                        <b class="verification pending">{{ __('Pending') }}</b>
-                                                    @endif
-                                                    @if(auth()->user()->kyc == \App\Enums\KYCStatus::Verified->value)
-                                                        <b class="verification bg-success">{{ __('Approved') }}</b>
-                                                    @endif
-                                                    @if(auth()->user()->kyc == \App\Enums\KYCStatus::NOT_SUBMITTED->value || auth()->user()->kyc == \App\Enums\KYCStatus::Failed->value)
-                                                        <b class="verification rejected">{{ __('Submit Now') }}</b>
-                                                    @endif
-                                                </a>
-                                            </li>
+                                            {{-- ID Verification menu removed --}}
                                             <li><a class="dropdown-item" href="{{ route('user.notification.all') }}"><i data-lucide="bell"></i><span>{{ __('All Notifiactions') }}</span></a></li>
                                             <li><a class="dropdown-item" href="{{ route('user.ticket.index') }}"><i data-lucide="help-circle"></i><span>{{ __('Help & Support') }}</span></a></li>
                                             <li>

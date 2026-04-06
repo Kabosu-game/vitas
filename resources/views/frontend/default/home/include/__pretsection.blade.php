@@ -3,9 +3,9 @@
     <div class="container">
         <div class="row justify-content-center section-title-space">
             <div class="col-xxl-6 col-xl-6 col-lg-8 text-center">
-                <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle">Nos Produits</span>
-                <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">Prêts Disponibles</h2>
-                <p data-aos="fade-up" data-aos-duration="2000" class="description mt-10">Choisissez le financement adapté à votre situation. Des solutions flexibles pour chaque projet de vie.</p>
+                <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle">{{ __('home.prets_subtitle') }}</span>
+                <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">{{ __('home.prets_title') }}</h2>
+                <p data-aos="fade-up" data-aos-duration="2000" class="description mt-10">{{ __('home.prets_desc') }}</p>
             </div>
         </div>
         <div class="row gy-30">
@@ -34,7 +34,7 @@
                         <li><span class="meta-label">Durée</span><span class="meta-value">{{ $p['duree'] }}</span></li>
                         <li><span class="meta-label">Taux</span><span class="meta-value highlight">{{ $p['taux'] }}</span></li>
                     </ul>
-                    <a href="{{ url($p['slug']) }}" class="pret-card-btn">En savoir plus <i data-lucide="arrow-right"></i></a>
+                    <a href="{{ url($p['slug']) }}" class="pret-card-btn">{{ __('home.learn_more') }} <i data-lucide="arrow-right"></i></a>
                 </div>
             </div>
             @endforeach

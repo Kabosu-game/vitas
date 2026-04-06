@@ -1,7 +1,8 @@
 @extends('frontend::pages.index')
-@section('title') Calculateur de Prêt @endsection
-@section('meta_keywords') calculateur prêt, simulation prêt, Eurovitas Finanzen @endsection
-@section('meta_description') Simulez votre prêt en quelques secondes avec le calculateur Eurovitas Finanzen @endsection
+
+@section('title') {{ __("loan_calculator_title") }} @endsection
+@section('meta_keywords') {{ __("loan_calculator_keywords") }} @endsection
+@section('meta_description') {{ __("loan_calculator_description") }} @endsection
 
 @section('page-content')
 <section class="section-space position-relative">
@@ -10,9 +11,9 @@
             <div class="col-xl-8 col-lg-10">
 
                 <div class="section-title-wrapper text-center mb-50">
-                    <span class="section-subtitle">Simulation gratuite</span>
-                    <h2 class="section-title">Calculateur de Prêt Eurovitas Finanzen</h2>
-                    <p class="mt-10" style="color:var(--clr-body-text,#6b7280)">Ajustez les paramètres pour estimer vos mensualités instantanément.</p>
+                    <span class="section-subtitle">{{ __("loan_calculator_subtitle") }}</span>
+                    <h2 class="section-title">{{ __("loan_calculator_title") }}</h2>
+                    <p class="mt-10" style="color:var(--clr-body-text,#6b7280)">{{ __("loan_calculator_desc") }}</p>
                 </div>
 
                 <div class="calc-card">
@@ -20,7 +21,7 @@
                     {{-- Montant --}}
                     <div class="calc-field">
                         <div class="calc-label-row">
-                            <label>Montant du prêt</label>
+                            <label>{{ __("loan_amount") }}</label>
                             <span class="calc-badge" id="displayAmount">10 000 €</span>
                         </div>
                         <input type="range" id="rangeAmount" min="1000" max="100000" step="500" value="10000" class="calc-range">
@@ -30,7 +31,7 @@
                     {{-- Durée --}}
                     <div class="calc-field">
                         <div class="calc-label-row">
-                            <label>Durée</label>
+                            <label>{{ __("loan_duration") }}</label>
                             <span class="calc-badge" id="displayDuration">24 mois</span>
                         </div>
                         <input type="range" id="rangeDuration" min="6" max="120" step="6" value="24" class="calc-range">
@@ -40,7 +41,7 @@
                     {{-- Taux --}}
                     <div class="calc-field">
                         <div class="calc-label-row">
-                            <label>Taux d'intérêt annuel</label>
+                            <label>{{ __("loan_rate") }}</label>
                             <span class="calc-badge" id="displayRate">5,0 %</span>
                         </div>
                         <input type="range" id="rangeRate" min="1" max="25" step="0.5" value="5" class="calc-range">
@@ -52,21 +53,21 @@
                     {{-- Résultats --}}
                     <div class="calc-results">
                         <div class="calc-result-item featured">
-                            <div class="calc-result-label">Mensualité</div>
+                            <div class="calc-result-label">{{ __("loan_monthly_payment") }}</div>
                             <div class="calc-result-value" id="resMensualite">—</div>
                         </div>
                         <div class="calc-result-item">
-                            <div class="calc-result-label">Total des intérêts</div>
+                            <div class="calc-result-label">{{ __("loan_total_interest") }}</div>
                             <div class="calc-result-value" id="resInterets">—</div>
                         </div>
                         <div class="calc-result-item">
-                            <div class="calc-result-label">Total à rembourser</div>
+                            <div class="calc-result-label">{{ __("loan_total_payment") }}</div>
                             <div class="calc-result-value" id="resTotal">—</div>
                         </div>
                     </div>
 
                     <div class="text-center mt-40">
-                        <a href="{{ route('loan-request.create') }}" class="tp-btn">{{ __('Faire une demande de prêt') }}</a>
+                        <a href="{{ route('loan-request.create') }}" class="tp-btn">{{ __("loan_request_btn") }}</a>
                     </div>
                 </div>
 
@@ -74,86 +75,6 @@
         </div>
     </div>
 </section>
-
-<style>
-.calc-card {
-    background: var(--clr-common-white, #fff);
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 4px 32px rgba(0,0,0,.06);
-}
-.dark .calc-card {
-    background: var(--clr-bg-2, #1e2235);
-    border-color: rgba(255,255,255,.08);
-}
-.calc-field { margin-bottom: 32px; }
-.calc-label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-.calc-label-row label { font-weight:600; font-size:15px; margin:0; }
-.calc-badge {
-    background: var(--clr-theme-1, #4f46e5);
-    color: #fff;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 14px;
-    min-width: 90px;
-    text-align: center;
-}
-.calc-range {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 6px;
-    border-radius: 3px;
-    background: #e5e7eb;
-    outline: none;
-    cursor: pointer;
-}
-.dark .calc-range { background: rgba(255,255,255,.15); }
-.calc-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--clr-theme-1, #4f46e5);
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(79,70,229,.4);
-}
-.calc-range::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--clr-theme-1, #4f46e5);
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 2px 8px rgba(79,70,229,.4);
-}
-.calc-range-limits { display:flex; justify-content:space-between; font-size:12px; color:#9ca3af; margin-top:6px; }
-.calc-divider { border:none; border-top:1px solid rgba(0,0,0,.08); margin:8px 0 32px; }
-.dark .calc-divider { border-color:rgba(255,255,255,.08); }
-.calc-results { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
-@media(max-width:600px){ .calc-results{ grid-template-columns:1fr; } }
-.calc-result-item {
-    background: #f9fafb;
-    border-radius: 12px;
-    padding: 20px 16px;
-    text-align: center;
-    border: 1px solid #e5e7eb;
-}
-.dark .calc-result-item { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08); }
-.calc-result-item.featured {
-    background: var(--clr-theme-1, #4f46e5);
-    border-color: transparent;
-}
-.calc-result-label { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:#6b7280; margin-bottom:8px; }
-.calc-result-item.featured .calc-result-label { color:rgba(255,255,255,.8); }
-.calc-result-value { font-size:22px; font-weight:700; color:#111827; }
-.dark .calc-result-value { color:#f3f4f6; }
-.calc-result-item.featured .calc-result-value { color:#fff; font-size:26px; }
-.mt-40 { margin-top: 40px; }
-.mt-10 { margin-top: 10px; }
-.mb-50 { margin-bottom: 50px; }
-</style>
 
 @section('script')
 <script>
@@ -197,5 +118,4 @@
     calc();
 })();
 </script>
-@endsection
 @endsection

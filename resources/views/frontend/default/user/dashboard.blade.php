@@ -172,7 +172,7 @@
 <div class="dash-welcome">
     <div class="dash-welcome__text">
         <h2>{{ grettings() }}, {{ auth()->user()->first_name }} 👋</h2>
-        <p>{{ __('Here\'s an overview of your account today') }} — {{ now()->format('d M Y') }}</p>
+        <p>{{ __('dashboard_welcome_overview') }} — {{ now()->format(__('dashboard_welcome_date_format')) }}</p>
     </div>
     <div class="dash-welcome__actions">
         <a href="{{ route('user.deposit.amount') }}" class="dash-welcome__btn dash-welcome__btn--primary">
@@ -291,7 +291,7 @@
                 <div class="dash-loan__item">
                     <div>
                         <div style="font-weight:600;font-size:13px">{{ $lr->loan_type }}</div>
-                        <div class="dash-loan__ref">Réf. {{ $lr->reference }}</div>
+                        <div class="dash-loan__ref">{{ __('ref_prefix') }} {{ $lr->reference }}</div>
                     </div>
                     <div style="text-align:right">
                         <div class="dash-loan__badge">{{ $lr->currency ?? 'EUR' }} {{ number_format($lr->approved_amount, 2) }}</div>

@@ -53,16 +53,16 @@
                     {{-- Col 3 : Prêts --}}
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="footer-widget-1-3">
-                            <div class="footer-widget-title"><h5>{{ __('Nos Prêts') }}</h5></div>
+                            <div class="footer-widget-title"><h5>{{ __('footer_loans_title') }}</h5></div>
                             <div class="footer-link">
                                 <ul>
-                                    <li><a href="{{ url('pret-personnel') }}">{{ __('Prêt Personnel') }}</a></li>
-                                    <li><a href="{{ url('pret-scolaire') }}">{{ __('Prêt Scolaire') }}</a></li>
-                                    <li><a href="{{ url('pret-agricole') }}">{{ __('Prêt Agricole') }}</a></li>
-                                    <li><a href="{{ url('pret-immobilier') }}">{{ __('Prêt Immobilier') }}</a></li>
-                                    <li><a href="{{ url('pret-auto') }}">{{ __('Prêt Auto') }}</a></li>
-                                    <li><a href="{{ url('pret-professionnel') }}">{{ __('Prêt Professionnel') }}</a></li>
-                                    <li><a href="{{ url('pret-urgence') }}">{{ __('Prêt d\'Urgence') }}</a></li>
+                                    <li><a href="{{ url('pret-personnel') }}">{{ __('nav.pret_personnel') }}</a></li>
+                                    <li><a href="{{ url('pret-scolaire') }}">{{ __('nav.pret_scolaire') }}</a></li>
+                                    <li><a href="{{ url('pret-agricole') }}">{{ __('nav.pret_agricole') }}</a></li>
+                                    <li><a href="{{ url('pret-immobilier') }}">{{ __('nav.pret_immobilier') }}</a></li>
+                                    <li><a href="{{ url('pret-auto') }}">{{ __('nav.pret_auto') }}</a></li>
+                                    <li><a href="{{ url('pret-professionnel') }}">{{ __('nav.pret_professionnel') }}</a></li>
+                                    <li><a href="{{ url('pret-urgence') }}">{{ __('nav.pret_urgence') }}</a></li>
                                 </ul>
                             </div>
                         </div>

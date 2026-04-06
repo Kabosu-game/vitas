@@ -1,14 +1,14 @@
 @extends('frontend::layouts.user')
-@section('title') Carte Virtuelle @endsection
+@section('title') {{ __('Virtual Card') }} @endsection
 
 @section('content')
 <div class="row gy-4">
 
-    {{-- Demande de carte --}}
+    {{-- Card Request --}}
     <div class="col-xl-4 col-lg-5">
         <div class="site-card h-100">
             <div class="site-card-header vc-toggle-header" id="vc-form-toggle" style="cursor:pointer">
-                <div class="title-small">Nouvelle carte virtuelle</div>
+                <div class="title-small">{{ __('new_virtual_card') }}</div>
                 <span class="vc-toggle-icon ms-auto d-lg-none"><i data-lucide="chevron-down" id="vc-chevron" style="width:18px;height:18px;transition:transform .3s"></i></span>
             </div>
             <div class="site-card-body" id="vc-form-body">
@@ -16,43 +16,43 @@
                 <div class="vc-fee-info mb-4">
                     <div class="vc-fee-icon"><i data-lucide="credit-card"></i></div>
                     <div>
-                        <div class="vc-fee-label">Frais de création</div>
+                        <div class="vc-fee-label">{{ __('card_creation_fee') }}</div>
                         <div class="vc-fee-amount">€ 10,00</div>
-                        <div class="vc-fee-note">Déduit immédiatement de votre solde principal</div>
+                        <div class="vc-fee-note">{{ __('card_creation_note') }}</div>
                     </div>
                 </div>
 
                 @if(auth()->user()->balance < 10)
                 <div class="alert alert-danger" style="font-size:13px;border-radius:10px">
                     <i data-lucide="alert-triangle" style="width:14px;height:14px;margin-right:6px"></i>
-                    Solde insuffisant. Vous avez besoin d'au moins <strong>€ 10,00</strong>.
+                    {!! __('insufficient_balance') !!}
                 </div>
                 @else
                 <form action="{{ route('user.card.store') }}" method="POST">
                     @csrf
                     <div class="inputs mb-3">
-                        <label class="input-label">Nom sur la carte <span class="required">*</span></label>
+                        <label class="input-label">{{ __('card_name_label') }} <span class="required">*</span></label>
                         <input type="text" name="cardholder_name" class="form-control"
                                value="{{ old('cardholder_name', auth()->user()->full_name) }}"
-                               placeholder="Ex : JEAN DUPONT" style="text-transform:uppercase" required>
-                        <small class="text-muted">Entrez votre nom tel qu'il apparaîtra sur la carte.</small>
+                               placeholder="{{ __('card_name_placeholder') }}" style="text-transform:uppercase" required>
+                        <small class="text-muted">{{ __('card_name_note') }}</small>
                     </div>
 
                     <div class="vc-confirm-row mb-4">
-                        <span>Solde disponible</span>
+                        <span>{{ __('available_balance') }}</span>
                         <span class="fw-bold">{{ $currencySymbol }}{{ number_format(auth()->user()->balance, 2) }}</span>
                     </div>
                     <div class="vc-confirm-row mb-4">
-                        <span>Frais de carte</span>
+                        <span>{{ __('card_fee_amount') }}</span>
                         <span class="fw-bold text-danger">- {{ $currencySymbol }}10,00</span>
                     </div>
                     <div class="vc-confirm-row mb-4" style="border-top:1px solid rgba(0,0,0,.08);padding-top:10px">
-                        <span style="font-weight:700">Solde après</span>
+                        <span style="font-weight:700">{{ __('balance_after') }}</span>
                         <span class="fw-bold">{{ $currencySymbol }}{{ number_format(auth()->user()->balance - 10, 2) }}</span>
                     </div>
 
                     <button type="submit" class="site-btn-sm primary-btn w-100">
-                        <i data-lucide="credit-card"></i> Demander ma carte
+                        <i data-lucide="credit-card"></i> {{ __('request_my_card') }}
                     </button>
                 </form>
                 @endif
@@ -61,11 +61,11 @@
         </div>
     </div>
 
-    {{-- Liste des cartes --}}
+    {{-- Card List --}}
     <div class="col-xl-8 col-lg-7">
         <div class="site-card">
             <div class="site-card-header">
-                <div class="title-small">Mes cartes</div>
+                <div class="title-small">{{ __('my_cards') }}</div>
             </div>
             <div class="site-card-body p-0 overflow-x-auto">
                 @forelse($cards as $card)

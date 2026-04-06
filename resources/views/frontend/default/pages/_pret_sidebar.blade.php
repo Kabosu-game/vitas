@@ -1,34 +1,34 @@
 <div class="pret-sidebar">
-    <h4 class="pret-sidebar-title">Conditions du prêt</h4>
+    <h4 class="pret-sidebar-title">{{ __('loan_sidebar_title') }}</h4>
     <ul class="pret-sidebar-list">
         <li>
-            <span class="pret-sidebar-label"><i data-lucide="arrow-down-circle"></i> Montant minimum</span>
+            <span class="pret-sidebar-label"><i data-lucide="arrow-down-circle"></i> {{ __('loan_min_amount_label') }}</span>
             <span class="pret-sidebar-value">{{ $montant_min }}</span>
         </li>
         <li>
-            <span class="pret-sidebar-label"><i data-lucide="arrow-up-circle"></i> Montant maximum</span>
+            <span class="pret-sidebar-label"><i data-lucide="arrow-up-circle"></i> {{ __('loan_max_amount_label') }}</span>
             <span class="pret-sidebar-value">{{ $montant_max }}</span>
         </li>
         <li>
-            <span class="pret-sidebar-label"><i data-lucide="calendar"></i> Durée</span>
+            <span class="pret-sidebar-label"><i data-lucide="calendar"></i> {{ __('loan_duration_label') }}</span>
             <span class="pret-sidebar-value">{{ $duree }}</span>
         </li>
         <li>
-            <span class="pret-sidebar-label"><i data-lucide="percent"></i> Taux</span>
+            <span class="pret-sidebar-label"><i data-lucide="percent"></i> {{ __('loan_rate_label') }}</span>
             <span class="pret-sidebar-value">{{ $taux }}</span>
         </li>
         <li>
-            <span class="pret-sidebar-label"><i data-lucide="clock"></i> Délai de versement</span>
+            <span class="pret-sidebar-label"><i data-lucide="clock"></i> {{ __('loan_disbursement_label') }}</span>
             <span class="pret-sidebar-value">{{ $delai }}</span>
         </li>
         <li>
-            <span class="pret-sidebar-label"><i data-lucide="file-text"></i> Documents requis</span>
+            <span class="pret-sidebar-label"><i data-lucide="file-text"></i> {{ __('loan_required_docs_label') }}</span>
             <span class="pret-sidebar-value">{{ $justif }}</span>
         </li>
     </ul>
-    <a href="{{ route('loan-request.create') }}" class="tp-btn w-100 text-center mt-20" style="display:block;">Faire une demande</a>
+    <a href="{{ route('loan-request.create') }}" class="tp-btn w-100 text-center mt-20" style="display:block;">{{ __('loan_apply_button') }}</a>
     <a href="{{ url('loan-calculator') }}" class="pret-sim-link mt-10">
-        <i data-lucide="calculator" style="width:14px;height:14px;"></i> Simuler ce prêt
+        <i data-lucide="calculator" style="width:14px;height:14px;"></i> {{ __('loan_simulate_link') }}
     </a>
 </div>
 

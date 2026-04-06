@@ -24,28 +24,43 @@
                                     <ul>
                                         @php
                                         $prets = [
-                                            ['label'=>__('Prêt Personnel'),    'slug'=>'pret-personnel'],
-                                            ['label'=>__('Prêt Scolaire'),     'slug'=>'pret-scolaire'],
-                                            ['label'=>__('Prêt Agricole'),     'slug'=>'pret-agricole'],
-                                            ['label'=>__('Prêt Immobilier'),   'slug'=>'pret-immobilier'],
-                                            ['label'=>__('Prêt Auto'),         'slug'=>'pret-auto'],
-                                            ['label'=>__('Prêt Professionnel'),'slug'=>'pret-professionnel'],
-                                            ['label'=>__('Prêt d\'Urgence'),   'slug'=>'pret-urgence'],
+                                            ['label'=>__('nav.pret_personnel'),    'slug'=>'pret-personnel'],
+                                            ['label'=>__('nav.pret_scolaire'),     'slug'=>'pret-scolaire'],
+                                            ['label'=>__('nav.pret_agricole'),     'slug'=>'pret-agricole'],
+                                            ['label'=>__('nav.pret_immobilier'),   'slug'=>'pret-immobilier'],
+                                            ['label'=>__('nav.pret_auto'),         'slug'=>'pret-auto'],
+                                            ['label'=>__('nav.pret_professionnel'),'slug'=>'pret-professionnel'],
+                                            ['label'=>__('nav.pret_urgence'),      'slug'=>'pret-urgence'],
                                         ];
                                         @endphp
                                         @foreach(($navigations ?? collect()) as $navigation)
+                                            @php
+                                                $navKey = strtolower(str_replace([' ', '-'], ['_', '_'], $navigation->name));
+                                                $translatedName = match($navKey) {
+                                                    'accueil', 'home' => __('nav.main.home'),
+                                                    'à_propos', 'about', 'about_us', 'a_propos', 'apropos', 'a_propos', 'aboutus' => __('nav.main.about'),
+                                                    'services', 'solutions', 'our_solutions' => __('nav.main.services'),
+                                                    'contact', 'contact_us' => __('nav.main.contact'),
+                                                    default => $navigation->tname
+                                                };
+                                                
+                                                // Additional fallback for About menu
+                                                if (str_contains($navKey, 'propos') || str_contains($navKey, 'about')) {
+                                                    $translatedName = __('nav.main.about');
+                                                }
+                                            @endphp
                                             @if($navigation->page_id == null)
                                             <li @class(['active' => $navigation->url == Request::url()])>
-                                                <a href="{{ $navigation->url }}">{{ $navigation->tname }}</a>
+                                                <a href="{{ $navigation->url }}">{{ $translatedName }}</a>
                                             </li>
                                             @else
                                             <li @class(['active' => url($navigation->url) == Request::url()])>
-                                                <a href="{{ url($navigation->url) }}">{{ $navigation->tname }}</a>
+                                                <a href="{{ url($navigation->url) }}">{{ $translatedName }}</a>
                                             </li>
                                             @endif
                                             @if(($navigation->url === 'solutions'))
                                             <li class="has-dropdown">
-                                                <a href="javascript:void(0)">{{ __('Prêts') }}</a>
+                                                <a href="javascript:void(0)">{{ __('nav.prets') }}</a>
                                                 <ul class="submenu">
                                                     @foreach($prets as $p)
                                                     <li><a href="{{ url($p['slug']) }}">{{ $p['label'] }}</a></li>
@@ -55,7 +70,7 @@
                                             @endif
                                         @endforeach
                                         <li>
-                                            <a href="{{ route('loan-request.create') }}">{{ __('Demande de Prêt') }}</a>
+                                            <a href="{{ route('loan-request.create') }}">{{ __('nav.loan_request') }}</a>
                                         </li>
                                     </ul>
                                 </nav>

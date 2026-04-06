@@ -4,8 +4,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-title-wrapper section-title-space text-center">
-                    <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle">Simulation gratuite</span>
-                    <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">Calculateur de Prêt Eurovitas Finanzen</h2>
+                    <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle">{{ __('home.calculator_subtitle') }}</span>
+                    <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">{{ __('home.calculator_title') }}</h2>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                     {{-- Montant --}}
                     <div class="calc-field">
                         <div class="calc-label-row">
-                            <label>Montant du prêt</label>
+                            <label>{{ __('home.calculator_amount_label') }}</label>
                             <span class="calc-badge" id="displayAmount">10 000 €</span>
                         </div>
                         <input type="range" id="rangeAmount" min="1000" max="100000" step="500" value="10000" class="calc-range">
@@ -26,7 +26,7 @@
                     {{-- Durée --}}
                     <div class="calc-field">
                         <div class="calc-label-row">
-                            <label>Durée</label>
+                            <label>{{ __('home.calculator_duration_label') }}</label>
                             <span class="calc-badge" id="displayDuration">24 mois</span>
                         </div>
                         <input type="range" id="rangeDuration" min="6" max="120" step="6" value="24" class="calc-range">
@@ -36,7 +36,7 @@
                     {{-- Taux --}}
                     <div class="calc-field">
                         <div class="calc-label-row">
-                            <label>Taux d'intérêt annuel</label>
+                            <label>{{ __('home.calculator_rate_label') }}</label>
                             <span class="calc-badge" id="displayRate">5,0 %</span>
                         </div>
                         <input type="range" id="rangeRate" min="1" max="25" step="0.5" value="5" class="calc-range">
@@ -48,21 +48,21 @@
                     {{-- Résultats --}}
                     <div class="calc-results">
                         <div class="calc-result-item featured">
-                            <div class="calc-result-label">Mensualité</div>
+                            <div class="calc-result-label">{{ __('home.calculator_monthly_label') }}</div>
                             <div class="calc-result-value" id="resMensualite">—</div>
                         </div>
                         <div class="calc-result-item">
-                            <div class="calc-result-label">Total des intérêts</div>
+                            <div class="calc-result-label">{{ __('home.calculator_interest_label') }}</div>
                             <div class="calc-result-value" id="resInterets">—</div>
                         </div>
                         <div class="calc-result-item">
-                            <div class="calc-result-label">Total à rembourser</div>
+                            <div class="calc-result-label">{{ __('home.calculator_total_label') }}</div>
                             <div class="calc-result-value" id="resTotal">—</div>
                         </div>
                     </div>
 
                     <div class="text-center mt-40">
-                        <a href="{{ route('loan-request.create') }}" class="tp-btn">{{ __('Faire une demande de prêt') }}</a>
+                        <a href="{{ route('loan-request.create') }}" class="tp-btn">{{ __('home.calculator_apply') }}</a>
                     </div>
                 </div>
             </div>

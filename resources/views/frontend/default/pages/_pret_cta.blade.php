@@ -1,11 +1,11 @@
 <div class="pret-cta-banner mt-60" data-aos="fade-up">
     <div class="row align-items-center gy-20">
         <div class="col-lg-8">
-            <h3 class="pret-cta-title">Prêt à déposer votre demande ?</h3>
-            <p class="pret-cta-desc">Complétez votre dossier en ligne en moins de 10 minutes. Réponse de principe sous 24h, sans engagement.</p>
+            <h3 class="pret-cta-title">{{ __('loan_cta_title') }}</h3>
+            <p class="pret-cta-desc">{{ __('loan_cta_desc') }}</p>
         </div>
         <div class="col-lg-4 text-lg-end">
-            <a href="{{ route('loan-request.create') }}" class="tp-btn">Faire une demande</a>
+            <a href="{{ route('loan-request.create') }}" class="tp-btn">{{ __('loan_cta_button') }}</a>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 @extends('frontend::layouts.app')
 @section('title') {{ __('Home') }} @endsection
-@section('meta_keywords') Prêt en ligne, Eurovitas Finanzen, prêt rapide, prêt sécurisé @endsection
-@section('meta_description') Plateforme de prêt en ligne Eurovitas Finanzen pour tous vos besoins financiers @endsection
+@section('meta_keywords') {{ __('home.meta_keywords') }} @endsection
+@section('meta_description') {{ __('home.meta_description') }} @endsection
 
 @section('content')
     @include('frontend::home.include.__hero')

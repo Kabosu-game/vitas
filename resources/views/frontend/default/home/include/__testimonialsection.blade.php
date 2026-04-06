@@ -4,8 +4,8 @@
         <div class="row section-title-space justify-content-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6">
                 <div class="section-title-wrapper text-center">
-                    <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle">Témoignages</span>
-                    <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">Avis Vérifiés de Nos Clients</h2>
+                    <span data-aos="fade-up" data-aos-duration="1000" class="section-subtitle">{{ __('home.testimonial_subtitle') }}</span>
+                    <h2 data-aos="fade-up" data-aos-duration="1500" class="section-title">{{ __('home.testimonial_title') }}</h2>
                 </div>
             </div>
         </div>
@@ -17,20 +17,20 @@
 
                             @php
                             $avis = [
-                                ['name' => 'Marie L.', 'poste' => 'Infirmière', 'note' => 5, 'msg' => 'Demande traitée en moins de 24h. Le processus en ligne est vraiment simple et le service client m\'a guidée à chaque étape. Je recommande vivement Eurovitas Finanzen.'],
-                                ['name' => 'Thomas B.', 'poste' => 'Artisan', 'note' => 5, 'msg' => 'J\'avais besoin d\'un financement urgent pour mon atelier. Eurovitas Finanzen a répondu présent avec un taux très compétitif. Parfait.'],
-                                ['name' => 'Nadia K.', 'poste' => 'Enseignante', 'note' => 5, 'msg' => 'Interface claire, aucun jargon compliqué. J\'ai obtenu mon prêt en quelques jours seulement. Très satisfaite.'],
-                                ['name' => 'Julien M.', 'poste' => 'Chef de projet IT', 'note' => 4, 'msg' => 'Très bonne expérience globale. Les conditions sont transparentes et le remboursement flexible. Je n\'ai pas eu de mauvaise surprise.'],
-                                ['name' => 'Sophie D.', 'poste' => 'Comptable', 'note' => 5, 'msg' => 'Dossier monté rapidement, réponse positive le lendemain. Chez les banques traditionnelles j\'attendais des semaines. Merci Eurovitas Finanzen !'],
-                                ['name' => 'Karim A.', 'poste' => 'Auto-entrepreneur', 'note' => 5, 'msg' => 'En tant qu\'indépendant, trouver un prêt était compliqué. Eurovitas Finanzen a étudié mon dossier sérieusement et m\'a accordé ce dont j\'avais besoin.'],
-                                ['name' => 'Isabelle R.', 'poste' => 'Responsable RH', 'note' => 5, 'msg' => 'Excellent suivi, conseiller disponible et à l\'écoute. Le tableau de bord en ligne pour suivre ses remboursements est très pratique.'],
-                                ['name' => 'Marc P.', 'poste' => 'Commercial', 'note' => 4, 'msg' => 'Bon rapport qualité/prix. Le taux est honnête et les mensualités s\'adaptent à mon budget. Je recommande.'],
-                                ['name' => 'Amina S.', 'poste' => 'Médecin', 'note' => 5, 'msg' => 'Service impeccable du début à la fin. J\'ai apprécié la totale transparence sur les coûts, aucun frais caché. Parfait.'],
-                                ['name' => 'François G.', 'poste' => 'Ingénieur', 'note' => 5, 'msg' => 'J\'ai comparé plusieurs plateformes, Eurovitas Finanzen offre les meilleures conditions. Versement rapide et sans complications.'],
-                                ['name' => 'Laura V.', 'poste' => 'Graphiste', 'note' => 5, 'msg' => 'Simplicité et efficacité. Tout se fait en ligne, sans paperasse inutile. Mon prêt a été validé en un temps record.'],
-                                ['name' => 'Rachid O.', 'poste' => 'Restaurateur', 'note' => 4, 'msg' => 'Bon service, conditions claires. J\'ai pu financer l\'équipement de mon restaurant sans stress. Je ferai à nouveau appel à Eurovitas Finanzen.'],
-                                ['name' => 'Chloé F.', 'poste' => 'Étudiante en master', 'note' => 5, 'msg' => 'Même en tant qu\'étudiante, j\'ai pu obtenir un prêt adapté à mes besoins. L\'équipe a su trouver la meilleure solution pour moi.'],
-                                ['name' => 'David N.', 'poste' => 'Directeur commercial', 'note' => 5, 'msg' => 'Fiable, rapide et professionnel. Exactement ce qu\'on attend d\'une plateforme de financement moderne. Je n\'hésiterai pas à revenir.'],
+                                ['name' => 'Marie L.', 'poste' => 'Nurse', 'note' => 5, 'msg' => 'Application processed in less than 24h. The online process is really simple and customer service guided me every step. I highly recommend Eurovitas Finanzen.'],
+                                ['name' => 'Thomas B.', 'poste' => 'Craftsman', 'note' => 5, 'msg' => 'I needed urgent financing for my workshop. Eurovitas Finanzen responded with a very competitive rate. Perfect.'],
+                                ['name' => 'Nadia K.', 'poste' => 'Teacher', 'note' => 5, 'msg' => 'Clear interface, no complicated jargon. I got my loan in just a few days. Very satisfied.'],
+                                ['name' => 'Julien M.', 'poste' => 'IT Project Manager', 'note' => 4, 'msg' => 'Very good overall experience. Conditions are transparent and repayment is flexible. I had no bad surprises.'],
+                                ['name' => 'Sophie D.', 'poste' => 'Accountant', 'note' => 5, 'msg' => 'File assembled quickly, positive response the next day. With traditional banks I would have waited weeks. Thank you Eurovitas Finanzen!'],
+                                ['name' => 'Karim A.', 'poste' => 'Freelancer', 'note' => 5, 'msg' => 'As a self-employed person, finding a loan was complicated. Eurovitas Finanzen studied my file seriously and granted me what I needed.'],
+                                ['name' => 'Isabelle R.', 'poste' => 'HR Manager', 'note' => 5, 'msg' => 'Excellent follow-up, available and listening advisor. The online dashboard to track repayments is very practical.'],
+                                ['name' => 'Marc P.', 'poste' => 'Salesperson', 'note' => 4, 'msg' => 'Good value for money. The rate is honest and monthly payments fit my budget. I recommend.'],
+                                ['name' => 'Amina S.', 'poste' => 'Doctor', 'note' => 5, 'msg' => 'Impeccable service from start to finish. I appreciated the total transparency on costs, no hidden fees. Perfect.'],
+                                ['name' => 'François G.', 'poste' => 'Engineer', 'note' => 5, 'msg' => 'I compared several platforms, Eurovitas Finanzen offers the best conditions. Fast and hassle-free payment.'],
+                                ['name' => 'Laura V.', 'poste' => 'Graphic Designer', 'note' => 5, 'msg' => 'Simplicity and efficiency. Everything is done online, without unnecessary paperwork. My loan was approved in record time.'],
+                                ['name' => 'Rachid O.', 'poste' => 'Restaurant Owner', 'note' => 4, 'msg' => 'Good service, clear conditions. I was able to finance my restaurant equipment without stress. I will use Eurovitas Finanzen again.'],
+                                ['name' => 'Chloé F.', 'poste' => 'Master\'s Student', 'note' => 5, 'msg' => 'Even as a student, I was able to get a loan adapted to my needs. The team found the best solution for me.'],
+                                ['name' => 'David N.', 'poste' => 'Sales Director', 'note' => 5, 'msg' => 'Reliable, fast and professional. Exactly what you expect from a modern financing platform. I will not hesitate to come back.'],
                             ];
                             @endphp
 
@@ -59,7 +59,7 @@
 
                                         <div class="testimonial-author">
                                             <div class="testimonial-author-info">
-                                                <h4 class="title">{{ $a['name'] }} <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Vérifié</span></h4>
+                                                <h4 class="title">{{ $a['name'] }} <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> {{ __('home.testimonial_verified') }}</span></h4>
                                                 <p class="info">{{ $a['poste'] }}</p>
                                             </div>
                                         </div>
