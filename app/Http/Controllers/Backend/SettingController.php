@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 class SettingController extends Controller
@@ -113,6 +114,8 @@ class SettingController extends Controller
                     Setting::add($key, $val, Setting::getDataType($key, $section));
                 }
             }
+
+            Cache::forget('settings.all');
 
             notify()->success(__('Settings has been saved'), 'Success');
 
