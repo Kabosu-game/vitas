@@ -31,7 +31,10 @@ class Setting extends Model
             return self::set($key, $val, $type);
         }
 
-        return self::create(['name' => $key, 'val' => $val, 'type' => $type]) ? $val : false;
+        $result = self::create(['name' => $key, 'val' => $val, 'type' => $type]);
+        Cache::forget('settings.all');
+
+        return $result ? $val : false;
     }
 
     /**
@@ -73,10 +76,10 @@ class Setting extends Model
     public static function set($key, $val, $type = 'string')
     {
         if ($setting = self::getAllSettings()->where('name', $key)->first()) {
-            return $setting->update([
-                'name' => $key,
-                'val' => $val,
-                'type' => $type]) ? $val : false;
+            $result = $setting->update(['name' => $key, 'val' => $val, 'type' => $type]);
+            Cache::forget('settings.all');
+
+            return $result ? $val : false;
         }
 
         return self::add($key, $val, $type);
