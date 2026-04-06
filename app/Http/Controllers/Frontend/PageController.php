@@ -17,11 +17,19 @@ class PageController extends Controller
     {
         $url = request()->segment(1);
 
+        if (!view()->exists('frontend::pages.'.$url)) {
+            abort(404);
+        }
+
         return view('frontend::pages.'.$url);
     }
 
     public function getPage($section)
     {
+        if (!view()->exists('frontend::pages.'.$section)) {
+            abort(404);
+        }
+
         return view('frontend::pages.'.$section);
     }
 
