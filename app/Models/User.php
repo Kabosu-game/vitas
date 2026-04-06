@@ -191,7 +191,11 @@ class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
             ];
         }
 
-        Mail::to($this->email)->send(new MailSend($details));
+        try {
+            Mail::to($this->email)->send(new MailSend($details));
+        } catch (\Exception $e) {
+            \Log::error('Email verification send failed: ' . $e->getMessage());
+        }
     }
 
     /*
