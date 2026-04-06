@@ -27,15 +27,21 @@ class SettingServiceProvider extends ServiceProvider
     {
         if (App::dbConnectionCheck() && Schema::hasTable('settings')) {
 
-            config()->set([
-                'mail.from.name' => setting('email_from_name', 'mail'),
-                'mail.from.address' => setting('email_from_address', 'mail'),
-                'mail.mailers.smtp.host' => setting('mail_host', 'mail'),
-                'mail.mailers.smtp.port' => setting('mail_port', 'mail'),
-                'mail.mailers.smtp.encryption' => setting('mail_secure', 'mail'),
-                'mail.mailers.smtp.username' => setting('mail_username', 'mail'),
-                'mail.mailers.smtp.password' => setting('mail_password', 'mail'),
-            ]);
+            $mailHost     = setting('mail_host', 'mail');
+            $mailPort     = setting('mail_port', 'mail');
+            $mailUsername = setting('mail_username', 'mail');
+            $mailPassword = setting('mail_password', 'mail');
+            $mailSecure   = setting('mail_secure', 'mail');
+            $fromName     = setting('email_from_name', 'mail');
+            $fromAddress  = setting('email_from_address', 'mail');
+
+            if (!empty($mailHost))     config()->set('mail.mailers.smtp.host',       $mailHost);
+            if (!empty($mailPort))     config()->set('mail.mailers.smtp.port',       $mailPort);
+            if (!empty($mailUsername)) config()->set('mail.mailers.smtp.username',   $mailUsername);
+            if (!empty($mailPassword)) config()->set('mail.mailers.smtp.password',   $mailPassword);
+            if (!empty($mailSecure))   config()->set('mail.mailers.smtp.encryption', $mailSecure);
+            if (!empty($fromName))     config()->set('mail.from.name',               $fromName);
+            if (!empty($fromAddress))  config()->set('mail.from.address',            $fromAddress);
 
         }
     }
