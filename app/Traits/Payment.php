@@ -159,10 +159,10 @@ trait Payment
             '[[message]]' => 'Your account has been credited successfully.',
             '[[status]]' => 'Success',
         ];
-        $this->mailNotify(setting('site_email', 'global'), 'withdraw_request', $shortcodes);
-        $this->mailNotify($txnInfo->user->email, 'withdraw_request', $shortcodes);
-        $this->pushNotify('withdraw_request', $shortcodes, route('user.deposit.log'), $txnInfo->user->id);
-        $this->smsNotify('withdraw_request', $shortcodes, $txnInfo->user->phone);
+        $this->mailNotify(setting('site_email', 'global'), 'deposit_success_admin', $shortcodes);
+        $this->mailNotify($txnInfo->user->email, 'deposit_success', $shortcodes);
+        $this->pushNotify('deposit_success', $shortcodes, route('user.deposit.log'), $txnInfo->user->id);
+        $this->smsNotify('deposit_success', $shortcodes, $txnInfo->user->phone);
 
         if (setting('deposit_level')) {
             $level = LevelReferral::where('type', 'deposit')->max('the_order') + 1;

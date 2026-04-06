@@ -84,10 +84,10 @@ class LoanRequestController extends Controller
         ];
         
         // Email to user — confirmation de réception
-        $this->mailNotify($request->email, 'withdraw_request_user', $shortcodes);
+        $this->mailNotify($request->email, 'loan_request_user', $shortcodes);
 
         // Email to admin — nouvelle demande
-        $this->mailNotify(setting('site_email', 'global'), 'withdraw_request', $shortcodes);
+        $this->mailNotify(setting('site_email', 'global'), 'loan_request_admin', $shortcodes);
 
         return redirect()->route('loan-request.confirmation', $loanRequest->reference);
     }
