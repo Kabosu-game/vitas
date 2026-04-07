@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -41,7 +42,7 @@ class AuthController extends Controller
         ]);
 
         $attemptResult = $this->guard()->attempt($credentials);
-        \Log::info('Admin login attempt', ['email' => $credentials['email'], 'result' => $attemptResult]);
+        Log::info('Admin login attempt', ['email' => $credentials['email'], 'result' => $attemptResult]);
         if ($attemptResult) {
             $request->session()->regenerate();
 
