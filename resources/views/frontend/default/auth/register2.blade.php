@@ -68,7 +68,7 @@
                                 <select name="civility" class="box-input" id="civility" required>
                                     <option value="" disabled @selected(!old('civility'))>{{ __('Select') }}...</option>
                                     @foreach(['civility_mr', 'civility_mrs', 'civility_dr', 'civility_ms'] as $civKey)
-                                        <option value="{{ __($civKey) }}" @selected(old('civility') == __($civKey))>{{ __($civKey) }}</option>
+                                        <option value="{{ $civKey }}" @selected(old('civility') == $civKey)>{{ __($civKey) }}</option>
                                     @endforeach
                                 </select>
                                 @error('civility')<div class="text-danger">{{ $message }}</div>@enderror
@@ -94,7 +94,7 @@
                                 <label for="">{{ __('Gender') }} @if(getPageSetting('gender_validation'))<span class="required">*</span> @endif</label>
                                 <select name="gender" class="box-input" id="gender">
                                     @foreach(['gender_male', 'gender_female', 'gender_others'] as $genderKey)
-                                        <option @selected(__($genderKey) == old('gender')) value="{{ __($genderKey) }}">{{ __($genderKey) }}</option>
+                                        <option @selected($genderKey == old('gender')) value="{{ $genderKey }}">{{ __($genderKey) }}</option>
                                     @endforeach
                                 </select>
                             </div>

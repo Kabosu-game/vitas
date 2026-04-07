@@ -109,11 +109,11 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'civility' => ['required', 'in:M.,Mme,Dr.,Me.'],
+            'civility' => ['required', 'in:civility_mr,civility_mrs,civility_dr,civility_ms'],
             'id_number' => ['required', 'string', 'max:50'],
             'g-recaptcha-response' => Rule::requiredIf(plugin_active('Google reCaptcha')),
             new Recaptcha,
-            'gender' => [Rule::requiredIf($isGender), 'in:Male,Female,Others'],
+            'gender' => [Rule::requiredIf($isGender), 'in:gender_male,gender_female,gender_others'],
             'username' => [Rule::requiredIf($isUsername), 'alpha_num', 'max:15', 'unique:users'],
             'branch_id' => [Rule::requiredIf($isBranch), 'exists:branches,id'],
             'i_agree' => ['required'],
