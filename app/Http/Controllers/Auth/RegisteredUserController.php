@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
@@ -153,7 +154,11 @@ class RegisteredUserController extends Controller
         $user = User::create($regiData);
 
         if (setting('email_verification', 'permission')) {
-            $user->sendEmailVerificationNotification();
+            try {
+                $user->sendEmailVerificationNotification();
+            } catch (\Exception $e) {
+                Log::error('sendEmailVerificationNotification failed for user '.$user->id.': '.$e->getMessage());
+            }
         }
 
         $shortcodes = [
