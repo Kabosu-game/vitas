@@ -41,7 +41,17 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        dd($credentials, $this->guard()->attempt($credentials));
+        $attemptResult = $this->guard()->attempt($credentials);
+        Log::info('Admin login attempt', ['email' => $credentials['email'], 'result' => $attemptResult]);
+        if ($attemptResult) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('admin');
+        }
+
+        notify()->warning(__('The provided credentials do not match our records.'));
+
+        return back();
     }
 
     /**
