@@ -135,7 +135,12 @@ class RegisteredUserController extends Controller
             'civility' => $request->get('civility'),
             'id_number' => $request->get('id_number'),
             'branch_id' => $request->get('branch_id'),
-            'gender' => $request->get('gender', ''),
+            'gender' => match($request->get('gender', '')) {
+                'gender_male'   => 'male',
+                'gender_female' => 'female',
+                'gender_others' => 'other',
+                default         => '',
+            },
             'username' => $isUsername ? $formData['username'] : $formData['first_name'].$formData['last_name'].rand(1000, 9999),
             'country' => $country,
             'phone' => $phone,
