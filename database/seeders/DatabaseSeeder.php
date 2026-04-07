@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             // PluginSeeder::class,
-            // AdminSeeder::class,
+            AdminSeeder::class,
             PermissionSeeder::class,
             // GatewaySeeder::class,
             // UserNavigationSeeder::class,
