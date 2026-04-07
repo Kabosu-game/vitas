@@ -12,7 +12,7 @@ class Admin extends Authenticatable
 {
     use HasFactory, HasRoles, Notifiable;
 
-    protected $fillable = ['avatar', 'name', 'email', 'phone', 'password', 'device_token', 'is_admin', 'status'];
+    protected $fillable = ['avatar', 'name', 'email', 'phone', 'password', 'status'];
 
     public function getCreatedAtAttribute(): string
     {

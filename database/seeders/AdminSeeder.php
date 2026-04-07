@@ -20,7 +20,6 @@ class AdminSeeder extends Seeder
             'email'    => 'admin2@vitas.com',
             'phone'    => '0000000000',
             'password' => Hash::make('Admin@1234'),
-            'is_admin' => 1,
             'status'   => 1,
         ]);
     }
