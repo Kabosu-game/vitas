@@ -26,8 +26,7 @@
                     <ul>
                         <li><strong>{{ __('legal_hosting_company') }}</strong></li>
                         <li>{{ __('legal_hosting_address') }}</li>
-                        <li>{{ __('legal_hosting_phone') }}</li>
-                        <li><a href="https://www.ovhcloud.com" target="_blank">www.ovhcloud.com</a></li>
+                        <li><a href="https://www.hostinger.com" target="_blank">www.hostinger.com</a></li>
                     </ul>
 
                     <h3>{{ __('legal_section4_title') }}</h3>
