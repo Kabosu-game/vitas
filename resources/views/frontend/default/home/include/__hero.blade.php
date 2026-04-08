@@ -20,7 +20,7 @@
                                 {{ __('hero_button_start') }}
                                 <span><i class="fa-regular fa-angle-right"></i></span>
                             </a>
-                            <a class="text-btn" href="{{ url('how-it-works') }}" target="_self">
+                            <a class="text-btn" href="{{ url('faq') }}" target="_self">
                                 {{ __('hero_button_how_it_works') }}
                                 <span><i class="fa-regular fa-arrow-right-long"></i></span>
                             </a>
