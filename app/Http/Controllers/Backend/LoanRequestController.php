@@ -60,10 +60,28 @@ class LoanRequestController extends Controller
             'admin_notes' => ['nullable', 'string', 'max:1000'],
         ]);
 
+        $oldStatus = $loanRequest->status;
+
         $loanRequest->update([
             'status'      => $request->status,
             'admin_notes' => $request->admin_notes,
         ]);
+
+        $newStatus = $request->status;
+
+        if ($oldStatus !== $newStatus && in_array($newStatus, ['approved', 'rejected'])) {
+            $shortcodes = [
+                '[[full_name]]'       => $loanRequest->full_name,
+                '[[reference]]'       => $loanRequest->reference,
+                '[[loan_amount]]'     => $loanRequest->amount.' '.setting('site_currency', 'global'),
+                '[[message]]'         => $request->admin_notes ?? '',
+                '[[site_title]]'      => setting('site_title', 'global'),
+                '[[site_url]]'        => route('home'),
+            ];
+
+            $templateCode = $newStatus === 'approved' ? 'loan_request_approved' : 'loan_request_rejected';
+            $this->mailNotify($loanRequest->email, $templateCode, $shortcodes);
+        }
 
         notify()->success(__('Loan request updated.'), 'Success');
 
