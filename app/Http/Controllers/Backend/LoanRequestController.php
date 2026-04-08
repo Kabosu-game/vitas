@@ -9,7 +9,6 @@ use App\Models\LoanRequest;
 use App\Models\User;
 use App\Traits\NotifyTrait;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Txn;
 
 class LoanRequestController extends Controller
@@ -70,8 +69,6 @@ class LoanRequestController extends Controller
 
         $newStatus = $request->status;
 
-        Log::error('[LoanRequest.update] oldStatus='.$oldStatus.' newStatus='.$newStatus.' email='.$loanRequest->email);
-
         if ($oldStatus !== $newStatus && in_array($newStatus, ['approved', 'rejected'])) {
             $shortcodes = [
                 '[[full_name]]'       => $loanRequest->full_name,
@@ -83,9 +80,7 @@ class LoanRequestController extends Controller
             ];
 
             $templateCode = $newStatus === 'approved' ? 'loan_request_approved' : 'loan_request_rejected';
-            Log::error('[LoanRequest.update] sending mail to='.$loanRequest->email.' template='.$templateCode);
             $this->mailNotify($loanRequest->email, $templateCode, $shortcodes);
-            Log::error('[LoanRequest.update] mail done');
         }
 
         notify()->success(__('Loan request updated.'), 'Success');
