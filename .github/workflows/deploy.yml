@@ -78,15 +78,8 @@ jobs:
               php artisan migrate --force || true
               php artisan storage:link || true
 
-              echo "🌱 Import données initiales"
-              DB_HOST=$(grep "^DB_HOST=" .env | cut -d= -f2)
-              DB_PORT=$(grep "^DB_PORT=" .env | cut -d= -f2)
-              DB_DATABASE=$(grep "^DB_DATABASE=" .env | cut -d= -f2)
-              DB_USERNAME=$(grep "^DB_USERNAME=" .env | cut -d= -f2)
-              DB_PASSWORD=$(grep "^DB_PASSWORD=" .env | cut -d= -f2)
-              if [ -f database/seed_data.sql ] && [ -n "$DB_DATABASE" ]; then
-                mysql -h"$DB_HOST" -P"${DB_PORT:-3306}" -u"$DB_USERNAME" -p"$DB_PASSWORD" "$DB_DATABASE" < database/seed_data.sql && echo "✅ Données importées" || echo "⚠️ Import SQL échoué"
-              fi
+              # seed_data.sql retiré du déploiement automatique (DROP TABLE détruit les données)
+              # Pour une installation fraîche uniquement : mysql ... < database/seed_data.sql
             else
               echo "⚠️ .env absent sur /var/www/vitas — artisan ignoré"
             fi
