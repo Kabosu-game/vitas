@@ -45,11 +45,20 @@ class AppServiceProvider extends ServiceProvider
             $api_key = $stripe_virtual_card ? json_decode($stripe_virtual_card->data, true)['secret_key'] : null;
 
             config()->set([
-                'app.timezone' => $timezone,
-                'app.debug' => setting('debug_mode', 'permission'),
-                'debugbar.enabled' => setting('debug_mode', 'permission'),
-                'session.lifetime' => setting('session_lifetime', 'system'),
+                'app.timezone'                   => $timezone,
+                'app.debug'                      => setting('debug_mode', 'permission'),
+                'debugbar.enabled'               => setting('debug_mode', 'permission'),
+                'session.lifetime'               => setting('session_lifetime', 'system'),
                 'stripe-webhooks.signing_secret' => $api_key,
+
+                'mail.default'                   => setting('mailing_driver', 'global') ?: 'smtp',
+                'mail.mailers.smtp.host'         => setting('mail_host', 'global'),
+                'mail.mailers.smtp.port'         => (int) setting('mail_port', 'global'),
+                'mail.mailers.smtp.encryption'   => setting('mail_secure', 'global'),
+                'mail.mailers.smtp.username'     => setting('mail_username', 'global'),
+                'mail.mailers.smtp.password'     => setting('mail_password', 'global'),
+                'mail.from.address'              => setting('email_from_address', 'global'),
+                'mail.from.name'                 => setting('email_from_name', 'global'),
             ]);
 
             date_default_timezone_set($timezone);

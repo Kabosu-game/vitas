@@ -41,9 +41,7 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        $attemptResult = $this->guard()->attempt($credentials);
-        Log::info('Admin login attempt', ['email' => $credentials['email'], 'result' => $attemptResult]);
-        if ($attemptResult) {
+        if ($this->guard()->attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('admin');

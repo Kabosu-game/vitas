@@ -114,6 +114,7 @@
                 }
             }
 
+            if (!ctx) return;
             if (chart) {
                 chart.destroy();
                 chart = new Chart(ctx, configuration);
@@ -160,6 +161,7 @@
             }]
         };
         // render init block
+        if (document.getElementById('fundTransferChart'))
         new Chart(
             document.getElementById('fundTransferChart'),
             {
@@ -214,6 +216,7 @@
             }]
         };
         // render init block
+        if (document.getElementById('countryChart'))
         new Chart(
             document.getElementById('countryChart'),
             {
@@ -268,6 +271,7 @@
             }]
         };
         // render init block
+        if (document.getElementById('browserChart'))
         new Chart(
             document.getElementById('browserChart'),
             {
@@ -319,6 +323,7 @@
             }]
         };
         // render init block
+        if (document.getElementById('osChart'))
         new Chart(
             document.getElementById('osChart'),
             {
