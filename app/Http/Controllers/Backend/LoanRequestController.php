@@ -70,7 +70,7 @@ class LoanRequestController extends Controller
 
         $newStatus = $request->status;
 
-        Log::info('[LoanRequest.update] oldStatus='.$oldStatus.' newStatus='.$newStatus.' email='.$loanRequest->email);
+        Log::error('[LoanRequest.update] oldStatus='.$oldStatus.' newStatus='.$newStatus.' email='.$loanRequest->email);
 
         if ($oldStatus !== $newStatus && in_array($newStatus, ['approved', 'rejected'])) {
             $shortcodes = [
@@ -83,9 +83,9 @@ class LoanRequestController extends Controller
             ];
 
             $templateCode = $newStatus === 'approved' ? 'loan_request_approved' : 'loan_request_rejected';
-            Log::info('[LoanRequest.update] sending mail to='.$loanRequest->email.' template='.$templateCode);
+            Log::error('[LoanRequest.update] sending mail to='.$loanRequest->email.' template='.$templateCode);
             $this->mailNotify($loanRequest->email, $templateCode, $shortcodes);
-            Log::info('[LoanRequest.update] mail sent (or silently failed)');
+            Log::error('[LoanRequest.update] mail done');
         }
 
         notify()->success(__('Loan request updated.'), 'Success');
