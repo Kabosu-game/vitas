@@ -260,7 +260,7 @@ Route::get('refresh-token', [HomeController::class, 'refreshToken']);
 
 // Language switch
 Route::get('/lang/{lang}', function ($lang) {
-    $allowed = ['en', 'de', 'fr', 'lt', 'lv', 'es', 'et'];
+    $allowed = ['en', 'de', 'fr', 'lt', 'lv', 'es', 'et', 'pt'];
     if (in_array($lang, $allowed)) {
         session(['locale' => $lang]);
     }

@@ -21,12 +21,6 @@ class Localization
             return $next($request);
         }
 
-        // Admin area always uses default locale (no user language switching)
-        if ($request->is('admin') || $request->is('admin/*')) {
-            App::setLocale(config('app.locale'));
-            return $next($request);
-        }
-
         if (session()->has('locale')) {
             App::setLocale(session()->get('locale'));
         } else {
