@@ -16,9 +16,11 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            // PluginSeeder::class,
-            AdminSeeder::class,
             PermissionSeeder::class,
+            LanguageSeeder::class,
+            EmailTemplateSeeder::class,
+            // AdminSeeder::class,       // une seule fois manuellement
+            // PluginSeeder::class,
             // GatewaySeeder::class,
             // UserNavigationSeeder::class,
             // CronJobSeeder::class,
