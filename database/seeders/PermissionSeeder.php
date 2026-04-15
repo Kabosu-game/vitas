@@ -210,7 +210,10 @@ class PermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['guard_name' => 'admin', 'name' => $permission['name'], 'category' => $permission['category']]);
+            Permission::firstOrCreate(
+                ['guard_name' => 'admin', 'name' => $permission['name']],
+                ['category' => $permission['category']]
+            );
         }
     }
 }
