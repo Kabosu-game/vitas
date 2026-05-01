@@ -48,6 +48,10 @@ if (! function_exists('tnotify')) {
 if (! function_exists('setting')) {
     function setting($key = null, $section = null, $default = null)
     {
+        if (! \Illuminate\Support\Facades\Schema::hasTable('settings')) {
+            return value($default);
+        }
+
         if (is_null($key)) {
             return new \App\Models\Setting;
         }

@@ -3,8 +3,6 @@
 use App\Http\Controllers\Backend\AppController;
 use App\Http\Controllers\Backend\AppSettingsController;
 use App\Http\Controllers\Backend\AuthController;
-use App\Http\Controllers\Backend\BillController;
-use App\Http\Controllers\Backend\BillServiceController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BranchController;
 use App\Http\Controllers\Backend\BranchStaffController;
@@ -13,11 +11,7 @@ use App\Http\Controllers\Backend\CurrencyController;
 use App\Http\Controllers\Backend\CustomCssController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DepositController;
-use App\Http\Controllers\Backend\DpsController;
-use App\Http\Controllers\Backend\DpsPlanController;
 use App\Http\Controllers\Backend\EmailTemplateController;
-use App\Http\Controllers\Backend\FdrController;
-use App\Http\Controllers\Backend\FdrPlanController;
 use App\Http\Controllers\Backend\FundTransferController;
 use App\Http\Controllers\Backend\GatewayController;
 use App\Http\Controllers\Backend\KycController;
@@ -32,9 +26,6 @@ use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\PluginController;
 use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Backend\ProfitController;
-use App\Http\Controllers\Backend\ReferralController;
-use App\Http\Controllers\Backend\RewardPointEarningController;
-use App\Http\Controllers\Backend\RewardPointRedeemController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SmsController;
@@ -116,26 +107,6 @@ Route::group(['prefix' => 'fund-transfer', 'as' => 'fund.transfer.', 'controller
 });
 
 Route::group(['prefix' => 'plan', 'as' => 'plan.'], function () {
-    // =============================== DPS Plan Management ==================================
-    Route::group(['prefix' => 'dps', 'as' => 'dps.', 'controller' => DpsPlanController::class], function () {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::delete('/destroy/{id}', 'destroy')->name('destroy');
-    });
-
-    // =============================== FDR Plan Management ==================================
-    Route::group(['prefix' => 'fdr', 'as' => 'fdr.', 'controller' => FdrPlanController::class], function () {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::delete('/destroy/{id}', 'destroy')->name('destroy');
-    });
-
     // =============================== Loan Plan Management ==================================
     Route::group(['prefix' => 'loan', 'as' => 'loan.', 'controller' => LoanPlanController::class], function () {
         Route::get('/index', 'index')->name('index');
@@ -145,29 +116,6 @@ Route::group(['prefix' => 'plan', 'as' => 'plan.'], function () {
         Route::post('/update/{id}', 'update')->name('update')->withoutMiddleware('XSS');
         Route::delete('/destroy/{id}', 'destroy')->name('destroy');
     });
-});
-
-// ===============================  DPS Management ==================================
-Route::group(['prefix' => 'dps', 'as' => 'dps.', 'controller' => DpsController::class], function () {
-    Route::get('/all', 'all')->name('all');
-    Route::get('/ongoing', 'ongoing')->name('ongoing');
-    Route::get('/payable', 'payable')->name('payable');
-    Route::get('/complete', 'complete')->name('complete');
-    Route::get('/close', 'close')->name('close');
-    Route::get('/details/{id}', 'details')->name('details');
-    Route::get('/create/dps-request', 'createDpsRequest')->name('request.create');
-    Route::post('/subscribe/dps-request', 'subscribeDpsRequest')->name('request.subscribe');
-});
-
-// ===============================  FDR Management ==================================
-Route::group(['prefix' => 'fdr', 'as' => 'fdr.', 'controller' => FdrController::class], function () {
-    Route::get('/all', 'all')->name('all');
-    Route::get('/ongoing', 'ongoing')->name('ongoing');
-    Route::get('/completed', 'completed')->name('completed');
-    Route::get('/close', 'close')->name('close');
-    Route::get('/details/{id}', 'details')->name('details');
-    Route::get('/create/fdr-request', 'createFdrRequest')->name('request.create');
-    Route::post('/subscribe/fdr', 'subscribeFdrRequest')->name('request.subscribe');
 });
 
 // ===============================  Loan Management ==================================
@@ -183,38 +131,6 @@ Route::group(['prefix' => 'loan', 'as' => 'loan.', 'controller' => LoanControlle
     Route::post('status', 'status')->name('status');
     Route::get('/subscribe/loan', 'createLoanRequest')->name('subscribe.preview');
     Route::post('/loan-subscribe', 'subscribeLoanRequest')->name('subscribe');
-});
-
-// ===============================  Bill Management ==================================
-Route::group(['prefix' => 'bill', 'as' => 'bill.'], function () {
-
-    // Import Services
-    Route::get('import-services', [BillServiceController::class, 'import'])->name('import.services');
-    // Convert Rate
-    Route::get('convert-rate', [BillServiceController::class, 'convertRate'])->name('convert.rate');
-    Route::post('save-rate', [BillServiceController::class, 'saveRate'])->name('save.rate');
-    // Get Categories
-    Route::get('get-categories/{method}', [BillServiceController::class, 'getCategories'])->name('get.categories');
-    // Get Operators
-    Route::get('get-operators/{method}/{category}', [BillServiceController::class, 'getOperators'])->name('get.operators');
-
-    // ===============================  Bill Service Management ==================================
-    Route::group(['prefix' => 'service', 'as' => 'service.', 'controller' => BillServiceController::class], function () {
-        Route::get('/index', 'index')->name('index');
-        Route::post('/store', 'store')->name('store');
-        Route::post('/bulk-store', 'bulkStore')->name('bulk.store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::delete('/destroy/{id}', 'destroy')->name('destroy');
-    });
-
-    // ===============================  Bill History Management ==================================
-    Route::group(['prefix' => 'history', 'as' => 'history.', 'controller' => BillController::class], function () {
-        Route::get('/pending', 'pending')->name('pending');
-        Route::get('/complete', 'complete')->name('complete');
-        Route::get('/returned', 'returned')->name('returned');
-        Route::get('/all', 'all')->name('all');
-    });
 });
 
 // ===============================  Role Management ==================================
@@ -276,23 +192,9 @@ Route::group(['prefix' => 'withdraw', 'as' => 'withdraw.', 'controller' => Withd
     Route::get('action/{id}', 'withdrawAction')->name('action');
     Route::post('action-now', 'actionNow')->name('action.now');
 });
-Route::group(['prefix' => 'referral', 'as' => 'referral.', 'controller' => ReferralController::class], function () {
-    Route::get('settings', 'settings')->name('settings');
-    Route::get('index', 'index')->name('index');
-    Route::post('store', 'store')->name('store');
-    Route::post('update/{id}', 'update')->name('update');
-    Route::post('delete/{id}', 'destroy')->name('delete');
-    Route::post('level-status', 'statusUpdate')->name('status');
-});
-
 // Portfolio
 Route::resource('portfolio', PortfolioController::class)->only('index', 'store', 'update');
 
-// Reward Point
-Route::group(['prefix' => 'reward-point', 'as' => 'reward.point.'], function () {
-    Route::resource('earnings', RewardPointEarningController::class)->only('index', 'store', 'update', 'destroy');
-    Route::resource('redeem', RewardPointRedeemController::class)->only('index', 'store', 'update', 'destroy');
-});
 // ===============================  Site Essentials ==================================
 
 Route::group(['prefix' => 'theme', 'as' => 'theme.', 'controller' => ThemeController::class], function () {

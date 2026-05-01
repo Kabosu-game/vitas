@@ -343,12 +343,6 @@
             <div class="dash-quick__icon" style="background:rgba(156,163,175,.15);color:#6b7280;"><i data-lucide="settings"></i></div>
             <span class="dash-quick__label">{{ __('Settings') }}</span>
         </a>
-        @if(setting('sign_up_referral','permission') && auth()->user()->referral_status)
-        <a href="{{ route('user.referral') }}" class="dash-quick__item">
-            <div class="dash-quick__icon" style="background:rgba(16,185,129,.1);color:#10b981;"><i data-lucide="gift"></i></div>
-            <span class="dash-quick__label">{{ __('Referral') }}</span>
-        </a>
-        @endif
     </div>
 </div>
 
@@ -366,20 +360,6 @@
             <div><div class="dash-stat__val">{{ $total_tickets }}</div><div class="dash-stat__lbl">{{ __('Support Tickets') }}</div></div>
         </div>
     </div>
-    @if(setting('sign_up_referral','permission'))
-    <div class="col-xl-3 col-lg-3 col-md-6 col-6">
-        <div class="dash-stat">
-            <div class="dash-stat__icon" style="background:rgba(16,185,129,.1);color:#10b981;"><i data-lucide="users"></i></div>
-            <div><div class="dash-stat__val">{{ $total_referral }}</div><div class="dash-stat__lbl">{{ __('Referrals') }}</div></div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-3 col-md-6 col-6">
-        <div class="dash-stat">
-            <div class="dash-stat__icon" style="background:rgba(99,102,241,.1);color:#6366f1;"><i data-lucide="gift"></i></div>
-            <div><div class="dash-stat__val">{{ $total_referral_profit }} {{ $currency }}</div><div class="dash-stat__lbl">{{ __('Referral Bonus') }}</div></div>
-        </div>
-    </div>
-    @endif
 </div>
 
 {{-- RECENT TRANSACTIONS --}}

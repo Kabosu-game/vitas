@@ -4,12 +4,9 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\CronJobController;
 use App\Http\Controllers\Frontend\LoanRequestController;
 use App\Http\Controllers\Frontend\BeneficiaryController;
-use App\Http\Controllers\Frontend\BillPayController;
 use App\Http\Controllers\Frontend\CardController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\DepositController;
-use App\Http\Controllers\Frontend\DpsController;
-use App\Http\Controllers\Frontend\FdrController;
 use App\Http\Controllers\Frontend\FundTransferController;
 use App\Http\Controllers\Frontend\GatewayController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -17,8 +14,6 @@ use App\Http\Controllers\Frontend\IpnController;
 use App\Http\Controllers\Frontend\KycController;
 use App\Http\Controllers\Frontend\LoanController;
 use App\Http\Controllers\Frontend\PageController;
-use App\Http\Controllers\Frontend\ReferralController;
-use App\Http\Controllers\Frontend\RewardController;
 use App\Http\Controllers\Frontend\SettingController;
 use App\Http\Controllers\Frontend\StatusController;
 use App\Http\Controllers\Frontend\TicketController;
@@ -114,17 +109,6 @@ Route::group(['middleware' => ['auth', '2fa', 'isActive', setting('otp_verificat
         Route::get('beneficiary/show/{id}', [BeneficiaryController::class, 'show'])->name('beneficiary.show');
     });
 
-    // Dps
-    Route::group(['prefix' => 'dps', 'as' => 'dps.'], function () {
-        Route::get('/', [DpsController::class, 'index'])->name('index');
-        Route::get('/subscribe/{id}', [DpsController::class, 'subscribe'])->middleware('passcode:dps')->name('subscribe');
-        Route::get('/history', [DpsController::class, 'history'])->name('history');
-        Route::get('/details/{id}', [DpsController::class, 'details'])->name('details');
-        Route::get('/cancel/{id}', [DpsController::class, 'cancel'])->name('cancel');
-        Route::post('/increment/{id}', [DpsController::class, 'increment'])->name('increment');
-        Route::post('/decrement/{id}', [DpsController::class, 'decrement'])->name('decrement');
-    });
-
     // Loan
     Route::group(['prefix' => 'loan', 'as' => 'loan.'], function () {
         Route::get('/', [LoanController::class, 'index'])->name('index');
@@ -134,31 +118,6 @@ Route::group(['middleware' => ['auth', '2fa', 'isActive', setting('otp_verificat
         Route::get('/details/{id}', [LoanController::class, 'details'])->name('details');
         Route::get('/cancel/{id}', [LoanController::class, 'cancel'])->name('cancel');
         Route::get('installment/pay/{loan_id}/{trans_id?}', [LoanController::class, 'payInstallment'])->name('pay.installment');
-    });
-
-    // Fdr
-    Route::group(['prefix' => 'fdr', 'as' => 'fdr.'], function () {
-        Route::get('/', [FdrController::class, 'index'])->name('index');
-        Route::post('/subscribe', [FdrController::class, 'subscribe'])->middleware('passcode:fdr')->name('subscribe');
-        Route::get('/history', [FdrController::class, 'history'])->name('history');
-        Route::get('/details/{id}', [FdrController::class, 'details'])->name('details');
-        Route::get('/cancel/{id}', [FdrController::class, 'cancel'])->name('cancel');
-        Route::post('/increment/{id}', [FdrController::class, 'increment'])->name('increment');
-        Route::post('/decrement/{id}', [FdrController::class, 'decrement'])->name('decrement');
-    });
-
-    // Pay Bill
-    Route::prefix('pay-bill')->as('pay.bill.')->controller(BillPayController::class)->group(function () {
-        Route::get('history', 'history')->name('history');
-        Route::get('get-services/{country}/{type}', 'getServices')->name('get.services');
-        Route::get('get-payment-details', 'getPaymentDetails')->name('get.payment.details');
-        Route::get('airtime', 'airtime')->name('airtime');
-        Route::get('electricity', 'electricity')->name('electricity');
-        Route::get('internet', 'internet')->name('internet');
-        Route::get('data-bundle', 'dataBundle')->name('data.bundle');
-        Route::get('cables', 'cables')->name('cables');
-        Route::get('toll', 'toll')->name('toll');
-        Route::post('store', 'store')->name('store')->middleware('passcode:pay_bill');
     });
 
     // Withdraw Area
@@ -186,18 +145,9 @@ Route::group(['middleware' => ['auth', '2fa', 'isActive', setting('otp_verificat
         Route::get('close-now/{uuid}', 'closeNow')->name('close.now');
     });
 
-    // Referral
-    Route::get('referral', [ReferralController::class, 'referral'])->name('referral');
-    Route::get('referral/tree', [ReferralController::class, 'referralTree'])->name('referral.tree');
-
     // Portfolio
     Route::get('portfolio', [UserController::class, 'portfolio'])->name('portfolio');
 
-    // Rewards
-    Route::group(['prefix' => 'rewards', 'as' => 'rewards.'], function () {
-        Route::get('/', [RewardController::class, 'index'])->name('index');
-        Route::get('redeem-now', [RewardController::class, 'redeemNow'])->name('redeem.now');
-    });
 
     // Settings
     Route::group(['prefix' => 'settings', 'as' => 'setting.', 'controller' => SettingController::class], function () {
@@ -338,3 +288,4 @@ $cacheClear = function () {
 
 Route::get('clear-cache', $cacheClear);
 Route::get('clearcache', $cacheClear);
+

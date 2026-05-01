@@ -13,13 +13,6 @@
                         </div>
                     </div>
                     <div class="nav-right">
-                        @if(setting('sign_up_referral','permission'))
-                        <div class="single-right mob-650-none">
-                            <div class="user-header-btn">
-                                <a href="{{ route('user.referral') }}" class=""><i data-lucide="gift"></i>{{ __('Earn') }} {{ $currencySymbol.setting('referral_bonus','fee') }}</a>
-                            </div>
-                        </div>
-                        @endif
                         <div class="single-right">
                             <div class="color-switcher">
                                 <img class="light-icon" src="{{ asset('front/images/icons/sun.png') }}" alt="">

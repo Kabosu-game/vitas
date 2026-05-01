@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Remotelywork\Installer\Repository\App;
 
@@ -23,7 +24,7 @@ class ThemeServiceProvider extends ServiceProvider
     {
         // Load frontend views namespace regardless of DB connection
         $theme = 'default'; // fallback theme
-        if (App::dbConnectionCheck()) {
+        if (App::dbConnectionCheck() && Schema::hasTable('themes')) {
             $theme = site_theme() ?: 'default';
         }
 

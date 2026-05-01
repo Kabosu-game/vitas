@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('cron_job_id');
             $table->text('error')->nullable();
-            $table->timestamp('started_at');
-            $table->timestamp('ended_at');
+            $table->timestamp('started_at')->useCurrent();
+            $table->timestamp('ended_at')->nullable();
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class Theme extends Model
         'status',
     ];
 
-    public function scopeActive($query)
+    public function active()
     {
-        return $query->where('type', 'site')->where('status', true)->first('name')->name;
+        return static::where('type', 'site')->where('status', true)->first('name')?->name;
     }
 }

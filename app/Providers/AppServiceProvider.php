@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
             return new Notify;
         });
 
-        if (App::dbConnectionCheck()) {
+        if (App::dbConnectionCheck() && Schema::hasTable('settings')) {
             $timezone = setting('site_timezone', 'global');
             $stripe_virtual_card = plugin_active('Stripe Virtual Card');
             $api_key = $stripe_virtual_card ? json_decode($stripe_virtual_card->data, true)['secret_key'] : null;
