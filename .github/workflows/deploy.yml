@@ -10,7 +10,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install PHP dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: /tmp/db.sqlite
+        run: |
+          touch /tmp/db.sqlite
+          composer install --no-dev --optimize-autoloader --no-interaction
 
       - name: Build frontend assets
         run: |
