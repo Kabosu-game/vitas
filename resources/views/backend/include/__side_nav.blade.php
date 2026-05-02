@@ -203,6 +203,7 @@
             {{-- ************************************************************* Bill Management
             ********************************************************* --}}
 
+            @if(Route::has('admin.bill.import.services'))
             @canany(['bill-service-import', 'bill-convert-rate', 'bill-service-list', 'all-bills', 'pending-bills',
                 'complete-bills', 'return-bills'])
                 <li class="side-nav-item category-title">
@@ -270,6 +271,7 @@
                 @endcanany
 
             @endcanany
+            @endif
 
 
             {{-- ************************************************************* Essentials

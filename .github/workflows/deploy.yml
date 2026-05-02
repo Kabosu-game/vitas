@@ -1,7 +1,7 @@
 name: Deploy vitas
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -91,8 +91,7 @@ jobs:
           EOF
 
       - name: Maintenance OFF
-        if: always()
         run: |
           ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
-            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
-            "cd /var/www/vitas && rm -f storage/framework/down storage/framework/maintenance.php && echo '✅ Déploiement vitas terminé'"
+           "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+           "rm -f /var/www/vitas/storage/framework/down /var/www/vitas/storage/framework/maintenance.php && cd /var/www/vitas && php artisan up && echo '✅ Déploiement vitas terminé'"
