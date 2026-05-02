@@ -10617,4 +10617,10 @@ li .flag-icon {
   font-weight: 400;
 }
 
+/* Landing header logo visibility on dark backgrounds */
+.dark-theme .header-logo img,
+.body-landing-bg .header-logo img {
+  filter: brightness(0) invert(1);
+}
+
 /*# sourceMappingURL=styles.css.map */
