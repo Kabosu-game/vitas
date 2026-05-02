@@ -1,16 +1,35 @@
 name: Deploy vitas
-
 on:
   push:
     branches: ["main"]
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed files
+        id: changes
+        run: |
+          echo "composer=$(git diff --name-only HEAD~1 HEAD | grep -E '^composer\.(json|lock)$' | wc -l)" >> $GITHUB_OUTPUT
+          echo "npm=$(git diff --name-only HEAD~1 HEAD | grep -E '^(package\.json|package-lock\.json)$' | wc -l)" >> $GITHUB_OUTPUT
+          echo "migrations=$(git diff --name-only HEAD~1 HEAD | grep -E '^database/migrations/' | wc -l)" >> $GITHUB_OUTPUT
+
+      # ✅ Composer tourne sur GitHub Actions (pas sur le VPS)
+      - name: Install PHP dependencies
+        if: steps.changes.outputs.composer != '0'
+        run: |
+          composer install --no-dev --optimize-autoloader --no-interaction
+
+      # ✅ npm build tourne sur GitHub Actions (pas sur le VPS)
+      - name: Build frontend assets
+        if: steps.changes.outputs.npm != '0'
+        run: |
+          npm install
+          npm run build
 
       - name: Setup SSH Key
         run: |
@@ -25,12 +44,12 @@ jobs:
             "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
             "echo 'SSH Connection OK - vitas'"
 
+      # ✅ rsync envoie vendor/ et public/build/ déjà compilés
       - name: Deploy project to VPS
         run: |
           rsync -avz --delete \
             --exclude='.git' \
             --exclude='.github' \
-            --exclude='node_modules' \
             --exclude='.env' \
             --exclude='storage' \
             -e "ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no" \
@@ -53,39 +72,40 @@ jobs:
              chmod -R 775 /var/www/vitas/bootstrap/cache && \
              ([ -f /var/www/vitas/.env ] && chmod 644 /var/www/vitas/.env || true)"
 
+      # ✅ nohup évite la déconnexion SSH en plein milieu
       - name: Run commands on VPS
         run: |
           ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            -o ServerAliveInterval=60 \
+            -o ServerAliveCountMax=10 \
             "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" << 'EOF'
             set -e
             cd /var/www/vitas
-
-            echo "📦 Installation des dépendances PHP"
-            composer install --no-dev --optimize-autoloader --no-interaction
-
-            echo "📦 Installation des dépendances Node"
-            if [ -f package.json ]; then
-              npm install
-              npm run build
-            else
-              echo "⚠️ Pas de package.json — npm ignoré"
-            fi
 
             if [ -f .env ]; then
               echo "⚙️ Optimisation Laravel"
               grep -q "^APP_KEY=$" .env && php artisan key:generate --force || true
               php artisan optimize:clear || true
-              php artisan migrate --force || true
-              php artisan storage:link || true
 
-              # seed_data.sql retiré du déploiement automatique (DROP TABLE détruit les données)
-              # Pour une installation fraîche uniquement : mysql ... < database/seed_data.sql
+              if [ -f /tmp/vitas_migrate ]; then
+                echo "🗄️ Migration en cours"
+                php artisan migrate --force || true
+                rm /tmp/vitas_migrate
+              fi
+
+              php artisan storage:link || true
             else
-              echo "⚠️ .env absent sur /var/www/vitas — artisan ignoré"
+              echo "⚠️ .env absent — artisan ignoré"
             fi
 
             sudo systemctl reload php-fpm || true
             sudo systemctl reload nginx || true
-
             echo "✅ Déploiement vitas terminé"
           EOF
+
+      - name: Trigger migrations if needed
+        if: steps.changes.outputs.migrations != '0'
+        run: |
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+            "cd /var/www/vitas && php artisan migrate --force"
