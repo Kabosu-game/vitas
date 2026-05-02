@@ -91,6 +91,7 @@ jobs:
           EOF
 
       - name: Maintenance OFF
+        if: always()
         run: |
           ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
