@@ -308,14 +308,17 @@
                     </li>
                 @endcanany
 
+                @if(Route::has('admin.referral.index'))
                 @canany(['referral-create', 'manage-referral', 'referral-edit', 'referral-delete'])
                     <li class="side-nav-item {{ isActive('admin.referral.*') }}">
                         <a href="{{ route('admin.referral.index') }}"><i
                                 data-lucide="align-end-horizontal"></i><span>{{ __('Referral') }}</span></a>
                     </li>
                 @endcanany
+                @endif
 
 
+                @if(Route::has('admin.reward.point.earnings.index'))
                 @canany(['reward-earning-list', 'reward-earning-create', 'reward-earning-edit', 'reward-earning-delete',
                     'reward-redeem-list', 'reward-redeem-create', 'reward-redeem-edit', 'reward-redeem-delete'])
                     <li class="side-nav-item side-nav-dropdown {{ isActive(['admin.reward.point*']) }}">
@@ -346,7 +349,8 @@
                             @endcanany
                         </ul>
                     </li>
-                @endcan
+                @endcanany
+                @endif
 
             @endcanany
 
