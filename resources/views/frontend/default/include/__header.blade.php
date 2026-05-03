@@ -69,9 +69,6 @@
                                                     @endforeach
                                                 </ul>
                                             </li>
-                                            <li @class(['active' => request()->is('how-it-works')])>
-                                                <a href="{{ url('how-it-works') }}">{{ __('nav.main.how_it_works') }}</a>
-                                            </li>
                                             <li @class(['active' => request()->is('faq')])>
                                                 <a href="{{ url('faq') }}">{{ __('nav.main.faq') }}</a>
                                             </li>
@@ -80,6 +77,14 @@
                                             </li>
                                         @else
                                             @foreach ($navCollection as $navigation)
+                                                @php
+                                                    $uSkip = $navigation->page_id ? url($navigation->url) : $navigation->url;
+                                                    if (! \Illuminate\Support\Str::startsWith((string) $uSkip, ['http://', 'https://', '//'])) {
+                                                        $uSkip = url(ltrim((string) $uSkip, '/'));
+                                                    }
+                                                    $pathSkip = strtolower((string) (parse_url((string) $uSkip, PHP_URL_PATH) ?? ''));
+                                                @endphp
+                                                @continue(str_contains($pathSkip, 'how-it-works'))
                                                 @php
                                                     $navKey = strtolower(str_replace([' ', '-'], ['_', '_'], $navigation->name));
                                                     $translatedName = match ($navKey) {
@@ -123,12 +128,6 @@
                                                             <li><a href="{{ url($p['slug']) }}">{{ $p['label'] }}</a></li>
                                                         @endforeach
                                                     </ul>
-                                                </li>
-                                            @endunless
-
-                                            @unless ($navCovers(['how-it-works', 'how it', 'comment']))
-                                                <li @class(['active' => request()->is('how-it-works')])>
-                                                    <a href="{{ url('how-it-works') }}">{{ __('nav.main.how_it_works') }}</a>
                                                 </li>
                                             @endunless
 

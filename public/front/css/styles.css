@@ -1492,29 +1492,36 @@ li .flag-icon {
   height: 45px;
 }
 
-.header-logo img {
+.header-logo a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  max-width: min(280px, 70vw);
+}
+.header-logo img:not(.header-brand-logo) {
   height: 34px;
 }
 .header-logo img.header-brand-logo {
   height: auto !important;
   width: auto !important;
-  max-width: min(240px, 88vw);
+  max-width: min(240px, 70vw) !important;
+  flex-shrink: 0;
 }
 @media (max-width: 575px) {
-  .header-logo img {
+  .header-logo img:not(.header-brand-logo) {
     height: 30px;
   }
   .header-logo img.header-brand-logo {
     height: auto !important;
-    max-height: 44px !important;
+    max-height: 48px !important;
   }
 }
 @media (max-width:450px) {
-  .header-logo img {
+  .header-logo img:not(.header-brand-logo) {
     height: 26px;
   }
   .header-logo img.header-brand-logo {
-    max-height: 40px !important;
+    max-height: 44px !important;
   }
 }
 
@@ -10658,11 +10665,9 @@ li .flag-icon {
   font-weight: 400;
 }
 
-/* Landing / hero : logo clair sur fond sombre (uniquement accueil avec header transparent) */
+/* Logo en couleurs d’origine (pas de filtre : les SVG/PNG colorés restent lisibles) */
 .body-landing-bg .header-area.header-transparent .header-logo img.header-brand-logo,
-.dark-theme .header-area.header-transparent .header-logo img.header-brand-logo {
-  filter: brightness(0) invert(1);
-}
+.dark-theme .header-area.header-transparent .header-logo img.header-brand-logo,
 .header-area.header-on-light .header-logo img.header-brand-logo {
   filter: none !important;
 }

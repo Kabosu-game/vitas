@@ -1,6 +1,21 @@
 @php
-    $path = setting('site_logo', 'global');
-    $src = ! empty($path) ? asset($path) : asset('logo/logo.png');
+    $path = trim((string) setting('site_logo', 'global'));
+    if ($path === '') {
+        $src = asset('logo/logo.png');
+    } elseif (preg_match('#^https?://#i', $path) || str_starts_with($path, '//')) {
+        $src = $path;
+    } elseif (str_starts_with($path, '/')) {
+        $src = $path;
+    } else {
+        $rel = ltrim($path, '/');
+        $src = asset($rel);
+        if ($rel !== '' && ! is_file(public_path($rel)) && ! str_starts_with($rel, 'assets/')) {
+            $underAssets = 'assets/'.$rel;
+            if (is_file(public_path($underAssets))) {
+                $src = asset($underAssets);
+            }
+        }
+    }
     $hRaw = setting('site_logo_height', 'global');
     $wRaw = setting('site_logo_width', 'global');
     $maxH = isset($maxHeight) ? (int) $maxHeight : 52;
@@ -14,4 +29,4 @@
     $class = $class ?? 'header-brand-logo';
     $loading = $loading ?? 'lazy';
 @endphp
-<img class="{{ $class }}" src="{{ $src }}" alt="{{ strip_tags((string) setting('site_title', 'global')) }}" style="max-height:{{ $maxH }}px;max-width:{{ $maxW }}px;width:auto;height:auto;object-fit:contain;display:block;" loading="{{ $loading }}" decoding="async">
+<img class="{{ $class }}" src="{{ $src }}" alt="{{ strip_tags((string) setting('site_title', 'global')) }}" style="max-height:{{ $maxH }}px;max-width:{{ $maxW }}px;width:auto;height:auto;object-fit:contain;object-position:left center;display:block;" loading="{{ $loading }}" decoding="async">
