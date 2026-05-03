@@ -9,7 +9,6 @@
     @include('frontend::home.include.__workstepsection')
     @include('frontend::home.include.__pretsection')
     @include('frontend::home.include.__powerfulsection')
-    @include('frontend::home.include.__loancalculatorsection')
     @include('frontend::home.include.__experiencesection')
     @include('frontend::home.include.__faq')
     @include('frontend::home.include.__testimonialsection')

@@ -27,9 +27,6 @@
         </li>
     </ul>
     <a href="{{ route('loan-request.create') }}" class="tp-btn w-100 text-center mt-20" style="display:block;">{{ __('loan_apply_button') }}</a>
-    <a href="{{ url('loan-calculator') }}" class="pret-sim-link mt-10">
-        <i data-lucide="calculator" style="width:14px;height:14px;"></i> {{ __('loan_simulate_link') }}
-    </a>
 </div>
 
 <style>
@@ -43,8 +40,6 @@
 .pret-sidebar-label { display:flex; align-items:center; gap:6px; font-size:13px; color:#6b7280; flex-shrink:0; }
 .pret-sidebar-label svg { width:14px; height:14px; color:var(--clr-theme-1,#4f46e5); }
 .pret-sidebar-value { font-size:13px; font-weight:600; text-align:right; }
-.pret-sim-link { display:flex; align-items:center; justify-content:center; gap:6px; font-size:13px; color:var(--clr-theme-1,#4f46e5); text-decoration:none; margin-top:10px; }
-.pret-sim-link:hover { text-decoration:underline; }
 .mt-20 { margin-top:20px; }
 .mt-10 { margin-top:10px; }
 .w-100 { width:100%; }

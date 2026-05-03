@@ -44,7 +44,6 @@
                                     <li><a href="{{ url('solutions') }}">{{ __('footer_nav_services') }}</a></li>
                                     <li><a href="{{ url('faq') }}">{{ __('footer_nav_faq') }}</a></li>
                                     <li><a href="{{ url('contact') }}">{{ __('footer_nav_contact') }}</a></li>
-                                    <li><a href="{{ url('loan-calculator') }}">{{ __('footer_nav_simulator') }}</a></li>
                                 </ul>
                             </div>
                         </div>

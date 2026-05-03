@@ -32,7 +32,11 @@
                     <div class="offcanvas-top d-flex justify-content-between align-items-center">
                         <div class="offcanvas-logo">
                             <a href="/">
-                                <img src="{{ asset('logo/logo.png') }}" alt="logo not found">
+                                @php
+                                    $__logo = setting('site_logo', 'global');
+                                    $__logoSrc = ! empty($__logo) ? asset($__logo) : asset('logo/logo.png');
+                                @endphp
+                                <img class="header-brand-logo" src="{{ $__logoSrc }}" alt="{{ setting('site_title', 'global') }}" style="max-height:40px;width:auto;object-fit:contain" loading="lazy" decoding="async">
                             </a>
                         </div>
                         <div class="offcanvas-close">
