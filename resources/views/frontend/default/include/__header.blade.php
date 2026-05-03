@@ -1,8 +1,6 @@
 
 <!-- Header area start -->
 @php
-    $logoSetting = setting('site_logo', 'global');
-    $logoSrc = ! empty($logoSetting) ? asset($logoSetting) : asset('logo/logo.png');
     $navCollection = collect($navigations ?? []);
     $navHaystack = function () use ($navCollection) {
         return $navCollection->map(function ($n) {
@@ -39,18 +37,14 @@
     ];
 @endphp
 <header>
-    <div id="header-sticky" class="header-area header-transparent">
+    <div id="header-sticky" @class(['header-area', 'header-transparent' => request()->routeIs('home'), 'header-on-light' => ! request()->routeIs('home')])>
         <div class="container">
             <div class="mega-menu-wrapper position-relative">
                 <div class="header-main">
                     <div class="header-left">
                         <div class="header-logo">
                             <a href="{{ route('home') }}">
-                                @php
-                                    $height = setting('site_logo_height', 'global') == 'auto' ? 'auto' : setting('site_logo_height', 'global').'px';
-                                    $width = setting('site_logo_width', 'global') == 'auto' ? 'auto' : setting('site_logo_width', 'global').'px';
-                                @endphp
-                                <img class="header-brand-logo" src="{{ $logoSrc }}" style="height:{{ $height }};width:{{ $width }};max-width:none;object-fit:contain" alt="{{ setting('site_title', 'global') }}" width="200" height="60" loading="eager" decoding="async">
+                                @include('frontend::include.__brand_logo', ['loading' => 'eager', 'maxHeight' => 56, 'maxWidth' => 240])
                             </a>
                         </div>
                     </div>
@@ -156,15 +150,7 @@
                     <div class="header-right">
                         <div class="header-action">
                             <div class="quick-use">
-                                <div class="language-switcher">
-                                    @if (setting('language_switcher'))
-                                        <select name="language" class="langu-swit small" onchange="window.location.href=this.options[this.selectedIndex].value;">
-                                            @foreach (\App\Models\Language::where('status', true)->get() as $lang)
-                                                <option value="{{ route('language-update', ['name' => $lang->locale]) }}" @selected(app()->getLocale() == $lang->locale || $lang->is_default)>{{ $lang->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    @endif
-                                </div>
+                                @include('frontend::include.__language_switcher', ['selectId' => 'header-lang-select', 'wrapperClass' => 'header-lang-switcher'])
                                 <div class="color-switcher">
                                     <img class="light-icon" src="{{ asset('/front/images/icons/sun.png') }}" alt="">
                                     <img class="dark-icon" src="{{ asset('/front/images/icons/moon.png') }}" alt="">

@@ -5,9 +5,9 @@
 <html lang="{{ app()->getLocale() }}" @if($isRtl) dir="rtl" @endif>
 @include('frontend::include.__head')
 <body @class([
-    'dark-theme' => session()->get('site-color-mode',setting('default_mode')) == 'dark',
+    'dark-theme' => session()->get('site-color-mode', setting('default_mode')) == 'dark',
     'rtl_mode' => $isRtl,
-    'body-landing-bg'
+    'body-landing-bg' => request()->routeIs('home'),
 ])>
     <!--Notification-->
     @include('global._notify')
@@ -31,12 +31,8 @@
                 <div class="offcanvas-content">
                     <div class="offcanvas-top d-flex justify-content-between align-items-center">
                         <div class="offcanvas-logo">
-                            <a href="/">
-                                @php
-                                    $__logo = setting('site_logo', 'global');
-                                    $__logoSrc = ! empty($__logo) ? asset($__logo) : asset('logo/logo.png');
-                                @endphp
-                                <img class="header-brand-logo" src="{{ $__logoSrc }}" alt="{{ setting('site_title', 'global') }}" style="max-height:40px;width:auto;object-fit:contain" loading="lazy" decoding="async">
+                            <a href="{{ route('home') }}">
+                                @include('frontend::include.__brand_logo', ['maxHeight' => 44, 'maxWidth' => 200, 'loading' => 'eager'])
                             </a>
                         </div>
                         <div class="offcanvas-close">
@@ -50,6 +46,11 @@
                         </div>
                     </div>
                     <div class="mobile-menu fix"></div>
+                    @include('frontend::include.__language_switcher', [
+                        'selectId' => 'offcanvas-lang-select',
+                        'wrapperClass' => 'offcanvas-lang mb-3',
+                        'selectClass' => 'form-select form-select-sm langu-swit small',
+                    ])
                     <div class="offcanvas-btn mb-3">
                         @auth('web')
                         <a class="gradient-btn" href="{{ route('user.dashboard') }}">

@@ -13,13 +13,9 @@
                     {{-- Col 1 : Logo + description + newsletter --}}
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                         <div class="footer-widget-1-1">
-                            @php
-                                $height = setting('site_logo_height','global') == 'auto' ? 'auto' : setting('site_logo_height','global').'px';
-                                $width  = setting('site_logo_width','global')  == 'auto' ? 'auto' : setting('site_logo_width','global').'px';
-                            @endphp
                             <div class="footer-logo mb-20">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ asset('logo/logo.png') }}" style="height:{{ $height }};width:{{ $width }};max-width:none" alt="Eurovitas Finanzen">
+                                    @include('frontend::include.__brand_logo', ['maxHeight' => 48, 'maxWidth' => 200])
                                 </a>
                             </div>
                             <div class="footer-content">

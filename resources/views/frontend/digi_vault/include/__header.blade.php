@@ -6,7 +6,7 @@
                 <div class="header-left">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('logo/logo.png') }}" alt="logo not found">
+                            @include('frontend::include.__brand_logo', ['loading' => 'eager', 'maxHeight' => 52, 'maxWidth' => 220])
                         </a>
                     </div>
                 </div>
@@ -38,33 +38,9 @@
                 </div>
                 <div class="header-right">
                     <div class="header-quick-actions">
-                        @if(setting('language_switcher'))
-                            @php
-                                $languages = \App\Models\Language::where('status',true)->get();
-                                $current_lang = app()->getLocale();
-                            @endphp
                         <div class="language-dropdown">
-                            <div class="language-box language-nav">
-                                <div class="translate_wrapper">
-                                    <div class="current_lang">
-                                        <div class="lang"><span class="lang-txt">{{ $languages->where('locale',$current_lang)->value('name') }}</span><svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8 1.5L4.5 4.5L1 1.5" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="more_lang">
-                                        @foreach(\App\Models\Language::where('status',true)->get() as $lang)
-                                            @if ($current_lang != $lang->locale)
-                                                <a href="{{ route('language-update',['name'=> $lang->locale]) }}" data-lang="{{$lang->name}}" class="change_lang">
-                                                    <div class="lang selected" data-value="en"><span class="lang-txt">{{$lang->name}}<span> </span></span></div>
-                                                </a>
-                                            @endif
-                                            @endforeach
-                                    </div>
-                                </div>
-                            </div>
+                            @include('frontend::include.__language_switcher', ['selectId' => 'digi-public-header-lang', 'selectClass' => 'langu-swit small form-select'])
                         </div>
-                        @endif
                         <div class="header-btns-wrap d-none d-md-inline-flex">
                             @auth('web')
                                 <a class="td-btn gradient-outline-btn btn-sm radius-8" href="{{ route('user.dashboard') }}">

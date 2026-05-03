@@ -16,23 +16,9 @@
         <div class="authOne">
             <div class="auth-contents">
                 <div class="logo">
-                    @php
-                        $height = setting('site_logo_height','global') == 'auto' ? 'auto' : setting('site_logo_height','global').'px';
-                        $width = setting('site_logo_width','global') == 'auto' ? 'auto' : setting('site_logo_width','global').'px';
-                    @endphp
-                    <a href="{{ route('home')}}"><img src="{{ asset('logo/logo.png') }}" style="height:{{ $height }};width:{{ $width }};max-width:none" alt=""></a>
+                    <a href="{{ route('home')}}">@include('frontend::include.__brand_logo', ['maxHeight' => 52, 'maxWidth' => 220, 'loading' => 'eager'])</a>
                     <div class="no-user-header">
-                        @if(setting('language_switcher'))
-                            <div class="language-switcher">
-                                <select class="langu-swit small" name="language" id=""
-                                        onchange="window.location.href=this.options[this.selectedIndex].value;">
-                                    @foreach(\App\Models\Language::where('status',true)->get() as $lang)
-                                        <option
-                                            value="{{ route('language-update',['name'=> $lang->locale]) }}" @selected( app()->getLocale() == $lang->locale )>{{$lang->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        @endif
+                        @include('frontend::include.__language_switcher', ['selectId' => 'auth-register2-lang'])
                         <div class="color-switcher">
                             <img class="light-icon" src="{{ asset('front/images/icons/sun.png') }}" alt="">
                             <img class="dark-icon" src="{{ asset('front/images/icons/moon.png') }}" alt="">

@@ -1495,15 +1495,56 @@ li .flag-icon {
 .header-logo img {
   height: 34px;
 }
+.header-logo img.header-brand-logo {
+  height: auto !important;
+  width: auto !important;
+  max-width: min(240px, 88vw);
+}
 @media (max-width: 575px) {
   .header-logo img {
     height: 30px;
+  }
+  .header-logo img.header-brand-logo {
+    height: auto !important;
+    max-height: 44px !important;
   }
 }
 @media (max-width:450px) {
   .header-logo img {
     height: 26px;
   }
+  .header-logo img.header-brand-logo {
+    max-height: 40px !important;
+  }
+}
+
+/* Pages intérieures : header lisible (fond clair, liens foncés) */
+.header-area.header-on-light {
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(3, 3, 6, 0.08);
+}
+.header-area.header-on-light .main-menu nav ul li a {
+  color: rgba(3, 3, 6, 0.88);
+}
+.header-area.header-on-light .main-menu nav ul li:hover > a {
+  color: #6c3beb;
+}
+.header-area.header-on-light .bar-icon span {
+  background: #030306;
+}
+.header-area.header-on-light .header-action .nice-select.langu-swit.small,
+.header-area.header-on-light .header-action .nice-select.langu-swit.small .current {
+  color: rgba(3, 3, 6, 0.92);
+}
+.header-lang-switcher {
+  min-width: 0;
+}
+.header-lang-switcher .nice-select.langu-swit.small {
+  min-width: 120px;
+}
+.offcanvas-lang .form-select {
+  font-size: 14px;
 }
 
 .header-main {
@@ -10617,10 +10658,13 @@ li .flag-icon {
   font-weight: 400;
 }
 
-/* Landing header logo visibility on dark backgrounds */
-.dark-theme .header-logo img,
-.body-landing-bg .header-logo img {
+/* Landing / hero : logo clair sur fond sombre (uniquement accueil avec header transparent) */
+.body-landing-bg .header-area.header-transparent .header-logo img.header-brand-logo,
+.dark-theme .header-area.header-transparent .header-logo img.header-brand-logo {
   filter: brightness(0) invert(1);
+}
+.header-area.header-on-light .header-logo img.header-brand-logo {
+  filter: none !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

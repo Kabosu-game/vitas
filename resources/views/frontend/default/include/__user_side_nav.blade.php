@@ -1,10 +1,6 @@
 <aside class="user-sidebar">
-    @php
-        $height = setting('site_logo_height','global') == 'auto' ? 'auto' : setting('site_logo_height','global').'px';
-        $width = setting('site_logo_width','global') == 'auto' ? 'auto' : setting('site_logo_width','global').'px';
-    @endphp
     <div class="site-logo">
-        <a href="{{route('home')}}" class="logo"><img src="{{ asset('logo/logo.png') }}" style="height:{{ $height }};width:{{ $width }};max-width:none" alt="{{ auth()->user()->full_name }}"></a>
+        <a href="{{ route('home') }}" class="logo">@include('frontend::include.__brand_logo', ['maxHeight' => 44, 'maxWidth' => 200, 'loading' => 'eager'])</a>
     </div>
     @php
         $loan_running = loanRunning();

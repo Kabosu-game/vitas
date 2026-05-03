@@ -7,7 +7,7 @@
                     <div class="nav-left">
                         <div class="single-left">
                             <div class="site-sidebar-toggle"><i data-lucide="list"></i></div>
-                            <div class="site-logo-inmobile"><a href="{{route('home')}}"><img src="{{ asset('logo/icone.png') }}" alt="{{ setting('site_title') }}"></a></div>
+                            <div class="site-logo-inmobile"><a href="{{ route('home') }}">@include('frontend::include.__brand_logo', ['maxHeight' => 40, 'maxWidth' => 160, 'loading' => 'eager'])</a></div>
                             <div class="site-logo-inmobile-icon"><a href="{{route('home')}}"><img src="{{ asset(setting('site_favicon','global')) }}" alt="{{ setting('site_title') }}"></a></div>
                             <div class="salutation">{{ grettings() }}! <strong>{{ auth()->user()->full_name }}</strong></div>
                         </div>
@@ -38,17 +38,7 @@
                             </div>
                         @endauth
                         <div class="single-right">
-                            @if(setting('language_switcher'))
-                                <div class="language-switcher">
-                                    <select class="langu-swit small" name="language" id=""
-                                            onchange="window.location.href=this.options[this.selectedIndex].value;">
-                                        @foreach(\App\Models\Language::where('status',true)->get() as $lang)
-                                            <option
-                                                value="{{ route('language-update',['name'=> $lang->locale]) }}" @selected( app()->getLocale() == $lang->locale )>{{$lang->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            @endif
+                            @include('frontend::include.__language_switcher', ['selectId' => 'digi-user-header-lang'])
                         </div>
                         <div class="single-right mob-650-none">
                             <div class="help-support">

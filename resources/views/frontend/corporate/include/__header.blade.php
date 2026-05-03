@@ -4,13 +4,8 @@
           <div class="header-left">
              <div class="header-logo">
                 <a href="{{ route('home') }}">
-                    @php
-                        $height = setting('site_logo_height','global') == 'auto' ? 'auto' : setting('site_logo_height','global').'px';
-                        $width = setting('site_logo_width','global') == 'auto' ? 'auto' : setting('site_logo_width','global').'px';
-                    @endphp
-
-                    <img class="logo-white" src="{{ asset('logo/logo.png') }}" style="height:{{ $height }};width:{{ $width }};max-width:none" alt="{{ setting('site_title','global') }}">
-                    <img class="logo-black" src="{{ asset('logo/logo.png') }}" style="height:{{ $height }};width:{{ $width }};max-width:none" alt="{{ setting('site_title','global') }}">
+                    @include('frontend::include.__brand_logo', ['class' => 'logo-white header-brand-logo', 'loading' => 'eager', 'maxHeight' => 56, 'maxWidth' => 240])
+                    @include('frontend::include.__brand_logo', ['class' => 'logo-black header-brand-logo', 'loading' => 'eager', 'maxHeight' => 56, 'maxWidth' => 240])
                 </a>
              </div>
              <div class="header-menu d-none d-lg-inline-flex">
@@ -47,35 +42,11 @@
                    </label>
                 </div>
              </div>
-             @if(setting('language_switcher'))
-                @php
-                    $languages = \App\Models\Language::where('status',true)->get();
-                    $current_lang = app()->getLocale();
-                @endphp
-                <div class="header-quick-action">
-                    <div class="language-box">
-                        <div class="header-lang-item header-lang">
-                            <span class="header-lang-toggle" id="header-lang-toggle">
-                                <i class="fa-regular fa-globe"></i>
-                                <span class="lang-text">
-                                    {{ $languages->where('locale',$current_lang)->value('name') }}
-                                </span>
-                            </span>
-                            <ul id="language-list" class="hidden">
-                                @foreach(\App\Models\Language::where('status',true)->get() as $lang)
-                                    @if ($current_lang != $lang->locale)
-                                        <li>
-                                            <a href="{{ route('language-update',['name'=> $lang->locale]) }}" data-lang="{{$lang->name}}" class="change_lang">
-                                                {{$lang->name}} <span class="icon"></span>
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+             <div class="header-quick-action">
+                <div class="language-box">
+                    @include('frontend::include.__language_switcher', ['selectId' => 'corp-public-header-lang', 'selectClass' => 'langu-swit small form-select'])
                 </div>
-             @endif
+             </div>
              <div class="header-action">
                 <div class="header-btn-wrap d-none d-xxl-inline-flex">
                     @auth('web')
