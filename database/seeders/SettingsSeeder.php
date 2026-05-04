@@ -51,7 +51,7 @@ class SettingsSeeder extends Seeder
             ['name' => 'referral_signup_bonus',      'val' => '1',                    'type' => 'permission'],
             ['name' => 'site_animation',             'val' => '1',                    'type' => 'permission'],
             ['name' => 'back_to_top',                'val' => '1',                    'type' => 'permission'],
-            ['name' => 'language_switcher',          'val' => '0',                    'type' => 'permission'],
+            ['name' => 'language_switcher',          'val' => '1',                    'type' => 'permission'],
             ['name' => 'card_creation',              'val' => '1',                    'type' => 'permission'],
             ['name' => 'card_topup',                 'val' => '1',                    'type' => 'permission'],
             ['name' => 'debug_mode',                 'val' => '0',                    'type' => 'permission'],
@@ -117,6 +117,6 @@ class SettingsSeeder extends Seeder
             );
         }
 
-        $this->command->info('Settings seeded — ' . count($settings) . ' entries processed.');
+        $this->command->info('Settings seeded — ' . \count($settings) . ' entries processed.');
     }
 }
