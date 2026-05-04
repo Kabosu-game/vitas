@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             LanguageSeeder::class,
             EmailTemplateSeeder::class,
+            SettingsSeeder::class,
             // AdminSeeder::class,       // une seule fois manuellement
             // PluginSeeder::class,
             // GatewaySeeder::class,

@@ -10665,11 +10665,14 @@ li .flag-icon {
   font-weight: 400;
 }
 
-/* Logo en couleurs d’origine (pas de filtre : les SVG/PNG colorés restent lisibles) */
-.body-landing-bg .header-area.header-transparent .header-logo img.header-brand-logo,
-.dark-theme .header-area.header-transparent .header-logo img.header-brand-logo,
-.header-area.header-on-light .header-logo img.header-brand-logo {
-  filter: none !important;
+/* Logo visible sur fond sombre : fond blanc autour du logo pour préserver les couleurs */
+.dark-theme .header-logo a,
+.body-landing-bg .header-logo a {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 6px;
+  padding: 3px 10px;
+  display: inline-flex;
+  align-items: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
