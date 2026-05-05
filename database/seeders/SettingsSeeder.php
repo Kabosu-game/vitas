@@ -12,6 +12,7 @@ class SettingsSeeder extends Seeder
         $settings = [
             // --- Global ---
             ['name' => 'site_title',                 'val' => 'Eurovitas Finanzen',   'type' => 'global'],
+            ['name' => 'site_logo',                  'val' => 'logo/logo.png',        'type' => 'global'],
             ['name' => 'site_logo_height',           'val' => '34',                   'type' => 'global'],
             ['name' => 'site_logo_width',            'val' => 'auto',                 'type' => 'global'],
             ['name' => 'site_favicon',               'val' => 'logo/icone.png',       'type' => 'global'],

@@ -1,70 +1,98 @@
 name: Deploy vitas
 on:
   push:
-    branches: ["main"]
-
+    branches: [ "main" ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Setup SSH
+      - name: Install PHP dependencies
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: /tmp/db.sqlite
+        run: |
+          touch /tmp/db.sqlite
+          composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Build frontend assets
+        run: |
+          if [ -f package.json ]; then
+            npm install
+            npm run build
+          fi
+
+      - name: Setup SSH Key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.VITAS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519_vitas
           chmod 600 ~/.ssh/id_ed25519_vitas
-          ssh-keyscan -H ${{ secrets.VITAS_SERVER_IP }} >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -H ${{ secrets.VITAS_SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Rsync code (vendor exclu)
+      - name: Test SSH Connection
         run: |
-          rsync -az --delete \
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+            "echo 'SSH Connection OK - vitas'"
+
+      - name: Maintenance ON
+        run: |
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+            "cd /var/www/vitas && php artisan down --retry=60 || true"
+
+      - name: Deploy project to VPS
+        run: |
+          rsync -avz --delete \
             --exclude='.git' \
             --exclude='.github' \
             --exclude='.env' \
             --exclude='storage' \
-            --exclude='vendor' \
-            --exclude='node_modules' \
             -e "ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no" \
             ./ "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}":/var/www/vitas
 
-      - name: Deploy sur VPS
+      - name: Fix permissions on VPS
         run: |
-          ssh -i ~/.ssh/id_ed25519_vitas \
-            -o StrictHostKeyChecking=no \
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+            "mkdir -p /var/www/vitas/storage/app/public \
+              /var/www/vitas/storage/framework/cache/data \
+              /var/www/vitas/storage/framework/sessions \
+              /var/www/vitas/storage/framework/views \
+              /var/www/vitas/storage/logs \
+              /var/www/vitas/bootstrap/cache && \
+             touch /var/www/vitas/storage/installed && \
+             chown -R www-data:www-data /var/www/vitas && \
+             chmod -R 755 /var/www/vitas && \
+             chmod -R 775 /var/www/vitas/storage && \
+             chmod -R 775 /var/www/vitas/bootstrap/cache && \
+             ([ -f /var/www/vitas/.env ] && chmod 644 /var/www/vitas/.env || true)"
+
+      - name: Run commands on VPS
+        run: |
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
             -o ServerAliveInterval=60 \
-            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" << 'ENDSSH'
-          set -e
-          cd /var/www/vitas
+            -o ServerAliveCountMax=10 \
+            "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" << 'EOF'
+            set -e
+            cd /var/www/vitas
+            if [ -f .env ]; then
+              grep -q "^APP_KEY=$" .env && php artisan key:generate --force || true
+              php artisan optimize:clear || true
+              php artisan migrate --force || true
+              php artisan storage:link || true
+            else
+              echo "⚠️ .env absent — artisan ignoré"
+            fi
+            sudo systemctl reload php-fpm || true
+            sudo systemctl reload nginx || true
+          EOF
 
-          php artisan down --retry=60 || true
-
-          # Composer uniquement si composer.lock a changé
-          NEW_HASH=$(md5sum composer.lock | cut -d' ' -f1)
-          OLD_HASH=$(cat .composer_lock_hash 2>/dev/null || echo "none")
-          if [ "$NEW_HASH" != "$OLD_HASH" ]; then
-            echo "📦 composer.lock modifié — installation des dépendances..."
-            composer install --no-dev --no-interaction --optimize-autoloader
-            echo "$NEW_HASH" > .composer_lock_hash
-          else
-            echo "✅ vendor/ à jour — composer ignoré"
-          fi
-
-          # Dossiers nécessaires + permissions uniquement là où c'est requis
-          mkdir -p storage/app/public storage/framework/cache/data \
-                   storage/framework/sessions storage/framework/views \
-                   storage/logs bootstrap/cache
-          chmod -R 775 storage bootstrap/cache
-          touch storage/installed
-
-          php artisan optimize:clear
-          php artisan migrate --force
-          php artisan storage:link 2>/dev/null || true
-          php artisan optimize
-
-          sudo systemctl reload php-fpm || true
-
-          php artisan up
-          echo "✅ Déploiement vitas terminé"
-          ENDSSH
+      - name: Maintenance OFF
+        if: always()
+        run: |
+          ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no \
+           "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}" \
+           "rm -f /var/www/vitas/storage/framework/down /var/www/vitas/storage/framework/maintenance.php && cd /var/www/vitas && php artisan up && echo '✅ Déploiement vitas terminé'"
