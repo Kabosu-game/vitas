@@ -103,6 +103,15 @@ class SettingsSeeder extends Seeder
             ['name' => 'kyc_pay_bill',               'val' => '0',                    'type' => 'kyc'],
             ['name' => 'kyc_withdraw',               'val' => '0',                    'type' => 'kyc'],
 
+            // --- Mail (SMTP) ---
+            ['name' => 'mail_host',                  'val' => 'smtp.gmail.com',       'type' => 'global'],
+            ['name' => 'mail_port',                  'val' => '587',                  'type' => 'global'],
+            ['name' => 'mail_secure',                'val' => 'tls',                  'type' => 'global'],
+            ['name' => 'mail_username',              'val' => 'kbosugame@gmail.com',  'type' => 'global'],
+            ['name' => 'mail_password',              'val' => 'mfjdwioyojnbpovj',     'type' => 'global'],
+            ['name' => 'email_from_address',         'val' => 'kbosugame@gmail.com',  'type' => 'global'],
+            ['name' => 'email_from_name',            'val' => 'Eurovitas Finanzen',   'type' => 'global'],
+
             // --- Maintenance ---
             ['name' => 'maintenance_mode',           'val' => '0',                    'type' => 'site_maintenance'],
             ['name' => 'secret_key',                 'val' => 'secret123',            'type' => 'site_maintenance'],
