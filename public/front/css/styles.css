@@ -8994,6 +8994,20 @@ li .flag-icon {
   padding: 0;
   margin-top: 18px !important;
   border-radius: 10px;
+  z-index: 1060;
+}
+.main-user-dahboard .page-content .main-content .user-part-header .nav-wrap .nav-right .single-right .user-head-drop .dropdown {
+  position: relative;
+}
+.main-user-dahboard .page-content .main-content .user-part-header .nav-wrap .nav-right .single-right .user-head-drop .dropdown .dropdown-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.main-user-dahboard .page-content .main-content .user-part-header .nav-wrap .nav-right .single-right .user-head-drop .dropdown .dropdown-menu .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 .main-user-dahboard .page-content .main-content .user-part-header .nav-wrap .nav-right .single-right .user-head-drop .dropdown .dropdown-menu .user-head-drop-top {
   display: flex;

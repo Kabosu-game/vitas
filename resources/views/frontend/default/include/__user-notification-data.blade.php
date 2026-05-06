@@ -1,4 +1,4 @@
-<button type="button" class="item notification-dot" data-bs-toggle="dropdown" aria-expanded="false">
+<button type="button" class="item notification-dot" data-bs-toggle="dropdown" data-toggle="dropdown" aria-expanded="false">
     <i data-lucide="bell" @class(['bell-ringng' => $totalUnread > 0])></i>
     <div class="number">{{ $totalUnread }}</div>
 </button>

@@ -41,7 +41,7 @@
                         <div class="single-right">
                             <div class="user-head-drop">
                                 <div class="dropdown">
-                                    <button class="user-head-drop-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="user-head-drop-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-toggle="dropdown" aria-expanded="false">
                                         @if(auth()->user()->avatar != null && file_exists(base_path('assets/'.auth()->user()->avatar)))
                                         <img class="user-icon" src="{{ asset(auth()->user()->avatar) }}" alt="">
                                         @else
