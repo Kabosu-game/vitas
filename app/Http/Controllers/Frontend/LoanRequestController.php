@@ -13,13 +13,13 @@ class LoanRequestController extends Controller
     public function create()
     {
         $loanTypes = [
-            'personal'     => __('Pret Personnel'),
-            'school'       => __('Pret Scolaire'),
-            'agricultural' => __('Pret Agricole'),
-            'realEstate'   => __('Pret Immobilier'),
-            'auto'         => __('Pret Auto'),
-            'professional' => __('Pret Professionnel'),
-            'emergency'    => __('Pret d\'Urgence'),
+            'personal'     => __('lr.type_personal'),
+            'school'       => __('lr.type_school'),
+            'agricultural' => __('lr.type_agricultural'),
+            'realEstate'   => __('lr.type_real_estate'),
+            'auto'         => __('lr.type_auto'),
+            'professional' => __('lr.type_professional'),
+            'emergency'    => __('lr.type_emergency'),
         ];
 
         return view('frontend::loan-request.create', compact('loanTypes'));

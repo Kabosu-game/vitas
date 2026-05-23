@@ -18,6 +18,89 @@
         </div>
         <div class="container-fluid">
 
+            {{-- ═══ QUICK ACCESS ADMIN ═══ --}}
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="site-card">
+                        <div class="site-card-header">
+                            <h3 class="title"><i data-lucide="zap" style="width:16px;height:16px;margin-right:6px;vertical-align:middle;color:#f59e0b"></i>{{ __('Quick Access') }}</h3>
+                        </div>
+                        <div class="site-card-body" style="padding:20px">
+                            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;">
+
+                                @can('customer-list')
+                                <a href="{{ route('admin.user.index') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(79,70,229,.1);color:#4f46e5;display:flex;align-items:center;justify-content:center;"><i data-lucide="users" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('All Customers') }}</span>
+                                </a>
+                                @endcan
+
+                                @can('customer-create')
+                                <a href="{{ route('admin.user.new') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,.1);color:#10b981;display:flex;align-items:center;justify-content:center;"><i data-lucide="user-plus" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Add Customer') }}</span>
+                                </a>
+                                @endcan
+
+                                @canany(['kyc-list','kyc-action'])
+                                <a href="{{ route('admin.kyc.pending') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(245,158,11,.1);color:#f59e0b;display:flex;align-items:center;justify-content:center;"><i data-lucide="check-square" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Pending KYC') }}</span>
+                                </a>
+                                @endcanany
+
+                                @can('transaction-list')
+                                <a href="{{ route('admin.transactions') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.1);color:#6366f1;display:flex;align-items:center;justify-content:center;"><i data-lucide="cast" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Transactions') }}</span>
+                                </a>
+                                @endcan
+
+                                <a href="{{ route('admin.loan-request.index') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(239,68,68,.1);color:#ef4444;display:flex;align-items:center;justify-content:center;"><i data-lucide="banknote" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Loan Requests') }}</span>
+                                </a>
+
+                                @canany(['withdraw-list','withdraw-action'])
+                                <a href="{{ route('admin.withdraw.pending') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(14,165,233,.1);color:#0ea5e9;display:flex;align-items:center;justify-content:center;"><i data-lucide="landmark" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Pending Withdraws') }}</span>
+                                </a>
+                                @endcanany
+
+                                <a href="{{ route('admin.notification.all') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(251,191,36,.1);color:#f59e0b;display:flex;align-items:center;justify-content:center;"><i data-lucide="megaphone" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Notifications') }}</span>
+                                </a>
+
+                                @canany(['support-ticket-list','support-ticket-action'])
+                                <a href="{{ route('admin.ticket.index') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,85,247,.1);color:#a855f7;display:flex;align-items:center;justify-content:center;"><i data-lucide="wrench" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Support Tickets') }}</span>
+                                </a>
+                                @endcanany
+
+                                @can('site-setting')
+                                <a href="{{ route('admin.settings.site') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(156,163,175,.15);color:#6b7280;display:flex;align-items:center;justify-content:center;"><i data-lucide="settings" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Site Settings') }}</span>
+                                </a>
+                                @endcan
+
+                                @can('clear-cache')
+                                <a href="{{ route('admin.clear-cache') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(239,68,68,.08);color:#dc2626;display:flex;align-items:center;justify-content:center;"><i data-lucide="trash-2" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Clear Cache') }}</span>
+                                </a>
+                                @endcan
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- ═══ FIN QUICK ACCESS ═══ --}}
+
             <div class="row">
                 @include('backend.include.__action')
                 @include('backend.include.__data_card')
