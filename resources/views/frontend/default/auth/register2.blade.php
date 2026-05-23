@@ -19,7 +19,6 @@
                     <a href="{{ route('home')}}">@include('frontend::include.__brand_logo', ['maxHeight' => 52, 'maxWidth' => 220, 'loading' => 'eager'])</a>
                     <div class="no-user-header">
                         @include('frontend::include.__language_switcher', ['selectId' => 'auth-register2-lang'])
-                        </div>
                     </div>
                 </div>
                 <div class="contents">
