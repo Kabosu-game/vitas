@@ -17,15 +17,6 @@
 
     lucide.createIcons();
 
-    // Color Switcher
-    $(".color-switcher").on('click', function () {
-        $("body").toggleClass("dark-theme");
-
-        var url = '{{ route("mode-theme") }}';
-
-        $.get(url);
-    });
-
     // let isDisabled = "{{ setting('site_animation','permission') == 1 ?  'mobile' : 'true' }}"
 
     // $(window).on('load', function () {

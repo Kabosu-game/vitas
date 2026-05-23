@@ -150,10 +150,6 @@
                         <div class="header-action">
                             <div class="quick-use">
                                 @include('frontend::include.__language_switcher', ['selectId' => 'header-lang-select', 'wrapperClass' => 'header-lang-switcher'])
-                                <div class="color-switcher">
-                                    <img class="light-icon" src="{{ asset('/front/images/icons/sun.png') }}" alt="">
-                                    <img class="dark-icon" src="{{ asset('/front/images/icons/moon.png') }}" alt="">
-                                </div>
                             </div>
 
                             <div class="header-btn-wrap d-none d-xl-inline-flex">

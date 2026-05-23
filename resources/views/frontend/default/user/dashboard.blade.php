@@ -313,32 +313,79 @@
 {{-- QUICK ACTIONS --}}
 <div class="dash-quick">
     <div class="dash-quick__grid">
+        {{-- Dépôt --}}
         <a href="{{ route('user.deposit.amount') }}" class="dash-quick__item">
             <div class="dash-quick__icon" style="background:rgba(16,185,129,.1);color:#10b981;"><i data-lucide="plus-circle"></i></div>
             <span class="dash-quick__label">{{ __('Deposit') }}</span>
         </a>
+
+        {{-- Retrait --}}
         <a href="{{ route('user.withdraw.view') }}" class="dash-quick__item">
             <div class="dash-quick__icon" style="background:rgba(239,68,68,.1);color:#ef4444;"><i data-lucide="arrow-up-right"></i></div>
             <span class="dash-quick__label">{{ __('Withdraw') }}</span>
         </a>
+
+        {{-- Virement interne --}}
         @if(setting('transfer_status','permission'))
         <a href="{{ route('user.fund_transfer.index') }}" class="dash-quick__item">
             <div class="dash-quick__icon" style="background:rgba(245,158,11,.1);color:#f59e0b;"><i data-lucide="send"></i></div>
             <span class="dash-quick__label">{{ __('Transfer') }}</span>
         </a>
         @endif
+
+        {{-- Virement bancaire externe --}}
+        @if(setting('wire_transfer_status','permission') ?? setting('transfer_status','permission'))
+        <a href="{{ route('user.fund_transfer.transfer.wire') }}" class="dash-quick__item">
+            <div class="dash-quick__icon" style="background:rgba(14,165,233,.1);color:#0ea5e9;"><i data-lucide="landmark"></i></div>
+            <span class="dash-quick__label">{{ __('Wire Transfer') }}</span>
+        </a>
+        @endif
+
+        {{-- Demande de prêt --}}
         <a href="{{ route('loan-request.create') }}" class="dash-quick__item">
             <div class="dash-quick__icon" style="background:rgba(79,70,229,.1);color:#4f46e5;"><i data-lucide="file-text"></i></div>
             <span class="dash-quick__label">{{ __('Loan') }}</span>
         </a>
+
+        {{-- Historique transactions --}}
         <a href="{{ route('user.transactions') }}" class="dash-quick__item">
             <div class="dash-quick__icon" style="background:rgba(99,102,241,.1);color:#6366f1;"><i data-lucide="list"></i></div>
             <span class="dash-quick__label">{{ __('History') }}</span>
         </a>
+
+        {{-- Historique dépôts --}}
+        <a href="{{ route('user.deposit.log') }}" class="dash-quick__item">
+            <div class="dash-quick__icon" style="background:rgba(16,185,129,.08);color:#059669;"><i data-lucide="clock"></i></div>
+            <span class="dash-quick__label">{{ __('Dep. History') }}</span>
+        </a>
+
+        {{-- Historique retraits --}}
+        <a href="{{ route('user.withdraw.log') }}" class="dash-quick__item">
+            <div class="dash-quick__icon" style="background:rgba(239,68,68,.08);color:#dc2626;"><i data-lucide="clock-3"></i></div>
+            <span class="dash-quick__label">{{ __('Wit. History') }}</span>
+        </a>
+
+        {{-- Bénéficiaires --}}
+        @if(setting('transfer_status','permission'))
+        <a href="{{ route('user.fund_transfer.beneficiary.index') }}" class="dash-quick__item">
+            <div class="dash-quick__icon" style="background:rgba(168,85,247,.1);color:#a855f7;"><i data-lucide="users"></i></div>
+            <span class="dash-quick__label">{{ __('Beneficiaries') }}</span>
+        </a>
+        @endif
+
+        {{-- Notifications --}}
+        <a href="{{ route('user.notification.all') }}" class="dash-quick__item">
+            <div class="dash-quick__icon" style="background:rgba(251,191,36,.1);color:#f59e0b;"><i data-lucide="bell"></i></div>
+            <span class="dash-quick__label">{{ __('Notifications') }}</span>
+        </a>
+
+        {{-- Support --}}
         <a href="{{ route('user.ticket.index') }}" class="dash-quick__item">
             <div class="dash-quick__icon" style="background:rgba(156,163,175,.15);color:#6b7280;"><i data-lucide="help-circle"></i></div>
             <span class="dash-quick__label">{{ __('Support') }}</span>
         </a>
+
+        {{-- Paramètres --}}
         <a href="{{ route('user.setting.show') }}" class="dash-quick__item">
             <div class="dash-quick__icon" style="background:rgba(156,163,175,.15);color:#6b7280;"><i data-lucide="settings"></i></div>
             <span class="dash-quick__label">{{ __('Settings') }}</span>

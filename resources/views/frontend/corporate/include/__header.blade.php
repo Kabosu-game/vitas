@@ -34,14 +34,6 @@
              </div>
           </div>
           <div class="header-right">
-            <div class="header-switcher">
-                <div class="switcher-box">
-                   <label class="color-switcher">
-                      <input type="checkbox" id="themeSwitcher">
-                      <span class="slider round"></span>
-                   </label>
-                </div>
-             </div>
              <div class="header-quick-action">
                 <div class="language-box">
                     @include('frontend::include.__language_switcher', ['selectId' => 'corp-public-header-lang', 'selectClass' => 'langu-swit small form-select'])

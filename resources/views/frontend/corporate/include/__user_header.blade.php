@@ -20,12 +20,6 @@
                             </div>
                         </div>
                         @endif
-                        <div class="single-right">
-                            <div class="color-switcher">
-                                <img class="light-icon" src="{{ asset('front/images/icons/sun.png') }}" alt="">
-                                <img class="dark-icon" src="{{ asset('front/images/icons/moon.png') }}" alt="">
-                            </div>
-                        </div>
                         @auth
                             @php
                                 $userId = auth()->id();

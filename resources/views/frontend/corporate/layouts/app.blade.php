@@ -7,7 +7,6 @@
 @include('frontend::include.__head')
 
 <body @class([
-    'dark-theme' => session()->get('site-color-mode',setting('default_mode')) == 'dark',
     'rtl_mode' => $isRtl,
     'body-landing-bg'
 ])>

@@ -8,7 +8,6 @@
 
 
 <body class="auth-bg" @class([
-    'dark-theme' => session()->get('site-color-mode',setting('default_mode')) == 'dark',
     'rtl_mode' => $isRtl,
     'auth-bg'
 ])>
@@ -53,14 +52,6 @@
                </div>
             </div>
             <div class="header-right">
-                <div class="header-switcher">
-                    <div class="switcher-box">
-                       <label class="color-switcher">
-                          <input type="checkbox" id="themeSwitcher">
-                          <span class="slider round"></span>
-                       </label>
-                    </div>
-                 </div>
                @if(setting('language_switcher'))
                     @php
                         $languages = \App\Models\Language::where('status',true)->get();

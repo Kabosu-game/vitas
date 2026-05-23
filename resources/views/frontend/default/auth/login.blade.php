@@ -12,9 +12,6 @@
                     <a href="{{ route('home')}}">@include('frontend::include.__brand_logo', ['maxHeight' => 52, 'maxWidth' => 220, 'loading' => 'eager'])</a>
                     <div class="no-user-header">
                         @include('frontend::include.__language_switcher', ['selectId' => 'auth-login-lang'])
-                        <div class="color-switcher">
-                            <img class="light-icon" src="{{ asset('front/images/icons/sun.png') }}" alt="">
-                            <img class="dark-icon" src="{{ asset('front/images/icons/moon.png') }}" alt="">
                         </div>
                     </div>
                 </div>
