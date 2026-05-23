@@ -1,4 +1,3 @@
-@php use App\Enums\InvestStatus; @endphp
 @extends('backend.layouts.app')
 @section('title')
     {{ __('Admin Dashboard') }}
@@ -84,6 +83,18 @@
                                 <a href="{{ route('admin.settings.site') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
                                     <div style="width:44px;height:44px;border-radius:12px;background:rgba(156,163,175,.15);color:#6b7280;display:flex;align-items:center;justify-content:center;"><i data-lucide="settings" style="width:20px;height:20px"></i></div>
                                     <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Site Settings') }}</span>
+                                </a>
+                                @endcan
+
+                                @can('customer-balance-add-or-subtract')
+                                <a href="{{ route('admin.user.active') }}" title="{{ __('Select a customer to add balance') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,.1);color:#10b981;display:flex;align-items:center;justify-content:center;"><i data-lucide="plus-circle" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Add Balance') }}</span>
+                                </a>
+
+                                <a href="{{ route('admin.user.active') }}" title="{{ __('Select a customer to subtract balance') }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.07);text-decoration:none;color:#374151;transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                                    <div style="width:44px;height:44px;border-radius:12px;background:rgba(239,68,68,.1);color:#ef4444;display:flex;align-items:center;justify-content:center;"><i data-lucide="minus-circle" style="width:20px;height:20px"></i></div>
+                                    <span style="font-size:12px;font-weight:600;text-align:center">{{ __('Subtract Balance') }}</span>
                                 </a>
                                 @endcan
 
