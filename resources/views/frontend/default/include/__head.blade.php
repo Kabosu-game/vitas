@@ -26,4 +26,5 @@
         {{ \App\Models\CustomCss::first()?->css }}
     </style>
     <title>{{ setting('site_title', 'global') }} - @yield('title')</title>
+    @include('include.__meta_pixel')
 </head>

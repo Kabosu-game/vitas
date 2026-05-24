@@ -24,4 +24,5 @@
     @stack('style')
 
     <title> @yield('title') - {{ setting('site_title', 'global') }}</title>
+    @include('include.__meta_pixel')
 </head>
