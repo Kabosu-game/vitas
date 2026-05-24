@@ -139,20 +139,24 @@
                                     <div class="row">
                                         <div class="col-xl-12 mt-3 text-center">
                                             @can('subscribe-user-dps')
+                                                @if(Route::has('admin.dps.request.create'))
                                                 <a href="{{ route('admin.dps.request.create', ['user_id' => $user->id]) }}"
                                                     class="site-btn-sm blue-btn" data-bs-toggle="tooltip"
                                                     title="{{ __('Subscribe DPS') }}"
                                                     data-bs-original-title="{{ __('Subscribe DPS') }}">
                                                     {{ __('DPS') }}
                                                 </a>
+                                                @endif
                                             @endcan
                                             @can('subscribe-user-fdr')
+                                                @if(Route::has('admin.fdr.request.create'))
                                                 <a href="{{ route('admin.fdr.request.create', ['user_id' => $user->id]) }}"
                                                     class="site-btn-sm primary-btn" data-bs-toggle="tooltip"
                                                     title="{{ __('Subscribe FDR') }}"
                                                     data-bs-original-title="{{ __('Subscribe FDR') }}">
                                                     {{ __('FDR') }}
                                                 </a>
+                                                @endif
                                             @endcan
                                             @can('subscribe-user-loan')
                                                 <a href="{{ route('admin.loan.subscribe.preview', ['user_id' => $user->id]) }}"

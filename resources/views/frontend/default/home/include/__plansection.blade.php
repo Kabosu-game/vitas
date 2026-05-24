@@ -92,7 +92,11 @@ $loan_plans = App\Models\LoanPlan::active()->get();
                                 </ul>
                             </div>
                             <div class="price-btn">
+                                @if(Route::has('user.dps.index'))
                                 <a class="pricing-btn w-100" href="{{ route('user.dps.index') }}">{{ __('Subscribe') }}</a>
+                                @else
+                                <span class="pricing-btn w-100">{{ __('Coming Soon') }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -133,7 +137,11 @@ $loan_plans = App\Models\LoanPlan::active()->get();
                                 </ul>
                             </div>
                             <div class="price-btn">
+                                @if(Route::has('user.fdr.index'))
                                 <a class="pricing-btn w-100" href="{{ route('user.fdr.index') }}">{{ __('Subscribe') }}</a>
+                                @else
+                                <span class="pricing-btn w-100">{{ __('Coming Soon') }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
