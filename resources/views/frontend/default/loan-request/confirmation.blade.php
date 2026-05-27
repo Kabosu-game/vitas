@@ -56,6 +56,8 @@
     </div>
 </section>
 
+<script>fbq('track', 'Lead');</script>
+
 <style>
 .confirmation-card { background:#fff; border:1px solid rgba(0,0,0,.07); border-radius:20px; padding:48px 36px; }
 .dark .confirmation-card { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08); }
