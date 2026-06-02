@@ -6,6 +6,8 @@
 !ar/*.php
 !arabic/
 !arabic/*.json
+!de/
+!de/*.php
 !en/
 !en/*.php
 !fr/

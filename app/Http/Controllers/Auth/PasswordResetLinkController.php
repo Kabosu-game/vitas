@@ -23,7 +23,7 @@ class PasswordResetLinkController extends Controller
     public function create()
     {
         $page = Page::where('code', 'forgetpassword')->first();
-        $data = json_decode($page->data, true);
+        $data = $page ? json_decode($page->data, true) : [];
 
         return view('frontend::auth.forgot-password', compact('data'));
     }
