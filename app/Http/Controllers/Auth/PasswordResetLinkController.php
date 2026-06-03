@@ -25,6 +25,11 @@ class PasswordResetLinkController extends Controller
         $page = Page::where('code', 'forgetpassword')->first();
         $data = $page ? json_decode($page->data, true) : [];
 
+        $data = array_merge([
+            'title'       => __('Forgot Password'),
+            'right_image' => 'assets/images/auth-bg.jpg',
+        ], $data ?? []);
+
         return view('frontend::auth.forgot-password', compact('data'));
     }
 
