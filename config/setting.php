@@ -67,7 +67,7 @@ return [
                 'data' => 'string', // data type, string, int, boolean
                 'name' => 'account_number_prefix', // unique name for field
                 'label' => 'Account Number Prefix', // you know what label it is
-                'rules' => 'required', // validation rule of laravel
+                'rules' => 'nullable|string|max:10', // validation rule of laravel
                 'value' => 'DGB', // default value if you want
             ],
             // [
