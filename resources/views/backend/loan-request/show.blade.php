@@ -66,7 +66,7 @@
                                 ['Justificatif d\'adresse',   $loanRequest->address_proof],
                             ] as [$docLabel, $docPath])
                                 @if($docPath)
-                                <a href="{{ asset($docPath) }}" target="_blank" class="site-btn secondary-btn btn-sm" style="font-size:13px">
+                                <a href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($docPath) }}" target="_blank" class="site-btn secondary-btn btn-sm" style="font-size:13px">
                                     <i data-lucide="file" style="width:14px;height:14px"></i> {{ $docLabel }}
                                 </a>
                                 @endif

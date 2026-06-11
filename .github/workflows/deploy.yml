@@ -82,6 +82,7 @@ jobs:
               grep -q "^APP_KEY=$" .env && php artisan key:generate --force || true
               php artisan optimize:clear || true
               php artisan migrate --force || true
+              php artisan db:seed --class=EmailTemplateSeeder --force || true
               php artisan storage:link || true
             else
               echo "⚠️ .env absent — artisan ignoré"
