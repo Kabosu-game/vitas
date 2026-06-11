@@ -1,5 +1,35 @@
 @extends('backend.layouts.app')
 @section('title', 'Demandes de Prêt')
+@section('style')
+<style>
+/* Ensure this page reserves space for the fixed sidebar and header */
+.layout .page-container { padding-left: 280px !important; }
+.layout .page-container .main-content { padding-top: calc(70px + 10px) !important; }
+@media (max-width: 991px) {
+    .layout .page-container { padding-left: 0 !important; }
+}
+@media (max-width: 991px) {
+    .loan-request-search-form {
+        flex-wrap: wrap;
+    }
+    .loan-request-search-form .form-control {
+        min-width: 200px;
+        flex: 1 1 auto;
+    }
+    .loan-request-search-form .site-btn {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .loan-request-table .table {
+        min-width: auto;
+    }
+    .loan-request-table .table th,
+    .loan-request-table .table td {
+        white-space: normal;
+    }
+}
+</style>
+@endsection
 @section('content')
 <div class="main-content">
     <div class="page-title">
@@ -32,13 +62,13 @@
                 </div>
 
                 {{-- Search --}}
-                <form method="GET" class="mb-3 d-flex gap-2">
+                <form method="GET" class="mb-3 d-flex gap-2 loan-request-search-form">
                     <input type="hidden" name="status" value="{{ $status }}">
-                    <input type="text" name="search" value="{{ $search }}" class="form-control" style="max-width:300px" placeholder="Rechercher nom, email, référence...">
+                    <input type="text" name="search" value="{{ $search }}" class="form-control" style="min-width:200px; max-width:300px;" placeholder="Rechercher nom, email, référence...">
                     <button class="site-btn primary-btn">Rechercher</button>
                 </form>
 
-                <div class="site-table table-responsive">
+                <div class="site-table table-responsive loan-request-table">
                     <table class="table">
                         <thead>
                             <tr>
@@ -83,9 +113,14 @@
                                     <span class="badge bg-{{ $badge }}">{{ $label }}</span>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.loan-request.show', $item) }}" class="site-btn primary-btn btn-sm">
-                                        <i data-lucide="eye" style="width:14px;height:14px"></i> Voir
-                                    </a>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <a href="{{ route('admin.loan-request.show', $item) }}" class="site-btn primary-btn btn-sm" style="font-size:12px;padding:5px 12px">
+                                            <i data-lucide="eye" style="width:13px;height:13px"></i> Voir
+                                        </a>
+                                        <button type="button" class="deleteModal site-btn red-btn btn-sm" data-id="{{ $item->id }}" data-name="{{ $item->reference }}" style="font-size:12px;padding:5px 12px">
+                                            <i data-lucide="trash-2" style="width:13px;height:13px"></i> Supprimer
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
@@ -94,9 +129,30 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $loanRequests->links() }}
+                {{ $loanRequests->links('backend.include.__pagination') }}
             </div>
         </div>
     </div>
 </div>
+
+@include('backend.loan-request.include.__delete_popup')
+
+@section('script')
+<script>
+    (function ($) {
+        "use strict";
+
+        $('body').on('click', '.deleteModal', function () {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+
+            $('#data-name').html(name);
+            var url = '{{ route("admin.loan-request.destroy", [":loanRequest"]) }}';
+            url = url.replace(':loanRequest', id);
+            $('#deleteForm').attr('action', url);
+            $('#delete').modal('toggle');
+        });
+    })(jQuery);
+</script>
 @endsection
+
