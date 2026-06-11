@@ -381,6 +381,12 @@
                                             data-lucide="inbox"></i>{{ __('Email Settings') }}</a>
                                 </li>
                             @endcan
+                            @can('email-template')
+                                <li class="{{ isActive(['admin.email-template', 'admin.email-template-edit']) }}">
+                                    <a href="{{ route('admin.email-template') }}"><i
+                                            data-lucide="mail"></i>{{ __('Email Templates') }}</a>
+                                </li>
+                            @endcan
                             @can('site-setting')
                                 <li class="{{ isActive('admin.settings.seo.meta') }}">
                                     <a href="{{ route('admin.settings.seo.meta') }}"><i

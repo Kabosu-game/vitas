@@ -28,7 +28,7 @@
         <div class="row g-4">
 
             {{-- Détails de la demande --}}
-            <div class="col-xl-7">
+            <div class="col-12 col-xl-7">
                 <div class="site-card">
                     <div class="site-card-header">
                         <h4>Informations du demandeur</h4>
@@ -106,7 +106,7 @@
             </div>
 
             {{-- Actions admin --}}
-            <div class="col-xl-5">
+            <div class="col-12 col-xl-5">
 
                 {{-- Changer le statut --}}
                 <div class="site-card mb-4">

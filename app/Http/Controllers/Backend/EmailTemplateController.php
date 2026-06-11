@@ -30,7 +30,7 @@ class EmailTemplateController extends Controller
 
     public function edit($id)
     {
-        $template = EmailTemplate::find($id);
+        $template = EmailTemplate::findOrFail($id);
 
         return view('backend.email.edit', compact('template'));
     }
@@ -65,7 +65,7 @@ class EmailTemplateController extends Controller
             'status'       => $input['status'],
         ];
 
-        $template = EmailTemplate::find($input['id']);
+        $template = EmailTemplate::findOrFail($input['id']);
 
         // Handle banner upload or removal
         if ($request->hasFile('banner')) {

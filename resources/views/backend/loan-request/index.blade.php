@@ -1,5 +1,29 @@
 @extends('backend.layouts.app')
 @section('title', 'Demandes de Prêt')
+@section('style')
+<style>
+@media (max-width: 991px) {
+    .loan-request-search-form {
+        flex-wrap: wrap;
+    }
+    .loan-request-search-form .form-control {
+        min-width: 200px;
+        flex: 1 1 auto;
+    }
+    .loan-request-search-form .site-btn {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .loan-request-table .table {
+        min-width: auto;
+    }
+    .loan-request-table .table th,
+    .loan-request-table .table td {
+        white-space: normal;
+    }
+}
+</style>
+@endsection
 @section('content')
 <div class="main-content">
     <div class="page-title">
@@ -32,13 +56,13 @@
                 </div>
 
                 {{-- Search --}}
-                <form method="GET" class="mb-3 d-flex gap-2">
+                <form method="GET" class="mb-3 d-flex gap-2 loan-request-search-form">
                     <input type="hidden" name="status" value="{{ $status }}">
-                    <input type="text" name="search" value="{{ $search }}" class="form-control" style="max-width:300px" placeholder="Rechercher nom, email, référence...">
+                    <input type="text" name="search" value="{{ $search }}" class="form-control" style="min-width:200px; max-width:300px;" placeholder="Rechercher nom, email, référence...">
                     <button class="site-btn primary-btn">Rechercher</button>
                 </form>
 
-                <div class="site-table table-responsive">
+                <div class="site-table table-responsive loan-request-table">
                     <table class="table">
                         <thead>
                             <tr>
