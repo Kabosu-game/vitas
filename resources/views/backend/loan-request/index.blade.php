@@ -2,6 +2,12 @@
 @section('title', 'Demandes de Prêt')
 @section('style')
 <style>
+/* Ensure this page reserves space for the fixed sidebar and header */
+.layout .page-container { padding-left: 280px !important; }
+.layout .page-container .main-content { padding-top: calc(70px + 10px) !important; }
+@media (max-width: 991px) {
+    .layout .page-container { padding-left: 0 !important; }
+}
 @media (max-width: 991px) {
     .loan-request-search-form {
         flex-wrap: wrap;
