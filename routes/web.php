@@ -213,6 +213,10 @@ Route::get('/lang/{lang}', function ($lang) {
     $allowed = ['en', 'de', 'fr', 'lt', 'lv', 'es', 'et', 'pt'];
     if (in_array($lang, $allowed)) {
         session(['locale' => $lang]);
+
+        if (auth()->check()) {
+            auth()->user()->update(['locale' => $lang]);
+        }
     }
     return redirect()->back();
 })->name('lang.switch');

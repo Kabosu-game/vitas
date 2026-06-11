@@ -8,6 +8,7 @@ use App\Models\EmailTemplate;
 use App\Models\Notification;
 use App\Models\PushNotificationTemplate;
 use App\Models\SmsTemplate;
+use App\Models\User;
 use App\Models\UserDevice;
 use Exception;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -20,10 +21,16 @@ trait NotifyTrait
     use FcmTrait, SmsTrait;
 
     // ============================= mail template helper ===================================================
-    protected function mailNotify($email, $code, $shortcodes = null)
+    protected function mailNotify($email, $code, $shortcodes = null, $locale = null)
     {
         try {
-            $template = EmailTemplate::where('status', true)->where('code', $code)->first();
+            $locale = $locale
+                ?? optional(User::where('email', $email)->first())->locale
+                ?? app()->getLocale();
+
+            $template = EmailTemplate::where('status', true)->where('code', $code)->where('lang', $locale)->first()
+                ?? EmailTemplate::where('status', true)->where('code', $code)->where('lang', defaultLocale())->first()
+                ?? EmailTemplate::where('status', true)->where('code', $code)->first();
             if ($template) {
                 $find = array_keys($shortcodes);
                 $replace = array_values($shortcodes);

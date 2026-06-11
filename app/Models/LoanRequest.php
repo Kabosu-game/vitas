@@ -11,7 +11,7 @@ class LoanRequest extends Model
         'country', 'id_number', 'id_doc_recto', 'id_doc_verso', 'address_proof',
         'loan_type', 'amount', 'currency', 'duration_months',
         'purpose', 'employment_status', 'monthly_income', 'status',
-        'user_id', 'admin_notes', 'approved_amount',
+        'user_id', 'admin_notes', 'approved_amount', 'locale',
     ];
 
     public function user()

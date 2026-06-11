@@ -67,6 +67,7 @@ class LoanRequestController extends Controller
             'employment_status' => $request->employment_status,
             'monthly_income'    => $request->monthly_income,
             'status'            => 'pending',
+            'locale'            => app()->getLocale(),
         ]);
 
         // Send email to user and admin for loan request

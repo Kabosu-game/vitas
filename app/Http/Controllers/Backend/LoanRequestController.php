@@ -80,7 +80,7 @@ class LoanRequestController extends Controller
             ];
 
             $templateCode = $newStatus === 'approved' ? 'loan_request_approved' : 'loan_request_rejected';
-            $this->mailNotify($loanRequest->email, $templateCode, $shortcodes);
+            $this->mailNotify($loanRequest->email, $templateCode, $shortcodes, $loanRequest->locale);
         }
 
         notify()->success(__('Loan request updated.'), 'Success');
@@ -125,7 +125,7 @@ class LoanRequestController extends Controller
             '[[site_url]]'   => route('home'),
             '[[message]]'    => 'Votre prêt a été approuvé et le montant crédité sur votre compte.',
         ];
-        $this->mailNotify($user->email, 'loan_request_approved', $shortcodes);
+        $this->mailNotify($user->email, 'loan_request_approved', $shortcodes, $loanRequest->locale);
         $this->pushNotify('loan_request_approved', $shortcodes, route('user.loan.details', $loanRequest->reference), $user->id);
         $this->smsNotify('loan_request_approved', $shortcodes, $user->phone);
 
