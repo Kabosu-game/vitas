@@ -107,12 +107,14 @@
                                     <span class="badge bg-{{ $badge }}">{{ $label }}</span>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.loan-request.show', $item) }}" class="site-btn primary-btn btn-sm">
-                                        <i data-lucide="eye" style="width:14px;height:14px"></i> Voir
-                                    </a>
-                                    <button type="button" class="deleteModal site-btn red-btn btn-sm ms-1" data-id="{{ $item->id }}" data-name="{{ $item->reference }}">
-                                        <i data-lucide="trash-2" style="width:14px;height:14px"></i> Supprimer
-                                    </button>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <a href="{{ route('admin.loan-request.show', $item) }}" class="site-btn primary-btn btn-sm" style="font-size:12px;padding:5px 12px">
+                                            <i data-lucide="eye" style="width:13px;height:13px"></i> Voir
+                                        </a>
+                                        <button type="button" class="deleteModal site-btn red-btn btn-sm" data-id="{{ $item->id }}" data-name="{{ $item->reference }}" style="font-size:12px;padding:5px 12px">
+                                            <i data-lucide="trash-2" style="width:13px;height:13px"></i> Supprimer
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
@@ -121,7 +123,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $loanRequests->links() }}
+                {{ $loanRequests->links('backend.include.__pagination') }}
             </div>
         </div>
     </div>
