@@ -7,10 +7,17 @@
             <div class="row align-items-center">
                 <div class="col">
                     <div class="title-content">
-                        <a href="{{ route('admin.loan-request.index') }}" class="me-2">
-                            <i data-lucide="arrow-left"></i>
-                        </a>
-                        <h2 class="title d-inline">Demande {{ $loanRequest->reference }}</h2>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <a href="{{ route('admin.loan-request.index') }}" class="me-2">
+                                    <i data-lucide="arrow-left"></i>
+                                </a>
+                                <h2 class="title d-inline">Demande {{ $loanRequest->reference }}</h2>
+                            </div>
+                            <button type="button" class="deleteModal site-btn red-btn btn-sm" data-id="{{ $loanRequest->id }}" data-name="{{ $loanRequest->reference }}">
+                                <i data-lucide="trash-2" style="width:14px;height:14px"></i> Supprimer
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,4 +176,24 @@
         </div>
     </div>
 </div>
+
+@include('backend.loan-request.include.__delete_popup')
+
+@section('script')
+<script>
+    (function ($) {
+        "use strict";
+
+        $('body').on('click', '.deleteModal', function () {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+
+            $('#data-name').html(name);
+            var url = '{{ route("admin.loan-request.destroy", [":loanRequest"]) }}';
+            url = url.replace(':loanRequest', id);
+            $('#deleteForm').attr('action', url);
+            $('#delete').modal('toggle');
+        });
+    })(jQuery);
+</script>
 @endsection

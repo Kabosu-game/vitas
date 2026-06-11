@@ -88,6 +88,15 @@ class LoanRequestController extends Controller
         return redirect()->route('admin.loan-request.show', $loanRequest);
     }
 
+    public function destroy(LoanRequest $loanRequest)
+    {
+        $loanRequest->delete();
+
+        notify()->success(__('Loan request deleted successfully.'), 'Success');
+
+        return redirect()->route('admin.loan-request.index');
+    }
+
     public function credit(Request $request, LoanRequest $loanRequest)
     {
         $request->validate([

@@ -355,6 +355,7 @@ Route::prefix('loan-request')->name('loan-request.')->controller(LoanRequestCont
     Route::get('/{loanRequest}', 'show')->name('show');
     Route::post('/{loanRequest}/update', 'update')->name('update');
     Route::post('/{loanRequest}/credit', 'credit')->name('credit');
+    Route::delete('/destroy/{loanRequest}', 'destroy')->name('destroy');
 });
 
 Route::get('custom-css', [CustomCssController::class, 'customCss'])->name('custom-css');

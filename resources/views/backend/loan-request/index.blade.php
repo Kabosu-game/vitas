@@ -86,6 +86,9 @@
                                     <a href="{{ route('admin.loan-request.show', $item) }}" class="site-btn primary-btn btn-sm">
                                         <i data-lucide="eye" style="width:14px;height:14px"></i> Voir
                                     </a>
+                                    <button type="button" class="deleteModal site-btn red-btn btn-sm ms-1" data-id="{{ $item->id }}" data-name="{{ $item->reference }}">
+                                        <i data-lucide="trash-2" style="width:14px;height:14px"></i> Supprimer
+                                    </button>
                                 </td>
                             </tr>
                         @empty
@@ -99,4 +102,25 @@
         </div>
     </div>
 </div>
+
+@include('backend.loan-request.include.__delete_popup')
+
+@section('script')
+<script>
+    (function ($) {
+        "use strict";
+
+        $('body').on('click', '.deleteModal', function () {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+
+            $('#data-name').html(name);
+            var url = '{{ route("admin.loan-request.destroy", [":loanRequest"]) }}';
+            url = url.replace(':loanRequest', id);
+            $('#deleteForm').attr('action', url);
+            $('#delete').modal('toggle');
+        });
+    })(jQuery);
+</script>
 @endsection
+
