@@ -50,6 +50,8 @@ jobs:
             --exclude='.github' \
             --exclude='.env' \
             --exclude='storage' \
+            --exclude='assets/loan-docs' \
+            --exclude='public/assets/loan-docs' \
             -e "ssh -i ~/.ssh/id_ed25519_vitas -o StrictHostKeyChecking=no" \
             ./ "${{ secrets.VITAS_SERVER_USER }}"@"${{ secrets.VITAS_SERVER_IP }}":/var/www/vitas
 
