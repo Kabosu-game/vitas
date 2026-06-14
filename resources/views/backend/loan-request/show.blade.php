@@ -178,6 +178,7 @@
 </div>
 
 @include('backend.loan-request.include.__delete_popup')
+@endsection
 
 @section('script')
 <script>
