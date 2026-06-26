@@ -311,6 +311,31 @@ class EmailTemplateSeeder extends Seeder
                     'footer_body'  => 'Mit freundlichen Grüßen,<br>Das Team von [[site_title]]',
                 ],
             ],
+
+            'email_verification' => [
+                'for'         => 'User',
+                'short_codes' => '[[full_name]], [[token]], [[site_title]], [[site_url]]',
+                'fr' => [
+                    'name'         => "Vérification d'adresse email (FR)",
+                    'subject'      => 'Confirmez votre adresse email — [[site_title]]',
+                    'title'        => 'Vérification de votre adresse email',
+                    'salutation'   => 'Bonjour [[full_name]],',
+                    'message_body' => "<p>Merci de votre inscription sur [[site_title]]. Pour activer votre compte, veuillez confirmer votre adresse email à l'aide du code ci-dessous :</p><p style=\"text-align:center;margin:24px 0\"><span style=\"display:inline-block;font-size:28px;font-weight:bold;letter-spacing:6px;padding:12px 24px;background:#f4f6fb;border:1px solid #e0e0e0;border-radius:8px\">[[token]]</span></p><p>Ce code est valable quelques minutes. Si vous n'êtes pas à l'origine de cette demande, vous pouvez ignorer cet email.</p>",
+                    'button_level' => '',
+                    'button_link'  => '',
+                    'footer_body'  => "Cordialement,<br>L'équipe [[site_title]]",
+                ],
+                'de' => [
+                    'name'         => 'Vérification d\'adresse email (DE)',
+                    'subject'      => 'Bestätigen Sie Ihre E-Mail-Adresse — [[site_title]]',
+                    'title'        => 'Bestätigung Ihrer E-Mail-Adresse',
+                    'salutation'   => 'Hallo [[full_name]],',
+                    'message_body' => '<p>Vielen Dank für Ihre Registrierung bei [[site_title]]. Um Ihr Konto zu aktivieren, bestätigen Sie bitte Ihre E-Mail-Adresse mit dem folgenden Code:</p><p style="text-align:center;margin:24px 0"><span style="display:inline-block;font-size:28px;font-weight:bold;letter-spacing:6px;padding:12px 24px;background:#f4f6fb;border:1px solid #e0e0e0;border-radius:8px">[[token]]</span></p><p>Dieser Code ist einige Minuten gültig. Wenn Sie diese Anfrage nicht gestellt haben, können Sie diese E-Mail ignorieren.</p>',
+                    'button_level' => '',
+                    'button_link'  => '',
+                    'footer_body'  => 'Mit freundlichen Grüßen,<br>Das Team von [[site_title]]',
+                ],
+            ],
         ];
 
         foreach ($specs as $code => $spec) {

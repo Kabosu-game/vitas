@@ -147,6 +147,7 @@ class RegisteredUserController extends Controller
             'phone' => $phone,
             'email' => $formData['email'],
             'password' => Hash::make($formData['password']),
+            'locale' => app()->getLocale(),
             'custom_fields_data' => data_get($formData, 'custom_fields_data', []),
             'kyc' => Kyc::where('status', 1)->exists() ? KYCStatus::NOT_SUBMITTED : KYCStatus::Verified,
 

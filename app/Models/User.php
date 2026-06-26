@@ -40,6 +40,7 @@ class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
         'phone',
         'username',
         'email',
+        'locale',
         'email_verified_at',
         'email_otp',
         'email_otp_expires_at',
@@ -142,7 +143,10 @@ class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
         $otp = $this->generateEmailOtp();
         $siteTitle = setting('site_title', 'global');
 
-        $template = EmailTemplate::where('status', true)->where('code', 'email_verification')->first();
+        $locale = $this->locale ?? defaultLocale();
+        $template = EmailTemplate::where('status', true)->where('code', 'email_verification')->where('lang', $locale)->first()
+            ?? EmailTemplate::where('status', true)->where('code', 'email_verification')->where('lang', defaultLocale())->first()
+            ?? EmailTemplate::where('status', true)->where('code', 'email_verification')->first();
 
         if ($template) {
             $shortcodes = [
@@ -173,15 +177,15 @@ class User extends Authenticatable implements CanUseTickets, MustVerifyEmail
             ];
         } else {
             $details = [
-                'subject'      => "Confirmez votre adresse email — {$siteTitle}",
+                'subject'      => "Bestätigen Sie Ihre E-Mail-Adresse — {$siteTitle}",
                 'banner'       => asset('logo/logo.png'),
-                'title'        => 'Vérification de votre adresse email',
-                'salutation'   => 'Bonjour '.$this->full_name.',',
-                'message_body' => 'Votre code de vérification est : <strong>'.$otp.'</strong>',
+                'title'        => 'Bestätigung Ihrer E-Mail-Adresse',
+                'salutation'   => 'Hallo '.$this->full_name.',',
+                'message_body' => 'Ihr Bestätigungscode lautet: <strong>'.$otp.'</strong>',
                 'button_level' => '',
                 'button_link'  => '',
                 'footer_status'=> 1,
-                'footer_body'  => 'Cordialement,<br />'.$siteTitle,
+                'footer_body'  => 'Mit freundlichen Grüßen,<br />'.$siteTitle,
                 'bottom_status'=> 0,
                 'bottom_title' => '',
                 'bottom_body'  => '',
